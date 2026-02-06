@@ -7,9 +7,10 @@ export default function HomeHero() {
   return (
     <section
       className="
-        relative isolate w-full bg-black overflow-x-hidden
+        relative isolate w-full bg-black
+        overflow-hidden box-border
         lg:h-[806px]
-        py-13
+        py-10 lg:py-0
       "
     >
       {/* Background */}

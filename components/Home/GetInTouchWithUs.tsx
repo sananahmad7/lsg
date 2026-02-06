@@ -25,7 +25,7 @@ export default function GetInTouchWithUs() {
   };
 
   return (
-    <section className="w-full bg-black py-16">
+    <section className="w-full bg-black py-16 px-4 lg:px-0">
       {/* Outer: 1300 x 691, radius 20, border 2.34, padding 23 */}
       <div
         className="

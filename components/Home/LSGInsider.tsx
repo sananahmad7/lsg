@@ -16,7 +16,7 @@ Slabs Hit The Shop. Don’t Miss Your Chance To Grab The Next
 Standout Piece For Your Collection.`;
 
   return (
-    <section className="w-full bg-black py-16">
+    <section className="w-full bg-black py-16 px-4 lg:px-0">
       {/* Overall: 1272 x 377, radius 22, padding 55/32 */}
       <div
         className="

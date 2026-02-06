@@ -41,12 +41,11 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
   return (
     <div
       className={[
-        "w-full max-w-[362px]",
+        "w-full",
         "rounded-[12px] border",
         "flex flex-col gap-[18px]",
       ].join(" ")}
       style={{
-        height: 470, // reduced from 516
         padding: 20, // figma
         borderWidth: 1.47,
         borderColor: "rgba(255,255,255,0.35)",
@@ -55,23 +54,15 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
         backdropFilter: "blur(2px)",
       }}
     >
-      {/* Card header: 322 x 32, space-between */}
-      <div
-        className="w-full flex items-center justify-between"
-        style={{ height: 32 }}
-      >
-        <h3 className="text-white font-semibold text-[24px] leading-[32px]">
+      {/* Card header */}
+      <div className="w-full flex items-center justify-between">
+        <h3 className="text-white font-semibold text-[20px] sm:text-[22px] lg:text-[24px] leading-[32px]">
           {card.title}
         </h3>
 
-        {/* cyan check circle */}
         <span
           className="inline-flex items-center justify-center rounded-full"
-          style={{
-            width: 20,
-            height: 20,
-            backgroundColor: "#00D0FF",
-          }}
+          style={{ width: 20, height: 20, backgroundColor: "#00D0FF" }}
         >
           <FaCheck size={12} color="#062126" />
         </span>
@@ -86,17 +77,16 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
               className="mt-[3px]"
               color="rgba(255,255,255,0.85)"
             />
-            <span className="text-white/85 text-[14px] leading-[20px]">
+            <span className="text-white/85 text-[14px] sm:text-[15px] leading-[20px]">
               {t}
             </span>
           </li>
         ))}
       </ul>
 
-      {/* Spacer to push button down */}
+      {/* Push button to bottom without fixed card height */}
       <div className="flex-1" />
 
-      {/* Inquire button */}
       <button
         type="button"
         className="w-full rounded-[8px] border inline-flex items-center justify-center"
@@ -119,114 +109,106 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
 
 export default function ServiceHero() {
   return (
-    <section className="relative isolate w-full h-[920px] bg-black overflow-hidden">
-      {/* Background (same system as verify-slab result: opacity + bg, but no cropping) */}
-      <div className="absolute left-0 right-0 top-[30px] bottom-[30px] z-0">
-        <Image
-          src="/result.png"
-          alt="Services hero background"
-          fill
-          priority
-          sizes="100vw"
-          className="object-contain opacity-[0.27]"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
-        {/* Inner component: 1132 x 839, gap 50 */}
-        <div
-          className="w-full max-w-[1132px] flex flex-col items-center gap-[50px]"
-          style={{ height: 839, fontFamily: "Poppins, sans-serif" }}
-        >
-          {/* A1: 923 x 273, gap 31 */}
-          <div className="w-full max-w-[923px] flex flex-col items-center gap-[31px]">
-            {/* Heading area */}
-            <div className="w-full flex items-center justify-center">
-              <h1
-                className="text-center text-[#00D0FF] font-semibold"
-                style={{
-                  fontSize: 44,
-                  lineHeight: "88.32px",
-                }}
-              >
-                Everything That Comes with an LSG Slab
-              </h1>
-            </div>
-
-            {/* Description */}
-            <div className="w-full max-w-[923px]">
-              <p
-                className="text-center text-white/70 font-medium"
-                style={{
-                  fontSize: 22,
-                  lineHeight: "30.8px",
-                  letterSpacing: "-0.3px",
-                }}
-              >
-                Each slab includes the full LSG experience — cleaning,
-                authentication, grading, and sealing— all built into the product
-                you receive. No subscriptions, no extra fees
-              </p>
-            </div>
-
-            {/* Buttons area: 499 x 60, gap 25 */}
-            <div className="flex items-center justify-center gap-[25px]">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-[12px] border"
-                style={{
-                  width: 237,
-                  height: 60,
-                  paddingTop: 11,
-                  paddingBottom: 11,
-                  paddingLeft: 25,
-                  paddingRight: 25,
-                  borderWidth: 1,
-                  borderColor: "#00D0FF",
-                  backgroundColor: "#00D0FF",
-                  color: "#062126",
-                  fontFamily: "Sora, sans-serif",
-                  fontWeight: 700,
-                  fontSize: 16,
-                  lineHeight: "151%",
-                  textAlign: "center",
-                }}
-              >
-                Request Slab
-              </Link>
-
-              <Link
-                href="/verify-slab"
-                className="inline-flex items-center justify-center rounded-[12px] border"
-                style={{
-                  width: 237,
-                  height: 60,
-                  paddingTop: 11,
-                  paddingBottom: 11,
-                  paddingLeft: 25,
-                  paddingRight: 25,
-                  borderWidth: 1,
-                  borderColor: "#00D0FF",
-                  backgroundColor: "transparent",
-                  color: "#00D0FF",
-                  fontFamily: "Sora, sans-serif",
-                  fontWeight: 700,
-                  fontSize: 16,
-                  lineHeight: "151%",
-                  textAlign: "center",
-                }}
-              >
-                Verify Your Slab
-              </Link>
-            </div>
+    <section className="relative isolate w-full bg-black overflow-hidden">
+      {/* Keep desktop height 920, but allow smaller screens to grow naturally */}
+      <div className="relative w-full min-h-[720px] sm:min-h-[820px] lg:h-[920px]">
+        {/* Background: smaller than container (more inset), no overflow into edges */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-x-0 top-8 bottom-8 sm:top-10 sm:bottom-10 lg:top-[70px] lg:bottom-[70px]">
+            <Image
+              src="/result.png"
+              alt="Services hero background"
+              fill
+              priority
+              sizes="100vw"
+              className="object-contain opacity-[0.27]"
+            />
           </div>
+        </div>
 
-          {/* A2: cards row (gap 23) */}
-          <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-[23px]">
-            {featureCards.map((card) => (
-              <ServiceFeatureCard key={card.title} card={card} />
-            ))}
+        {/* Content */}
+        <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
+          <div className="w-full max-w-[1132px] flex flex-col items-center gap-[50px] py-10 lg:py-0">
+            {/* A1 */}
+            <div className="w-full max-w-[923px] flex flex-col items-center gap-[22px] sm:gap-[31px]">
+              <h1
+                className="text-center text-[#00D0FF] font-semibold px-2"
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                }}
+              >
+                <span className="block text-[26px] sm:text-[34px] lg:text-[44px] leading-[120%] lg:leading-[88.32px]">
+                  Everything That Comes with an LSG Slab
+                </span>
+              </h1>
+
+              <p
+                className="text-center text-white/70 font-medium px-2"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
+                <span className="block text-[15px] sm:text-[18px] lg:text-[22px] leading-[140%] lg:leading-[30.8px]">
+                  Each slab includes the full LSG experience — cleaning,
+                  authentication, grading, and sealing— all built into the
+                  product you receive. No subscriptions, no extra fees
+                </span>
+              </p>
+
+              {/* Buttons (stack on mobile) */}
+              <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-[25px]">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-[12px] border w-full sm:w-[237px] h-[60px]"
+                  style={{
+                    borderWidth: 1,
+                    borderColor: "#00D0FF",
+                    backgroundColor: "#00D0FF",
+                    color: "#062126",
+                    fontFamily: "Sora, sans-serif",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: "151%",
+                    paddingTop: 11,
+                    paddingBottom: 11,
+                    paddingLeft: 25,
+                    paddingRight: 25,
+                    textAlign: "center",
+                  }}
+                >
+                  Request Slab
+                </Link>
+
+                <Link
+                  href="/verify-slab"
+                  className="inline-flex items-center justify-center rounded-[12px] border w-full sm:w-[237px] h-[60px]"
+                  style={{
+                    borderWidth: 1,
+                    borderColor: "#00D0FF",
+                    backgroundColor: "transparent",
+                    color: "#00D0FF",
+                    fontFamily: "Sora, sans-serif",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: "151%",
+                    paddingTop: 11,
+                    paddingBottom: 11,
+                    paddingLeft: 25,
+                    paddingRight: 25,
+                    textAlign: "center",
+                  }}
+                >
+                  Verify Your Slab
+                </Link>
+              </div>
+            </div>
+
+            {/* A2: responsive grid instead of forced row */}
+            <div className="w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[23px]">
+                {featureCards.map((card) => (
+                  <ServiceFeatureCard key={card.title} card={card} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

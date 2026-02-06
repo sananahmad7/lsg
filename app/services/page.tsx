@@ -2,13 +2,11 @@ import GradingWithCare from "@/components/Services/GradingWithCare";
 import ServiceHero from "@/components/Services/ServiceHero";
 import React from "react";
 
-function services() {
+export default function ServicesPage() {
   return (
-    <div>
+    <main className="w-full bg-black">
       <ServiceHero />
       <GradingWithCare />
-    </div>
+    </main>
   );
 }
-
-export default services;
