@@ -10,13 +10,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+  --font-poppins: var(--font-poppins);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* --- ADD BREAKPOINTS HERE --- */
+  --breakpoint-xs: 475px;   /* Adds a new extra-small breakpoint */
+  --breakpoint-3xl: 1600px; /* Adds a new extra-large breakpoint */
+  /* You can also overwrite existing ones if needed */
+  /* --breakpoint-md: 800px; */ 
 }
 
 body {
