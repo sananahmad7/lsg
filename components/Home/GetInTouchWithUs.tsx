@@ -251,7 +251,7 @@ export default function GetInTouchWithUs() {
             {/* right-side art image */}
             <div className="relative w-full h-full">
               <Image
-                src="/Touch.png"
+                src="/touch.png"
                 alt="Cards artwork"
                 fill
                 priority
