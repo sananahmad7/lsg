@@ -13,7 +13,7 @@ export default function VerifyYourSlab() {
   };
 
   return (
-    <section className="w-full bg-black py-14">
+    <section className="w-full bg-black py-14 px-4 xl:px-0">
       {/* Outer Component (1240 x 516, padding 25/70, radius 12, border 1) */}
       <div
         className="

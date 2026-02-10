@@ -25,87 +25,64 @@ export default function GetInTouchWithUs() {
   };
 
   return (
-    <section className="w-full bg-black py-16 px-4 lg:px-0">
-      {/* Outer: 1300 x 691, radius 20, border 2.34, padding 23 */}
+    <section className="w-full bg-black py-16 px-4 xl:px-8">
+      {/* Outer Container:
+        - Replaced fixed width with max-w-[1300px]
+        - Added padding that scales from mobile (p-6) to desktop (p-10)
+      */}
       <div
         className="
           mx-auto w-full max-w-[1300px]
-          rounded-[20px]
-          bg-black
+          rounded-[20px] bg-black
+          border-[2.34px] border-white/15
+          p-6 sm:p-10 lg:p-[45px]
         "
-        style={{
-          borderWidth: "2.34px",
-          borderStyle: "solid",
-          borderColor: "rgba(255,255,255,0.15)",
-          padding: 23,
-        }}
       >
-        {/* Two inner parts: left + right, gap 35 */}
-        <div className="flex flex-col gap-[35px] lg:flex-row lg:h-[600px]">
-          {/* LEFT */}
-          <div className="w-full lg:w-[499px] flex flex-col gap-[16.4px]">
-            {/* Top block: 499 x 184.37, gap 9.37 */}
-            <div className="w-full lg:w-[499px] flex flex-col gap-[9.37px]">
+        {/* Inner Flex Layout:
+          - Stack vertical on mobile (flex-col)
+          - Side-by-side on desktop (lg:flex-row)
+          - Removed fixed height to prevent empty space
+        */}
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-[80px]">
+          {/* --- LEFT SIDE: TEXT & FORM --- */}
+          <div className="w-full lg:w-[500px] flex-shrink-0 flex flex-col gap-8">
+            {/* Header Text */}
+            <div className="flex flex-col gap-4">
               <h2
-                className="text-[#00D0FF] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%]"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 600,
-                  letterSpacing: "-0.02em",
-                }}
+                className="text-[#00D0FF] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
+                style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Get in Touch with Us
               </h2>
 
               <p
-                className="text-white/60 text-[16px] lg:text-[18.74px]"
-                style={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: 400,
-                  lineHeight: "30.45px",
-                }}
+                className="text-white/60 text-[16px] lg:text-[18px] leading-[160%] font-normal"
+                style={{ fontFamily: "Poppins, sans-serif" }}
               >
-                Got a question about your LSG slab, grading details,
-                <br />
-                or what&apos;s in stock?
-                <br />
-                Reach out — we&apos;re happy to help you get what
-                <br />
-                you&apos;re looking for.
+                Got a question about your LSG slab, grading details, or
+                what&apos;s in stock? Reach out — we&apos;re happy to help you
+                get what you&apos;re looking for.
               </p>
             </div>
 
-            {/* Bottom form area: 499 x 390, gap 16.4 */}
-            <form
-              onSubmit={onSubmit}
-              className="w-full lg:w-[499px] flex flex-col gap-[16.4px]"
-            >
-              {/* First/Last row */}
-              <div className="flex flex-col sm:flex-row gap-[16.4px]">
+            {/* Form */}
+            <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full">
+              {/* First Name / Last Name Row - Uses Grid for auto-stacking */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   aria-label="First Name"
                   placeholder="First Name"
                   value={form.firstName}
                   onChange={onChange("firstName")}
                   className="
-                    w-full sm:w-[241.3018px]
-                    h-[49.1081px]
-                    rounded-[6px]
-                    border
-                    bg-white/[0.03]
-                    text-white
+                    w-full h-[50px]
+                    rounded-[6px] border border-white/10
+                    bg-white/[0.03] text-white
                     placeholder:text-white/35
-                    outline-none
+                    px-4 py-3 outline-none
+                    focus:border-[#00D0FF]/50 transition-colors
                   "
-                  style={{
-                    borderWidth: 1,
-                    borderColor: "rgba(255,255,255,0.12)",
-                    paddingTop: 14.05,
-                    paddingBottom: 14.05,
-                    paddingLeft: 16.4,
-                    paddingRight: 16.4,
-                    fontFamily: "Poppins, sans-serif",
-                  }}
+                  style={{ fontFamily: "Poppins, sans-serif" }}
                 />
 
                 <input
@@ -114,24 +91,14 @@ export default function GetInTouchWithUs() {
                   value={form.lastName}
                   onChange={onChange("lastName")}
                   className="
-                    w-full sm:w-[241.3018px]
-                    h-[49.1081px]
-                    rounded-[6px]
-                    border
-                    bg-white/[0.03]
-                    text-white
+                    w-full h-[50px]
+                    rounded-[6px] border border-white/10
+                    bg-white/[0.03] text-white
                     placeholder:text-white/35
-                    outline-none
+                    px-4 py-3 outline-none
+                    focus:border-[#00D0FF]/50 transition-colors
                   "
-                  style={{
-                    borderWidth: 1,
-                    borderColor: "rgba(255,255,255,0.12)",
-                    paddingTop: 14.05,
-                    paddingBottom: 14.05,
-                    paddingLeft: 16.4,
-                    paddingRight: 16.4,
-                    fontFamily: "Poppins, sans-serif",
-                  }}
+                  style={{ fontFamily: "Poppins, sans-serif" }}
                 />
               </div>
 
@@ -139,54 +106,36 @@ export default function GetInTouchWithUs() {
               <input
                 aria-label="Email"
                 placeholder="Email"
+                type="email"
                 value={form.email}
                 onChange={onChange("email")}
                 className="
-                  w-full lg:w-[499px]
-                  h-[49px]
-                  rounded-[6px]
-                  border
-                  bg-white/[0.03]
-                  text-white
+                  w-full h-[50px]
+                  rounded-[6px] border border-white/10
+                  bg-white/[0.03] text-white
                   placeholder:text-white/35
-                  outline-none
+                  px-4 py-3 outline-none
+                  focus:border-[#00D0FF]/50 transition-colors
                 "
-                style={{
-                  borderWidth: 1,
-                  borderColor: "rgba(255,255,255,0.12)",
-                  paddingTop: 14.05,
-                  paddingBottom: 14.05,
-                  paddingLeft: 16.4,
-                  paddingRight: 16.4,
-                  fontFamily: "Poppins, sans-serif",
-                }}
+                style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
               {/* Phone */}
               <input
                 aria-label="Phone (optional)"
                 placeholder="Phone (optional)"
+                type="tel"
                 value={form.phone}
                 onChange={onChange("phone")}
                 className="
-                  w-full lg:w-[499px]
-                  h-[49px]
-                  rounded-[6px]
-                  border
-                  bg-white/[0.03]
-                  text-white
+                  w-full h-[50px]
+                  rounded-[6px] border border-white/10
+                  bg-white/[0.03] text-white
                   placeholder:text-white/35
-                  outline-none
+                  px-4 py-3 outline-none
+                  focus:border-[#00D0FF]/50 transition-colors
                 "
-                style={{
-                  borderWidth: 1,
-                  borderColor: "rgba(255,255,255,0.12)",
-                  paddingTop: 14.05,
-                  paddingBottom: 14.05,
-                  paddingLeft: 16.4,
-                  paddingRight: 16.4,
-                  fontFamily: "Poppins, sans-serif",
-                }}
+                style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
               {/* Message */}
@@ -196,69 +145,47 @@ export default function GetInTouchWithUs() {
                 value={form.message}
                 onChange={onChange("message")}
                 className="
-                  w-full lg:w-[499px]
-                  h-[128px]
-                  rounded-[6px]
-                  border
-                  bg-white/[0.03]
-                  text-white
+                  w-full h-[128px]
+                  rounded-[6px] border border-white/10
+                  bg-white/[0.03] text-white
                   placeholder:text-white/35
-                  outline-none
-                  resize-none
+                  px-4 py-3 outline-none resize-none
+                  focus:border-[#00D0FF]/50 transition-colors
                 "
-                style={{
-                  borderWidth: 1,
-                  borderColor: "rgba(255,255,255,0.12)",
-                  paddingTop: 12,
-                  paddingBottom: 12,
-                  paddingLeft: 16,
-                  paddingRight: 16,
-                  fontFamily: "Poppins, sans-serif",
-                }}
+                style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
-              {/* Send button: 499 x 49, radius 5 */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 className="
-                  w-full lg:w-[499px]
-                  h-[49px]
+                  w-full h-[50px]
                   rounded-[5px]
+                  bg-[#00D0FF] text-[#062126]
+                  font-medium text-[18px]
                   flex items-center justify-center
                   transition-transform hover:scale-[1.01] active:scale-[0.99]
                 "
-                style={{
-                  backgroundColor: "#00D0FF",
-                  paddingTop: 14,
-                  paddingBottom: 14,
-                  paddingLeft: 12,
-                  paddingRight: 12,
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 500,
-                  fontSize: "17.57px",
-                  lineHeight: "100%",
-                  letterSpacing: "-0.01em",
-                  color: "#062126",
-                }}
+                style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Send
               </button>
             </form>
           </div>
 
-          {/* RIGHT (image) */}
-          <div className="flex-1 relative w-full min-h-[280px] lg:min-h-0 lg:h-[586px]">
-            {/* right-side art image */}
-            <div className="relative w-full h-full">
-              <Image
-                src="/touch.png"
-                alt="Cards artwork"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 700px"
-                className="object-contain"
-              />
-            </div>
+          {/* --- RIGHT SIDE: IMAGE --- */}
+          {/* - Mobile: Fixed height or aspect ratio so it shows up
+             - Desktop: Flex-1 to fill remaining space 
+          */}
+          <div className="w-full relative min-h-[300px] sm:min-h-[400px] lg:min-h-0 lg:flex-1 lg:h-auto rounded-[12px] overflow-hidden">
+            <Image
+              src="/touch.png"
+              alt="Cards artwork"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 600px"
+              className="object-contain lg:object-cover object-center"
+            />
           </div>
         </div>
       </div>

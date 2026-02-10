@@ -14,7 +14,7 @@ const collectionItems = [
 export default function ExploreCollection() {
   return (
     <section className="w-full bg-black py-20">
-      <div className="mx-auto w-full max-w-[1320px] px-4 xl:px-0">
+      <div className="mx-auto w-full max-w-[1320px] px-6 xl:px-0">
         <div className="flex flex-col items-center gap-[50px]">
           {/* --- Section Header (Kept Same) --- */}
           <div className="w-full max-w-[708px] flex items-center justify-center">

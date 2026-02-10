@@ -12,6 +12,7 @@ import {
   MdOutlineInventory2,
 } from "react-icons/md";
 
+// --- TYPES ---
 type Step = {
   side: "left" | "right";
   title: string;
@@ -87,21 +88,23 @@ const steps: Step[] = [
   },
 ];
 
+// --- COMPONENTS ---
+
 function AccentBracket({ side }: { side: "left" | "right" }) {
-  const GAP_X = 14; // distance from the card
-  const EXT_Y = 14; // extends above/below card
-  const THICK = 4; // cyan thickness
-  const SEG_W = 240; // how far it runs along top/bottom (over the card)
-  const R = 26; // rounded outer corner
+  const GAP_X = 14;
+  const EXT_Y = 14;
+  const THICK = 4;
+  const SEG_W = 100; // Reduced segment width slightly for better mobile fit if visible
+  const R = 26;
 
   const glow =
     "pointer-events-none absolute bg-[#00D0FF] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
 
   if (side === "right") {
-    // bracket sits OUTSIDE right edge, segments extend LEFT (toward the card)
     return (
-      <>
-        {/* Vertical */}
+      <div className="hidden sm:block">
+        {" "}
+        {/* Hidden on very small screens to save space */}
         <span
           className={glow}
           style={{
@@ -112,41 +115,37 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
             borderRadius: R,
           }}
         />
-
-        {/* Top */}
         <span
           className={glow}
           style={{
-            right: -GAP_X, // align to vertical
+            right: -GAP_X,
             top: -EXT_Y,
             height: THICK,
-            width: SEG_W, // extends LEFT from right edge
+            width: "50%", // Responsive width
+            maxWidth: 240,
             borderTopRightRadius: R,
             borderBottomRightRadius: R,
           }}
         />
-
-        {/* Bottom */}
         <span
           className={glow}
           style={{
-            right: -GAP_X, // align to vertical
+            right: -GAP_X,
             bottom: -EXT_Y,
             height: THICK,
-            width: SEG_W, // extends LEFT from right edge
+            width: "50%",
+            maxWidth: 240,
             borderTopRightRadius: R,
             borderBottomRightRadius: R,
           }}
         />
-      </>
+      </div>
     );
   }
 
   // side === "left"
-  // bracket sits OUTSIDE left edge, segments extend RIGHT (toward the card)
   return (
-    <>
-      {/* Vertical */}
+    <div className="hidden sm:block">
       <span
         className={glow}
         style={{
@@ -157,33 +156,31 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
           borderRadius: R,
         }}
       />
-
-      {/* Top */}
       <span
         className={glow}
         style={{
-          left: -GAP_X, // align to vertical
+          left: -GAP_X,
           top: -EXT_Y,
           height: THICK,
-          width: SEG_W, // extends RIGHT from left edge
+          width: "50%",
+          maxWidth: 240,
           borderTopLeftRadius: R,
           borderBottomLeftRadius: R,
         }}
       />
-
-      {/* Bottom */}
       <span
         className={glow}
         style={{
-          left: -GAP_X, // align to vertical
+          left: -GAP_X,
           bottom: -EXT_Y,
           height: THICK,
-          width: SEG_W, // extends RIGHT from left edge
+          width: "50%",
+          maxWidth: 240,
           borderTopLeftRadius: R,
           borderBottomLeftRadius: R,
         }}
       />
-    </>
+    </div>
   );
 }
 
@@ -200,8 +197,6 @@ function DottedArrow({ dir }: { dir: "toRight" | "toLeft" }) {
   return (
     <div className="relative w-full h-[2px]">
       <div className="absolute inset-0" style={dotsStyle} />
-
-      {/* Arrow head points to center line */}
       <div
         className={`absolute top-1/2 -translate-y-1/2 ${
           dir === "toRight" ? "right-0" : "left-0"
@@ -237,49 +232,56 @@ function StepCard({
   return (
     <div
       className="
-        relative h-[237px] w-[505px]
+        relative 
+        w-full max-w-[505px] 
+        min-h-[237px] h-auto
         rounded-[12px] bg-[#3A3A3A]
-        px-[28px] py-[17px]
+        px-[20px] py-[20px] sm:px-[28px] sm:py-[17px]
         flex flex-col gap-[10px]
         shadow-[0_10px_40px_rgba(0,0,0,0.35)]
         overflow-visible
+        mx-auto
       "
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <AccentBracket side={accentSide} />
 
       <div
-        className="h-[60px] w-[60px] rounded-full flex items-center justify-center"
+        className="h-[50px] w-[50px] sm:h-[60px] sm:w-[60px] rounded-full flex items-center justify-center shrink-0"
         style={{ backgroundColor: iconBg }}
       >
         {icon}
       </div>
 
-      <h3 className="font-semibold text-[24px] leading-[130%] tracking-[0px] text-white">
+      <h3 className="font-semibold text-[20px] sm:text-[24px] leading-[130%] tracking-[0px] text-white">
         {title}
       </h3>
 
-      <p className="font-normal text-[16px] leading-[150%] text-white/70">
+      <p className="font-normal text-[14px] sm:text-[16px] leading-[150%] text-white/70">
         {description}
       </p>
     </div>
   );
 }
 
+// --- MAIN COMPONENT ---
 export default function OurGradingProcess() {
   return (
-    <section className="w-full bg-black">
-      <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-[70px] py-20 lg:py-24">
-        <div className="flex flex-col items-center gap-[50px]">
+    <section className="w-full bg-black overflow-hidden">
+      <div className="mx-auto w-full max-w-[1440px] px-4 md:px-8 xl:px-[70px] py-16 lg:py-24">
+        <div className="flex flex-col items-center gap-[40px] lg:gap-[50px]">
           <h2
-            className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[140%]"
+            className="text-center font-bold text-[28px] sm:text-[40px] lg:text-[44px] leading-[140%]"
             style={{ fontFamily: "Poppins, sans-serif", color: "#00D0FF" }}
           >
             Our Grading Process
           </h2>
 
-          {/* Desktop timeline */}
-          <div className="hidden lg:block w-full max-w-[1236px] mx-auto">
+          {/* =========================================================
+              DESKTOP TIMELINE (Visible only on XL screens > 1280px)
+              We use XL here because the fixed width grid needs space
+             ========================================================= */}
+          <div className="hidden xl:block w-full max-w-[1236px] mx-auto">
             <div className="relative">
               {/* Center vertical line */}
               <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[30px] flex justify-center">
@@ -307,7 +309,7 @@ export default function OurGradingProcess() {
                       )}
                     </div>
 
-                    {/* LEFT CONNECTOR (dotted + arrow to center) */}
+                    {/* LEFT CONNECTOR */}
                     <div className="flex items-center justify-center">
                       {s.side === "left" ? (
                         <DottedArrow dir="toRight" />
@@ -321,7 +323,7 @@ export default function OurGradingProcess() {
                       <div className="h-[16px] w-[16px] rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
                     </div>
 
-                    {/* RIGHT CONNECTOR (dotted + arrow to center) */}
+                    {/* RIGHT CONNECTOR */}
                     <div className="flex items-center justify-center">
                       {s.side === "right" ? (
                         <DottedArrow dir="toLeft" />
@@ -350,32 +352,42 @@ export default function OurGradingProcess() {
             </div>
           </div>
 
-          {/* Mobile / Tablet timeline (unchanged) */}
-          <div className="lg:hidden w-full max-w-[720px] mx-auto">
-            <div className="relative pl-8">
-              <div className="absolute left-[10px] top-0 bottom-0 w-[4px] rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.55)]" />
-              <div className="flex flex-col gap-6">
+          {/* =========================================================
+              MOBILE / TABLET TIMELINE (Visible on screens < 1280px)
+              Fully flexible layout using Flexbox instead of Grid
+             ========================================================= */}
+          <div className="xl:hidden w-full max-w-[700px] mx-auto">
+            <div className="flex flex-col relative">
+              {/* Vertical Line Container */}
+              <div className="absolute left-[15px] top-[20px] bottom-[20px] w-[4px] bg-[#00D0FF]/20 rounded-full">
+                {/* Glowing inner line */}
+                <div className="w-full h-full bg-[#00D0FF] shadow-[0_0_12px_rgba(0,208,255,0.55)] rounded-full opacity-80" />
+              </div>
+
+              {/* Steps List */}
+              <div className="flex flex-col gap-8">
                 {steps.map((s, idx) => (
-                  <div key={`${s.title}-m-${idx}`} className="relative">
-                    <div className="absolute left-[-2px] top-[26px] h-[16px] w-[16px] rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
-                    <div
-                      className="rounded-[12px] bg-[#3A3A3A] px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
-                      style={{ fontFamily: "Poppins, sans-serif" }}
-                    >
-                      <div
-                        className="h-[60px] w-[60px] rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: s.iconBg }}
-                      >
-                        {s.icon}
-                      </div>
+                  <div
+                    key={`${s.title}-m-${idx}`}
+                    className="flex flex-row gap-6"
+                  >
+                    {/* Left Column: Node (Dot) */}
+                    <div className="flex-shrink-0 w-[34px] flex justify-center pt-[24px]">
+                      <div className="relative z-10 h-[16px] w-[16px] rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.8)]" />
+                    </div>
 
-                      <h3 className="mt-3 font-semibold text-[20px] leading-[130%] text-white">
-                        {s.title}
-                      </h3>
-
-                      <p className="mt-2 font-normal text-[15px] leading-[150%] text-white/70">
-                        {s.description}
-                      </p>
+                    {/* Right Column: Card */}
+                    <div className="flex-1 min-w-0">
+                      {" "}
+                      {/* min-w-0 prevents flex blowout */}
+                      <StepCard
+                        title={s.title}
+                        description={s.description}
+                        icon={s.icon}
+                        iconBg={s.iconBg}
+                        // On mobile, accent is always left because card is on right
+                        accentSide="left"
+                      />
                     </div>
                   </div>
                 ))}
