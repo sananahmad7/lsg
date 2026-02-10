@@ -79,7 +79,7 @@ export default function Footer() {
             <Col
               title="Terms & Service"
               links={[
-                { label: "Terms of Use", href: "/terms" },
+                { label: "Terms of Use", href: "/terms-and-conditions" },
                 { label: "Grading Disclaimer", href: "/grading-disclaimer" },
                 { label: "Site Access Terms", href: "/site-access-terms" },
                 { label: "Legal Notice", href: "/legal-notice" },
@@ -154,7 +154,7 @@ export default function Footer() {
                 </Link>
                 <span className="text-white/40">|</span>
                 <Link
-                  href="/terms"
+                  href="/terms-and-conditions"
                   className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
