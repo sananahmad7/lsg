@@ -28,7 +28,7 @@ export default function AboutHero() {
             {/* =========================================
                 LEFT ELEMENT
                ========================================= */}
-            <div className="flex border border-yellow-500 flex-col w-full max-w-[602.47px]  h-[840.97px] gap-[20.08px] opacity-100 rotate-0">
+            <div className="flex  flex-col w-full max-w-[602.47px]  h-[840.97px] gap-[20.08px] opacity-100 rotate-0">
               {/* --- LEFT TOP HEADER --- */}
               <div className="flex flex-col gap-[20.08px]">
                 <div className="flex items-center w-[145px] h-[10px] opacity-100 rotate-0">
@@ -96,7 +96,7 @@ export default function AboutHero() {
                 Width: 450px
                 Height: 840px (Requested)
                ========================================= */}
-            <div className="relative w-full max-w-[450px] h-[840px] opacity-100 rotate-0 border border-red-900">
+            <div className="relative w-full max-w-[450px] h-[840px] opacity-100 rotate-0  ">
               <Image
                 src="/after.png"
                 alt="After Inspection"

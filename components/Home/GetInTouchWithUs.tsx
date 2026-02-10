@@ -20,33 +20,25 @@ export default function GetInTouchWithUs() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire to your API
     console.log("Contact form:", form);
   };
 
   return (
-    <section className="w-full bg-black py-16 px-4 xl:px-8">
-      {/* Outer Container:
-        - Replaced fixed width with max-w-[1300px]
-        - Added padding that scales from mobile (p-6) to desktop (p-10)
-      */}
+    // Section is transparent
+    <section className="w-full bg-transparent py-16 px-4 xl:px-8">
       <div
         className="
           mx-auto w-full max-w-[1300px]
-          rounded-[20px] bg-black
+          rounded-[20px] 
+          bg-black/80  /* CHANGED: Made background semi-transparent */
+         
           border-[2.34px] border-white/15
           p-6 sm:p-10 lg:p-[45px]
         "
       >
-        {/* Inner Flex Layout:
-          - Stack vertical on mobile (flex-col)
-          - Side-by-side on desktop (lg:flex-row)
-          - Removed fixed height to prevent empty space
-        */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-[80px]">
           {/* --- LEFT SIDE: TEXT & FORM --- */}
           <div className="w-full lg:w-[500px] flex-shrink-0 flex flex-col gap-8">
-            {/* Header Text */}
             <div className="flex flex-col gap-4">
               <h2
                 className="text-[#00D0FF] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
@@ -54,7 +46,6 @@ export default function GetInTouchWithUs() {
               >
                 Get in Touch with Us
               </h2>
-
               <p
                 className="text-white/60 text-[16px] lg:text-[18px] leading-[160%] font-normal"
                 style={{ fontFamily: "Poppins, sans-serif" }}
@@ -65,9 +56,7 @@ export default function GetInTouchWithUs() {
               </p>
             </div>
 
-            {/* Form */}
             <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full">
-              {/* First Name / Last Name Row - Uses Grid for auto-stacking */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   aria-label="First Name"
@@ -84,7 +73,6 @@ export default function GetInTouchWithUs() {
                   "
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 />
-
                 <input
                   aria-label="Last Name"
                   placeholder="Last Name"
@@ -102,7 +90,6 @@ export default function GetInTouchWithUs() {
                 />
               </div>
 
-              {/* Email */}
               <input
                 aria-label="Email"
                 placeholder="Email"
@@ -120,7 +107,6 @@ export default function GetInTouchWithUs() {
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
-              {/* Phone */}
               <input
                 aria-label="Phone (optional)"
                 placeholder="Phone (optional)"
@@ -138,7 +124,6 @@ export default function GetInTouchWithUs() {
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
-              {/* Message */}
               <textarea
                 aria-label="Message"
                 placeholder="Message"
@@ -155,7 +140,6 @@ export default function GetInTouchWithUs() {
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 className="
@@ -174,17 +158,14 @@ export default function GetInTouchWithUs() {
           </div>
 
           {/* --- RIGHT SIDE: IMAGE --- */}
-          {/* - Mobile: Fixed height or aspect ratio so it shows up
-             - Desktop: Flex-1 to fill remaining space 
-          */}
-          <div className="w-full relative min-h-[300px] sm:min-h-[400px] lg:min-h-0 lg:flex-1 lg:h-auto rounded-[12px] overflow-hidden">
+          <div className="w-full relative min-h-[300px] sm:min-h-[400px] xl:left-13 lg:min-h-0 lg:flex-1 lg:h-[589px] rounded-[12px]">
             <Image
               src="/touch.png"
               alt="Cards artwork"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 600px"
-              className="object-contain lg:object-cover object-center"
+              className="object-contain lg:object-cover object-center overflow-visible"
             />
           </div>
         </div>

@@ -1,0 +1,30 @@
+import GetInTouchWithUs from "@/components/Home/GetInTouchWithUs";
+import Image from "next/image";
+import React from "react";
+
+function Contact() {
+  return (
+    // Relative container with black background
+    <div className="relative w-full min-h-screen bg-black flex items-center justify-center">
+      {/* --- Background Image Layer --- */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0">
+          <Image
+            src="/result.png"
+            alt="Background"
+            fill
+            className="object-cover opacity-90" // Adjust opacity as needed (0.27 matches hero)
+            priority
+          />
+        </div>
+      </div>
+
+      {/* --- Content Layer --- */}
+      <div className="relative z-10 w-full">
+        <GetInTouchWithUs />
+      </div>
+    </div>
+  );
+}
+
+export default Contact;
