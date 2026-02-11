@@ -42,7 +42,7 @@ export default function LSGInsider() {
               Join the LSG Insider List
             </h2>
 
-            <p className="font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] text-white/70">
+            <p className="font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] text-[#A1C7D6]">
               Want to stay ahead in the world of collecting? Subscribe to get
               early access to new graded card drops, exclusive deals you won’t
               find anywhere else, and instant notifications when fresh slabs hit

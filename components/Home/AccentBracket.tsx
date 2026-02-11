@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   MdOutlineFactCheck,
   MdOutlineSearch,
@@ -94,17 +95,17 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
   const GAP_X = 14;
   const EXT_Y = 14;
   const THICK = 4;
-  const SEG_W = 100; // Reduced segment width slightly for better mobile fit if visible
+  const SEG_W = 100;
   const R = 26;
-
   const glow =
-    "pointer-events-none absolute bg-[#00D0FF] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
+    "pointer-events-none absolute bg-[#00EFFE] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
+
+  // LOGIC: Only show on screens >= xl (1280px)
+  const visibilityClass = "hidden xl:block";
 
   if (side === "right") {
     return (
-      <div className="hidden sm:block">
-        {" "}
-        {/* Hidden on very small screens to save space */}
+      <div className={visibilityClass}>
         <span
           className={glow}
           style={{
@@ -121,7 +122,7 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
             right: -GAP_X,
             top: -EXT_Y,
             height: THICK,
-            width: "50%", // Responsive width
+            width: "50%",
             maxWidth: 240,
             borderTopRightRadius: R,
             borderBottomRightRadius: R,
@@ -142,10 +143,9 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
       </div>
     );
   }
-
   // side === "left"
   return (
-    <div className="hidden sm:block">
+    <div className={visibilityClass}>
       <span
         className={glow}
         style={{
@@ -195,7 +195,7 @@ function DottedArrow({ dir }: { dir: "toRight" | "toLeft" }) {
   };
 
   return (
-    <div className="relative w-full h-[2px]">
+    <div className="relative w-full h-0.5">
       <div className="absolute inset-0" style={dotsStyle} />
       <div
         className={`absolute top-1/2 -translate-y-1/2 ${
@@ -207,8 +207,8 @@ function DottedArrow({ dir }: { dir: "toRight" | "toLeft" }) {
           borderTop: "6px solid transparent",
           borderBottom: "6px solid transparent",
           ...(dir === "toRight"
-            ? { borderLeft: "10px solid #00D0FF" }
-            : { borderRight: "10px solid #00D0FF" }),
+            ? { borderLeft: "10px solid #00EFFE" }
+            : { borderRight: "10px solid #00EFFE" }),
           filter: "drop-shadow(0 0 10px rgba(0,208,255,0.45))",
         }}
       />
@@ -232,12 +232,10 @@ function StepCard({
   return (
     <div
       className="
-        relative 
-        w-full max-w-[505px] 
-        min-h-[237px] h-auto
-        rounded-[12px] bg-[#3A3A3A]
-        px-[20px] py-[20px] sm:px-[28px] sm:py-[17px]
-        flex flex-col gap-[10px]
+        relative w-[505px]
+        rounded-xl bg-[#3A3A3A]
+        px-7 py-[17px]
+        flex flex-col gap-2.5
         shadow-[0_10px_40px_rgba(0,0,0,0.35)]
         overflow-visible
         mx-auto
@@ -247,17 +245,17 @@ function StepCard({
       <AccentBracket side={accentSide} />
 
       <div
-        className="h-[50px] w-[50px] sm:h-[60px] sm:w-[60px] rounded-full flex items-center justify-center shrink-0"
+        className="h-[60px] w-[60px] rounded-full flex items-center justify-center shrink-0"
         style={{ backgroundColor: iconBg }}
       >
         {icon}
       </div>
 
-      <h3 className="font-semibold text-[20px] sm:text-[24px] leading-[130%] tracking-[0px] text-white">
+      <h3 className="font-semibold text-[24px] leading-[130%] tracking-[0px] text-white">
         {title}
       </h3>
 
-      <p className="font-normal text-[14px] sm:text-[16px] leading-[150%] text-white/70">
+      <p className="font-normal text-[16px] leading-[150%] text-[#A1C7D6]">
         {description}
       </p>
     </div>
@@ -265,132 +263,128 @@ function StepCard({
 }
 
 // --- MAIN COMPONENT ---
+
 export default function OurGradingProcess() {
   return (
-    <section className="w-full bg-black overflow-hidden">
-      <div className="mx-auto w-full max-w-[1440px] px-4 md:px-8 xl:px-[70px] py-16 lg:py-24">
-        <div className="flex flex-col items-center gap-[40px] lg:gap-[50px]">
-          <h2
-            className="text-center font-bold text-[28px] sm:text-[40px] lg:text-[44px] leading-[140%]"
-            style={{ fontFamily: "Poppins, sans-serif", color: "#00D0FF" }}
-          >
-            Our Grading Process
-          </h2>
+    <section className="relative isolate w-full bg-black overflow-hidden">
+      {/* Container Height Logic */}
+      <div className="relative w-full min-h-[1200px] lg:min-h-[2000px] pb-20">
+        {/* CONTENT LAYER */}
+        <div className="relative z-10 w-full h-full flex justify-center px-4 lg:px-[70px] pt-20 lg:pt-24">
+          <div className="w-full max-w-[1440px] flex flex-col items-center gap-[50px]">
+            {/* Header Title */}
+            <h2
+              className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[140%]"
+              style={{ fontFamily: "Poppins, sans-serif", color: "#00EFFE" }}
+            >
+              Our Grading Process
+            </h2>
 
-          {/* =========================================================
-              DESKTOP TIMELINE (Visible only on XL screens > 1280px)
-              We use XL here because the fixed width grid needs space
-             ========================================================= */}
-          <div className="hidden xl:block w-full max-w-[1236px] mx-auto">
-            <div className="relative">
-              {/* Center vertical line */}
-              <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[30px] flex justify-center">
-                <div className="w-[4px] rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.55)]" />
-              </div>
+            {/* =========================================================================
+                DESKTOP TIMELINE (Visible only on XL screens > 1280px)
+               ========================================================================= */}
+            <div className="hidden xl:block w-full max-w-[1236px] mx-auto">
+              <div className="relative">
+                {/* Center vertical line */}
+                <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[30px] flex justify-center">
+                  <div className="w-1 rounded-full bg-[#00EFFE] shadow-[0_0_18px_rgba(0,208,255,0.55)]" />
+                </div>
 
-              <div className="flex flex-col gap-[60px]">
-                {steps.map((s, idx) => (
-                  <div
-                    key={`${s.title}-${idx}`}
-                    className="grid items-center grid-cols-[505px_98px_30px_98px_505px] relative"
-                  >
-                    {/* LEFT SLOT */}
-                    <div className="flex justify-end">
-                      {s.side === "left" ? (
-                        <StepCard
-                          title={s.title}
-                          description={s.description}
-                          icon={s.icon}
-                          iconBg={s.iconBg}
-                          accentSide="right"
-                        />
-                      ) : (
-                        <div className="w-[505px]" />
-                      )}
+                <div className="flex flex-col gap-[60px]">
+                  {steps.map((s, idx) => (
+                    <div
+                      key={`${s.title}-${idx}`}
+                      className="grid items-center grid-cols-[505px_98px_30px_98px_505px] relative"
+                    >
+                      {/* LEFT SLOT */}
+                      <div className="flex justify-end">
+                        {s.side === "left" ? (
+                          <StepCard
+                            title={s.title}
+                            description={s.description}
+                            icon={s.icon}
+                            iconBg={s.iconBg}
+                            accentSide="right"
+                          />
+                        ) : (
+                          <div className="w-[505px]" />
+                        )}
+                      </div>
+
+                      {/* LEFT CONNECTOR */}
+                      <div className="flex items-center justify-center">
+                        {s.side === "left" ? (
+                          <DottedArrow dir="toRight" />
+                        ) : (
+                          <div />
+                        )}
+                      </div>
+
+                      {/* CENTER NODE */}
+                      <div className="relative z-10 flex items-center justify-center">
+                        <div className="h-[30px] w-[30px] rounded-full bg-[#00EFFE] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
+                      </div>
+
+                      {/* RIGHT CONNECTOR */}
+                      <div className="flex items-center justify-center">
+                        {s.side === "right" ? (
+                          <DottedArrow dir="toLeft" />
+                        ) : (
+                          <div />
+                        )}
+                      </div>
+
+                      {/* RIGHT SLOT */}
+                      <div className="flex justify-start">
+                        {s.side === "right" ? (
+                          <StepCard
+                            title={s.title}
+                            description={s.description}
+                            icon={s.icon}
+                            iconBg={s.iconBg}
+                            accentSide="left"
+                          />
+                        ) : (
+                          <div className="w-[505px]" />
+                        )}
+                      </div>
                     </div>
-
-                    {/* LEFT CONNECTOR */}
-                    <div className="flex items-center justify-center">
-                      {s.side === "left" ? (
-                        <DottedArrow dir="toRight" />
-                      ) : (
-                        <div />
-                      )}
-                    </div>
-
-                    {/* CENTER NODE */}
-                    <div className="relative z-10 flex items-center justify-center">
-                      <div className="h-[16px] w-[16px] rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
-                    </div>
-
-                    {/* RIGHT CONNECTOR */}
-                    <div className="flex items-center justify-center">
-                      {s.side === "right" ? (
-                        <DottedArrow dir="toLeft" />
-                      ) : (
-                        <div />
-                      )}
-                    </div>
-
-                    {/* RIGHT SLOT */}
-                    <div className="flex justify-start">
-                      {s.side === "right" ? (
-                        <StepCard
-                          title={s.title}
-                          description={s.description}
-                          icon={s.icon}
-                          iconBg={s.iconBg}
-                          accentSide="left"
-                        />
-                      ) : (
-                        <div className="w-[505px]" />
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* =========================================================
-              MOBILE / TABLET TIMELINE (Visible on screens < 1280px)
-              Fully flexible layout using Flexbox instead of Grid
-             ========================================================= */}
-          <div className="xl:hidden w-full max-w-[700px] mx-auto">
-            <div className="flex flex-col relative">
-              {/* Vertical Line Container */}
-              <div className="absolute left-[15px] top-[20px] bottom-[20px] w-[4px] bg-[#00D0FF]/20 rounded-full">
-                {/* Glowing inner line */}
-                <div className="w-full h-full bg-[#00D0FF] shadow-[0_0_12px_rgba(0,208,255,0.55)] rounded-full opacity-80" />
-              </div>
+            {/* =========================================================================
+                MOBILE / TABLET / LAPTOP TIMELINE (Visible on screens < 1280px)
+                - Left Line with Dots returned.
+                - No "hugging border" (AccentBracket hidden via CSS).
+               ========================================================================= */}
+            <div className="xl:hidden w-full max-w-[700px] mx-auto">
+              <div className="relative pl-8 sm:pl-12">
+                {/* Vertical Line Container */}
+                <div className="absolute left-[10px] sm:left-[14px] top-[20px] bottom-[20px] w-[4px] bg-[#00EFFE]/20 rounded-full">
+                  {/* Glowing inner line */}
+                  <div className="w-full h-full bg-[#00EFFE] shadow-[0_0_12px_rgba(0,208,255,0.55)] rounded-full opacity-80" />
+                </div>
 
-              {/* Steps List */}
-              <div className="flex flex-col gap-8">
-                {steps.map((s, idx) => (
-                  <div
-                    key={`${s.title}-m-${idx}`}
-                    className="flex flex-row gap-6"
-                  >
-                    {/* Left Column: Node (Dot) */}
-                    <div className="flex-shrink-0 w-[34px] flex justify-center pt-[24px]">
-                      <div className="relative z-10 h-[16px] w-[16px] rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.8)]" />
+                <div className="flex flex-col gap-8">
+                  {steps.map((s, idx) => (
+                    <div key={`${s.title}-m-${idx}`} className="relative">
+                      {/* The DOT on the line */}
+                      <div className="absolute -left-[35px] sm:-left-[47px] top-[24px] h-[30px] w-[30px] rounded-full bg-[#00EFFE] shadow-[0_0_18px_rgba(0,208,255,0.65)] z-10" />
+
+                      <div className="w-full flex justify-center sm:justify-start">
+                        <StepCard
+                          title={s.title}
+                          description={s.description}
+                          icon={s.icon}
+                          iconBg={s.iconBg}
+                          accentSide="left" // This will be hidden by the component itself on < xl
+                        />
+                      </div>
                     </div>
-
-                    {/* Right Column: Card */}
-                    <div className="flex-1 min-w-0">
-                      {" "}
-                      {/* min-w-0 prevents flex blowout */}
-                      <StepCard
-                        title={s.title}
-                        description={s.description}
-                        icon={s.icon}
-                        iconBg={s.iconBg}
-                        // On mobile, accent is always left because card is on right
-                        accentSide="left"
-                      />
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>

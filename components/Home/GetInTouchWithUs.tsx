@@ -30,8 +30,7 @@ export default function GetInTouchWithUs() {
         className="
           mx-auto w-full max-w-[1300px]
           rounded-[20px] 
-          bg-black/80  /* CHANGED: Made background semi-transparent */
-         
+          bg-black/80
           border-[2.34px] border-white/15
           p-6 sm:p-10 lg:p-[45px]
         "
@@ -47,7 +46,7 @@ export default function GetInTouchWithUs() {
                 Get in Touch with Us
               </h2>
               <p
-                className="text-white/60 text-[16px] lg:text-[18px] leading-[160%] font-normal"
+                className="text-[#A1C7D6] text-[16px] lg:text-[18px] leading-[160%] font-normal"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Got a question about your LSG slab, grading details, or
@@ -66,8 +65,8 @@ export default function GetInTouchWithUs() {
                   className="
                     w-full h-[50px]
                     rounded-[6px] border border-white/10
-                    bg-white/[0.03] text-white
-                    placeholder:text-white/35
+                    bg-[#FFFFFF0D] text-white
+                    placeholder:text-white/35   
                     px-4 py-3 outline-none
                     focus:border-[#00D0FF]/50 transition-colors
                   "
@@ -81,7 +80,7 @@ export default function GetInTouchWithUs() {
                   className="
                     w-full h-[50px]
                     rounded-[6px] border border-white/10
-                    bg-white/[0.03] text-white
+                    bg-[#FFFFFF0D] text-white
                     placeholder:text-white/35
                     px-4 py-3 outline-none
                     focus:border-[#00D0FF]/50 transition-colors
@@ -99,7 +98,7 @@ export default function GetInTouchWithUs() {
                 className="
                   w-full h-[50px]
                   rounded-[6px] border border-white/10
-                  bg-white/[0.03] text-white
+                  bg-[#FFFFFF0D] text-white
                   placeholder:text-white/35
                   px-4 py-3 outline-none
                   focus:border-[#00D0FF]/50 transition-colors
@@ -116,7 +115,7 @@ export default function GetInTouchWithUs() {
                 className="
                   w-full h-[50px]
                   rounded-[6px] border border-white/10
-                  bg-white/[0.03] text-white
+                  bg-[#FFFFFF0D] text-white
                   placeholder:text-white/35
                   px-4 py-3 outline-none
                   focus:border-[#00D0FF]/50 transition-colors
@@ -132,7 +131,7 @@ export default function GetInTouchWithUs() {
                 className="
                   w-full h-[128px]
                   rounded-[6px] border border-white/10
-                  bg-white/[0.03] text-white
+                  bg-[#FFFFFF0D] text-white
                   placeholder:text-white/35
                   px-4 py-3 outline-none resize-none
                   focus:border-[#00D0FF]/50 transition-colors

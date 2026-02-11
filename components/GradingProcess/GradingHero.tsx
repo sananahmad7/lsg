@@ -13,7 +13,7 @@ import {
   MdOutlineInventory2,
 } from "react-icons/md";
 
-// --- TYPES & DATA ---
+// --- TYPES ---
 type Step = {
   side: "left" | "right";
   title: string;
@@ -89,21 +89,23 @@ const steps: Step[] = [
   },
 ];
 
-// --- SUB-COMPONENTS ---
+// --- COMPONENTS ---
 
 function AccentBracket({ side }: { side: "left" | "right" }) {
   const GAP_X = 14;
   const EXT_Y = 14;
   const THICK = 4;
-  const SEG_W = 240;
+  const SEG_W = 100; // Reduced segment width slightly for better mobile fit if visible
   const R = 26;
   const glow =
-    "pointer-events-none absolute bg-[#00D0FF] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
+    "pointer-events-none absolute bg-[#00EEFE] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
+
+  // LOGIC: Only show on screens >= xl (1280px). Hidden on mobile/tablet.
+  const visibilityClass = "hidden xl:block";
 
   if (side === "right") {
     return (
-      <>
-        {/* Vertical */}
+      <div className={visibilityClass}>
         <span
           className={glow}
           style={{
@@ -114,36 +116,36 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
             borderRadius: R,
           }}
         />
-        {/* Top */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
             top: -EXT_Y,
             height: THICK,
-            width: SEG_W,
+            width: "50%", // Responsive width
+            maxWidth: 240,
             borderTopRightRadius: R,
             borderBottomRightRadius: R,
           }}
         />
-        {/* Bottom */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
             bottom: -EXT_Y,
             height: THICK,
-            width: SEG_W,
+            width: "50%",
+            maxWidth: 240,
             borderTopRightRadius: R,
             borderBottomRightRadius: R,
           }}
         />
-      </>
+      </div>
     );
   }
   // side === "left"
   return (
-    <>
+    <div className={visibilityClass}>
       <span
         className={glow}
         style={{
@@ -160,7 +162,8 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
           left: -GAP_X,
           top: -EXT_Y,
           height: THICK,
-          width: SEG_W,
+          width: "50%",
+          maxWidth: 240,
           borderTopLeftRadius: R,
           borderBottomLeftRadius: R,
         }}
@@ -171,12 +174,13 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
           left: -GAP_X,
           bottom: -EXT_Y,
           height: THICK,
-          width: SEG_W,
+          width: "50%",
+          maxWidth: 240,
           borderTopLeftRadius: R,
           borderBottomLeftRadius: R,
         }}
       />
-    </>
+    </div>
   );
 }
 
@@ -203,8 +207,8 @@ function DottedArrow({ dir }: { dir: "toRight" | "toLeft" }) {
           borderTop: "6px solid transparent",
           borderBottom: "6px solid transparent",
           ...(dir === "toRight"
-            ? { borderLeft: "10px solid #00D0FF" }
-            : { borderRight: "10px solid #00D0FF" }),
+            ? { borderLeft: "10px solid #00EEFE" }
+            : { borderRight: "10px solid #00EEFE" }),
           filter: "drop-shadow(0 0 10px rgba(0,208,255,0.45))",
         }}
       />
@@ -234,13 +238,14 @@ function StepCard({
         flex flex-col gap-2.5
         shadow-[0_10px_40px_rgba(0,0,0,0.35)]
         overflow-visible
+        mx-auto
       "
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <AccentBracket side={accentSide} />
 
       <div
-        className="h-[60px] w-[60px] rounded-full flex items-center justify-center"
+        className="h-[60px] w-[60px] rounded-full flex items-center justify-center shrink-0"
         style={{ backgroundColor: iconBg }}
       >
         {icon}
@@ -250,21 +255,19 @@ function StepCard({
         {title}
       </h3>
 
-      <p className="font-normal text-[16px] leading-[150%] text-white/70">
+      <p className="font-normal text-[16px] leading-[150%] text-[#A1C7D6]">
         {description}
       </p>
     </div>
   );
 }
 
-// --- MAIN HERO COMPONENT ---
+// --- MAIN COMPONENT ---
 
-export default function GradingHero() {
+export default function OurGradingProcess() {
   return (
     <section className="relative isolate w-full bg-black overflow-hidden">
-      {/* Container Height Logic:
-        We use min-h to allow the container to stretch if the content is taller than 2000px
-      */}
+      {/* Container Height Logic */}
       <div className="relative w-full min-h-[1200px] lg:min-h-[2000px] pb-20">
         {/* BACKGROUND LAYER (Fixed Image Position) */}
         <div className="absolute inset-0 z-0 flex justify-center pointer-events-none">
@@ -279,10 +282,11 @@ export default function GradingHero() {
                 opacity: 1,
               }}
             >
+              {/* Desktop BG */}
               <div className="relative w-full h-full lg:block hidden">
                 <Image
                   src="/result.png"
-                  alt="Hero background"
+                  alt="Background"
                   fill
                   priority
                   className="object-contain opacity-[0.27]"
@@ -292,7 +296,7 @@ export default function GradingHero() {
               <div className="lg:hidden absolute inset-0 -translate-x-1/4 -translate-y-1/4 w-[150%] h-[150%]">
                 <Image
                   src="/result.png"
-                  alt="Hero background"
+                  alt="Background"
                   fill
                   priority
                   className="object-contain opacity-[0.27]"
@@ -308,17 +312,19 @@ export default function GradingHero() {
             {/* Header Title */}
             <h2
               className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[140%]"
-              style={{ fontFamily: "Poppins, sans-serif", color: "#00D0FF" }}
+              style={{ fontFamily: "Poppins, sans-serif", color: "#00EEFE" }}
             >
               Our Grading Process
             </h2>
 
-            {/* --- DESKTOP TIMELINE --- */}
-            <div className="hidden lg:block w-full max-w-[1236px] mx-auto">
+            {/* =========================================================================
+                DESKTOP TIMELINE (Visible only on XL screens > 1280px)
+               ========================================================================= */}
+            <div className="hidden xl:block w-full max-w-[1236px] mx-auto">
               <div className="relative">
                 {/* Center vertical line */}
                 <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[30px] flex justify-center">
-                  <div className="w-1 rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.55)]" />
+                  <div className="w-1 rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.55)]" />
                 </div>
 
                 <div className="flex flex-col gap-[60px]">
@@ -353,7 +359,7 @@ export default function GradingHero() {
 
                       {/* CENTER NODE */}
                       <div className="relative z-10 flex items-center justify-center">
-                        <div className="h-4 w-4 rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
+                        <div className="h-[30px] w-[30px] rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
                       </div>
 
                       {/* RIGHT CONNECTOR */}
@@ -385,32 +391,31 @@ export default function GradingHero() {
               </div>
             </div>
 
-            {/* --- MOBILE/TABLET TIMELINE --- */}
-            <div className="lg:hidden w-full max-w-[720px] mx-auto">
-              <div className="relative pl-8">
-                <div className="absolute left-2.5 top-0 bottom-0 w-1 rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.55)]" />
-                <div className="flex flex-col gap-6">
+            {/* =========================================================================
+                MOBILE / TABLET / LAPTOP TIMELINE (Visible on screens < 1280px)
+               ========================================================================= */}
+            <div className="xl:hidden w-full max-w-[700px] mx-auto">
+              <div className="relative pl-8 sm:pl-12">
+                {/* Vertical Line Container */}
+                <div className="absolute left-[10px] sm:left-[14px] top-[20px] bottom-[20px] w-[4px] bg-[#00EEFE]/20 rounded-full">
+                  {/* Glowing inner line */}
+                  <div className="w-full h-full bg-[#00EEFE] shadow-[0_0_12px_rgba(0,208,255,0.55)] rounded-full opacity-80" />
+                </div>
+
+                <div className="flex flex-col gap-8">
                   {steps.map((s, idx) => (
                     <div key={`${s.title}-m-${idx}`} className="relative">
-                      <div className="absolute -left-0.5 top-6.5 h-4 w-4 rounded-full bg-[#00D0FF] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
-                      <div
-                        className="rounded-xl bg-[#3A3A3A] px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
-                        style={{ fontFamily: "Poppins, sans-serif" }}
-                      >
-                        <div
-                          className="h-[60px] w-[60px] rounded-full flex items-center justify-center"
-                          style={{ backgroundColor: s.iconBg }}
-                        >
-                          {s.icon}
-                        </div>
+                      {/* The DOT on the line */}
+                      <div className="absolute -left-[35px] sm:-left-[47px] top-[24px] h-[30px] w-[30px] rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.65)] z-10" />
 
-                        <h3 className="mt-3 font-semibold text-[20px] leading-[130%] text-white">
-                          {s.title}
-                        </h3>
-
-                        <p className="mt-2 font-normal text-[15px] leading-[150%] text-white/70">
-                          {s.description}
-                        </p>
+                      <div className="w-full flex justify-center sm:justify-start">
+                        <StepCard
+                          title={s.title}
+                          description={s.description}
+                          icon={s.icon}
+                          iconBg={s.iconBg}
+                          accentSide="left" // Hidden by CSS in AccentBracket for < xl
+                        />
                       </div>
                     </div>
                   ))}

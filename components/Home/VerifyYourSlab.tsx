@@ -62,7 +62,7 @@ export default function VerifyYourSlab() {
             </h2>
 
             {/* Description */}
-            <p className="mt-4 text-center lg:text-left font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] text-white/70">
+            <p className="mt-4 text-center lg:text-left font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] text-[#A1C7D6]">
               Quickly confirm the authenticity of your graded card using our
               verification tool. Enter the unique serial number below to access
               full grading details and verify it’s legit — straight from the
@@ -79,13 +79,13 @@ export default function VerifyYourSlab() {
                 className="
                   h-[61px] w-full
                   rounded-[12px] sm:rounded-r-none
-                  border border-white/20
+                  border border-[#00D0FF]
                   bg-transparent
                   px-4
                   text-white
                   placeholder:text-white/40
                   outline-none
-                  focus:border-[#00D0FF]
+
                 "
                 style={{
                   fontFamily: "Poppins, sans-serif",
@@ -104,14 +104,14 @@ export default function VerifyYourSlab() {
                   rounded-[12px] sm:rounded-l-none
                   border
                   px-[25px] py-[11px]
-                  font-semibold
+                  font-bold
+                  font-poppins
                   transition-transform hover:scale-[1.02] active:scale-[0.98]
+                  bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)]
                 "
                 style={{
-                  backgroundColor: "#00D0FF",
                   borderColor: "#00D0FF",
                   color: "#062126",
-                  fontFamily: "Poppins, sans-serif",
                 }}
               >
                 Verify Now

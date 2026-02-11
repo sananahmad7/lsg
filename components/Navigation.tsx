@@ -63,8 +63,8 @@ export default function Navigation() {
                   className={[
                     "whitespace-nowrap text-center align-middle font-medium text-[18px] leading-[140%] tracking-[0%] transition-colors",
                     active
-                      ? "text-[#00D0FF]"
-                      : "text-white/80 hover:text-white",
+                      ? "bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] bg-clip-text text-transparent"
+                      : "text-[#FFFFFF]",
                   ].join(" ")}
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
@@ -77,7 +77,7 @@ export default function Navigation() {
           {/* Contact Button */}
           <Link
             href="/contact"
-            className="inline-flex h-[50px] w-[134px] items-center justify-center gap-[3px] rounded-[12px] border border-[#00D0FF] bg-[#00D0FF] px-[25px] py-[11px] text-center align-middle font-bold text-[20px] leading-[140%] tracking-[0%] text-[#383838] transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex h-[50px] w-[134px] items-center justify-center gap-[3px] rounded-[12px] border border-transparent bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] px-[25px] py-[11px] text-center align-middle font-bold text-[20px] leading-[140%] tracking-[0%] text-[#383838] transition-transform hover:scale-[1.02] active:scale-[0.98]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Contact

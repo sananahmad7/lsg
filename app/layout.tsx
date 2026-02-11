@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Sora } from "next/font/google";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import Navigation from "../components/Navigation";
@@ -9,8 +9,18 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const SoraFont = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+});
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const InterFont = Inter({
+  variable: "--font-Inter",
   subsets: ["latin"],
 });
 
@@ -33,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${poppins.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${InterFont.variable} ${SoraFont.variable} ${poppins.variable} ${geistMono.variable} antialiased`}
       >
         <Navigation />
         {children}

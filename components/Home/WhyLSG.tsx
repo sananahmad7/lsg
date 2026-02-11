@@ -32,7 +32,7 @@ function FeatureCard({ icon, title, description, className }: CardProps) {
         {title}
       </h3>
 
-      <p className="font-normal text-[22px] leading-[140%] tracking-[-0.18px] text-white/70">
+      <p className="font-normal text-[22px] leading-[140%] tracking-[-0.18px] text-[#A1C7D6]">
         {description}
       </p>
     </div>

@@ -62,10 +62,12 @@ export default function HomeHero() {
         // LG: 266px
         className: `${baseClasses} z-30 opacity-100 left-1/2 
           w-[160px] h-[274px] 
-          sm:w-[220px] sm:h-[376px] 
-          lg:w-[266px] lg:h-[455px]`,
+          sm:w-[220px] sm:h-[376px] rounded-xl
+          lg:w-[266px] lg:h-[446px]`,
         style: {
-          filter: "drop-shadow(0 0 20px rgba(0, 208, 255, 0.4))",
+          // Updated Shadow
+          boxShadow:
+            "0px 0px 31px 0px #00D5FFD9, 0px 0px 52.3px 3px #00D5FF80, 0px 0px 4.8px 0px #00D5FFA6, 0px 0px 1px 0px #00D5FF05",
         },
       };
     }
@@ -136,7 +138,7 @@ export default function HomeHero() {
             Card Grading You Can Count On
           </h1>
           <p
-            className="max-w-[980px] text-center font-normal text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] sm:leading-[100%] text-white/75"
+            className="max-w-[980px] text-center font-normal text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] sm:leading-[100%] text-[#A1C7D6]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             At LSG, we focus on quality, consistency, and presentation, sealing
@@ -147,13 +149,13 @@ export default function HomeHero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-2 sm:mt-4 w-full px-4 sm:px-0">
             <Link
               href="/services"
-              className="inline-flex items-center justify-center h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-[#00D0FF] text-[#062126] font-semibold text-[16px] hover:bg-[#00D0FF]/90 transition-colors"
+              className="inline-flex items-center justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-semibold text-[16px] hover:bg-[#00D0FF]/90 transition-colors"
             >
               View Services
             </Link>
             <Link
               href="/verify-slab"
-              className="inline-flex items-center justify-center h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] font-semibold text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
+              className="inline-flex items-center justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] font-semibold text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
             >
               Verify Your Slab
             </Link>

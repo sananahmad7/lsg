@@ -197,9 +197,9 @@ export default function OurCases() {
                       "Detailed card name, including language, expansion, and exact title.",
                       "Metallic silver-textured logo for authenticity",
                     ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
+                      <li key={i} className="flex items-center   gap-3">
                         <div
-                          className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#00D0FF] mt-1"
+                          className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#00D0FF] "
                           style={{ width: "24px", height: "24px" }}
                         >
                           <FaCheck size={12} color="#000" />
@@ -310,9 +310,9 @@ export default function OurCases() {
                       "Crystal-clear, UV-resistant sealed display to preserve the card's condition",
                       "Tamper-evident construction for added security",
                     ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
+                      <li key={i} className="flex items-center gap-3">
                         <div
-                          className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#00D0FF] mt-1"
+                          className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#00D0FF] "
                           style={{ width: "24px", height: "24px" }}
                         >
                           <FaCheck size={12} color="#000" />

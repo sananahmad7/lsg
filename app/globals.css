@@ -11,6 +11,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-poppins: var(--font-poppins);
+  --font-inter: var(--font-Inter);
+  --font-sora: var(--font-sora);
 
   /* --- ADD BREAKPOINTS HERE --- */
   --breakpoint-xs: 475px;   /* Adds a new extra-small breakpoint */

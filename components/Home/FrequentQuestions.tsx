@@ -1,13 +1,30 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
 
 type FAQ = {
   id: string;
   q: string;
   a: string;
 };
+
+// --- CUSTOM SVG ARROW ---
+function CustomTriangle({ isOpen }: { isOpen: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 27 18"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`transition-transform duration-300 ease-in-out ${
+        isOpen ? "rotate-180 w-7 h-7" : "rotate-0 w-5 h-5"
+      }`}
+    >
+      {/* Solid Triangle Pointing Down */}
+      {/* Points logic: Top-Left(0,0) -> Top-Right(27,0) -> Bottom-Center(13.5,18) */}
+      <path d="M13.5 18L0.5 0L26.5 0L13.5 18Z" />
+    </svg>
+  );
+}
 
 function FAQItem({
   item,
@@ -29,29 +46,27 @@ function FAQItem({
       ].join(" ")}
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      {/* Outer box: no fixed height, equal padding in all boxes */}
-      <div className="w-full px-[37px] py-[33px]">
+      {/* Outer box: responsive padding */}
+      <div className="w-full px-[24px] py-[24px] sm:px-[37px] sm:py-[33px]">
         <div className="flex w-full flex-col gap-3">
           {/* Question row */}
           <div className="flex items-center justify-between gap-6">
-            <h3 className="font-semibold text-[18px] leading-[30px] text-white capitalize">
+            <h3 className="font-semibold text-[16px] sm:text-[18px] leading-[1.5] text-white capitalize">
               {item.q}
             </h3>
 
+            {/* Icon Container */}
             <span
-              className={[
-                "shrink-0 transition-transform duration-200",
-                isOpen ? "rotate-180" : "rotate-0",
-              ].join(" ")}
+              className="shrink-0 flex items-center justify-center"
               style={{ color: isOpen ? "#00D0FF" : "#FFFFFF" }}
             >
-              <FaChevronDown size={18} />
+              <CustomTriangle isOpen={isOpen} />
             </span>
           </div>
 
-          {/* Answer (only renders space when open) */}
+          {/* Answer (only renders when open) */}
           {isOpen && (
-            <p className="font-normal text-[16px] leading-[30px] text-white/70 capitalize">
+            <p className="font-normal text-[14px] sm:text-[16px] leading-[1.6] text-[#A1C7D6] capitalize pt-2">
               {item.a}
             </p>
           )}
@@ -118,7 +133,7 @@ export default function FrequentQuestions() {
 
   return (
     <section className="w-full bg-black">
-      <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-0 py-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-8 py-16">
         <div className="flex flex-col items-center gap-[50px]">
           <div className="w-full flex items-center justify-center">
             <h2
@@ -129,8 +144,9 @@ export default function FrequentQuestions() {
             </h2>
           </div>
 
-          <div className="w-full max-w-[1300px] flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-0">
-            <div className="w-full lg:w-[610px] flex flex-col gap-[24px]">
+          <div className="w-full max-w-[1300px] flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-10">
+            {/* LEFT COLUMN */}
+            <div className="w-full lg:flex-1 flex flex-col gap-[24px]">
               {faqsLeft.map((item) => (
                 <FAQItem
                   key={item.id}
@@ -143,7 +159,8 @@ export default function FrequentQuestions() {
               ))}
             </div>
 
-            <div className="w-full lg:w-[610px] flex flex-col gap-[24px]">
+            {/* RIGHT COLUMN */}
+            <div className="w-full lg:flex-1 flex flex-col gap-[24px]">
               {faqsRight.map((item) => (
                 <FAQItem
                   key={item.id}

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FaCheck, FaCheckCircle } from "react-icons/fa";
@@ -41,12 +43,14 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
   return (
     <div
       className={[
-        "w-full",
+        "w-full mx-auto",
         "rounded-[12px] border",
         "flex flex-col gap-[18px]",
       ].join(" ")}
       style={{
-        padding: 20, // figma
+        maxWidth: 362,
+        minHeight: 516,
+        padding: 20,
         borderWidth: 1.47,
         borderColor: "rgba(255,255,255,0.35)",
         backgroundColor: card.highlighted ? "#383838" : "rgba(0,0,0,0.45)",
@@ -62,19 +66,29 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
 
         <span
           className="inline-flex items-center justify-center rounded-full"
-          style={{ width: 20, height: 20, backgroundColor: "#00D0FF" }}
+          style={{ width: 20, height: 20, backgroundColor: "#00EEFE" }}
         >
           <FaCheck size={12} color="#062126" />
         </span>
       </div>
 
+      {/* Separator Line */}
+      <div
+        style={{
+          width: "100%", // 322px relative to parent padding
+          height: 0,
+          borderTop: "1px solid #CBD4E1",
+          opacity: 1,
+        }}
+      />
+
       {/* Bullets */}
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-[19px]">
         {card.items.map((t) => (
           <li key={t} className="flex items-start gap-2">
             <FaCheckCircle
               size={16}
-              className="mt-[3px]"
+              className="mt-[3px] shrink-0"
               color="rgba(255,255,255,0.85)"
             />
             <span className="text-white/85 text-[14px] sm:text-[15px] leading-[20px]">
@@ -84,21 +98,20 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
         ))}
       </ul>
 
-      {/* Push button to bottom without fixed card height */}
+      {/* Push button to bottom */}
       <div className="flex-1" />
 
       <button
         type="button"
-        className="w-full rounded-[8px] border inline-flex items-center justify-center"
+        className="w-full rounded-[8px] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] border inline-flex items-center justify-center transition-transform active:scale-[0.98]"
         style={{
           height: 44,
-          borderColor: "#00D0FF",
-          backgroundColor: "#00D0FF",
-          color: "#062126",
-          fontWeight: 600,
-          fontSize: 12,
+          borderColor: "#00EEFE",
+
+          fontWeight: 700,
+          fontSize: 16,
           letterSpacing: "0.2px",
-          fontFamily: "Poppins, sans-serif",
+          fontFamily: "Sora, sans-serif",
         }}
       >
         Inquire Now
@@ -112,7 +125,7 @@ export default function ServiceHero() {
     <section className="relative isolate w-full bg-black overflow-hidden">
       {/* Keep desktop height 920, but allow smaller screens to grow naturally */}
       <div className="relative w-full min-h-[720px] sm:min-h-[820px] lg:h-[920px]">
-        {/* Background: smaller than container (more inset), no overflow into edges */}
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-x-0 top-8 bottom-8 sm:top-10 sm:bottom-10 lg:top-[70px] lg:bottom-[70px]">
             <Image
@@ -129,10 +142,10 @@ export default function ServiceHero() {
         {/* Content */}
         <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
           <div className="w-full max-w-[1132px] flex flex-col items-center gap-[50px] py-10 lg:py-0">
-            {/* A1 */}
+            {/* A1 Header Section */}
             <div className="w-full max-w-[923px] flex flex-col items-center gap-[22px] sm:gap-[31px]">
               <h1
-                className="text-center text-[#00D0FF] font-semibold px-2"
+                className="text-center text-[#00EEFE] font-semibold px-2"
                 style={{
                   fontFamily: "Poppins, sans-serif",
                 }}
@@ -143,7 +156,7 @@ export default function ServiceHero() {
               </h1>
 
               <p
-                className="text-center text-white/70 font-medium px-2"
+                className="text-center text-[#A1C7D6] font-medium px-2"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 <span className="block text-[15px] sm:text-[18px] lg:text-[22px] leading-[140%] lg:leading-[30.8px]">
@@ -153,25 +166,19 @@ export default function ServiceHero() {
                 </span>
               </p>
 
-              {/* Buttons (stack on mobile) */}
-              <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-[25px]">
+              {/* Buttons */}
+              <div className="w-full flex flex-col  sm:flex-row items-center justify-center gap-4 sm:gap-[25px]">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-[12px] border w-full sm:w-[237px] h-[60px]"
+                  className="inline-flex items-center justify-center bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border w-full sm:w-[237px] h-[60px]"
                   style={{
                     borderWidth: 1,
-                    borderColor: "#00D0FF",
-                    backgroundColor: "#00D0FF",
-                    color: "#062126",
+                    borderColor: "#00EEFE",
+
                     fontFamily: "Sora, sans-serif",
                     fontWeight: 700,
                     fontSize: 16,
                     lineHeight: "151%",
-                    paddingTop: 11,
-                    paddingBottom: 11,
-                    paddingLeft: 25,
-                    paddingRight: 25,
-                    textAlign: "center",
                   }}
                 >
                   Request Slab
@@ -182,18 +189,13 @@ export default function ServiceHero() {
                   className="inline-flex items-center justify-center rounded-[12px] border w-full sm:w-[237px] h-[60px]"
                   style={{
                     borderWidth: 1,
-                    borderColor: "#00D0FF",
+                    borderColor: "#00EEFE",
                     backgroundColor: "transparent",
-                    color: "#00D0FF",
+                    color: "#00EEFE",
                     fontFamily: "Sora, sans-serif",
                     fontWeight: 700,
                     fontSize: 16,
                     lineHeight: "151%",
-                    paddingTop: 11,
-                    paddingBottom: 11,
-                    paddingLeft: 25,
-                    paddingRight: 25,
-                    textAlign: "center",
                   }}
                 >
                   Verify Your Slab
@@ -201,9 +203,9 @@ export default function ServiceHero() {
               </div>
             </div>
 
-            {/* A2: responsive grid instead of forced row */}
-            <div className="w-full">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[23px]">
+            {/* A2: Feature Cards Grid */}
+            <div className="w-full flex justify-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px]">
                 {featureCards.map((card) => (
                   <ServiceFeatureCard key={card.title} card={card} />
                 ))}

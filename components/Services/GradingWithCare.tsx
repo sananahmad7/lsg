@@ -41,7 +41,7 @@ export default function GradingWithCare() {
               {/* Heading: H: 66px */}
               <div className="w-full">
                 <h2
-                  className="font-semibold text-[#00D0FF]"
+                  className="font-semibold text-[#00EEFE]"
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontSize: "44px", // Assumed based on height/style, adaptable for mobile
@@ -61,7 +61,7 @@ export default function GradingWithCare() {
               */}
               <div className="w-full lg:max-w-[678px]">
                 <p
-                  className="text-white/80"
+                  className="text-[#A1C7D6]"
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 500,
@@ -90,13 +90,13 @@ export default function GradingWithCare() {
               <div>
                 <Link
                   href="/services"
-                  className="inline-flex items-center justify-center transition-transform hover:scale-105"
+                  className="inline-flex bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-transform hover:scale-105"
                   style={{
                     width: "237px",
                     height: "60px",
-                    backgroundColor: "#00D0FF",
+
                     borderRadius: "12px",
-                    border: "1px solid #00D0FF",
+                    border: "1px solid #00EEFE",
                     padding: "11px 25px",
                     gap: "3px",
                   }}

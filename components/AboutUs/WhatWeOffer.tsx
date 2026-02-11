@@ -57,10 +57,10 @@ export default function WhatWeOffer() {
               {features.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-4 lg:gap-[20px]"
+                  className="flex items-center gap-4 lg:gap-[20px]"
                 >
                   {/* Icon */}
-                  <div className="flex-shrink-0 w-[30px] h-[30px] rounded-full bg-[#00D0FF] flex items-center justify-center mt-1">
+                  <div className="flex-shrink-0 w-[30px] h-[30px] rounded-full bg-[#00D0FF] flex items-center justify-center ">
                     <FaCheck size={14} color="#000" />
                   </div>
 
