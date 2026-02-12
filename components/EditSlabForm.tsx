@@ -4,23 +4,42 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function EditSlabForm({ initialData }: { initialData: any }) {
+// Define a type for your Slab data to avoid using 'any'
+interface SlabData {
+  id: number;
+  certificationNumber: string;
+  name: string;
+  set: string;
+  number: string;
+  year: string;
+  language: string;
+  grade: string;
+  subgrade?: string | null;
+  variant?: string | null;
+  imageUrl?: string | null;
+  [key: string]: string | number | null | undefined; // Index signature for the mapping loop
+}
+
+export default function EditSlabForm({
+  initialData,
+}: {
+  initialData: SlabData;
+}) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
 
-  const [file, setFile] = useState<File | null>(null);
+  // Removed unused 'file' state to fix the linter warning
   const [preview, setPreview] = useState<string | null>(null);
   const [cloudinaryUrl, setCloudinaryUrl] = useState<string | null>(
-    initialData.imageUrl,
+    initialData.imageUrl ?? null,
   );
   const [isUploadingImage, setIsUploadingImage] = useState(false);
 
-  const [formData, setFormData] = useState(initialData);
+  const [formData, setFormData] = useState<SlabData>(initialData);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
-    setFile(selectedFile);
     if (selectedFile) {
       setPreview(URL.createObjectURL(selectedFile));
       setIsUploadingImage(true);
@@ -66,8 +85,11 @@ export default function EditSlabForm({ initialData }: { initialData: any }) {
       if (!res.ok) throw new Error("Update failed");
       setMessage({ type: "success", text: "Slab updated! Redirecting..." });
       setTimeout(() => router.push("/admin/allSlabs"), 1500);
-    } catch (err: any) {
-      setMessage({ type: "error", text: err.message });
+    } catch (err: unknown) {
+      // Fix: Check if err is an instance of Error to access .message safely
+      const errorMessage =
+        err instanceof Error ? err.message : "An unexpected error occurred";
+      setMessage({ type: "error", text: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -105,7 +127,7 @@ export default function EditSlabForm({ initialData }: { initialData: any }) {
               </label>
               <input
                 name={field}
-                value={formData[field] || ""}
+                value={(formData[field] as string) || ""}
                 onChange={(e) =>
                   setFormData({ ...formData, [field]: e.target.value })
                 }
@@ -159,7 +181,7 @@ export default function EditSlabForm({ initialData }: { initialData: any }) {
 
         <button
           disabled={loading || isUploadingImage}
-          className="w-full py-4 bg-[#00D0FF] text-black font-bold rounded-xl hover:bg-[#00D0FF]/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 bg-[#00D0FF] text-black font-bold rounded-xl hover:bg-[#00D0FF]/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isUploadingImage
             ? "Wait for Image Upload..."
