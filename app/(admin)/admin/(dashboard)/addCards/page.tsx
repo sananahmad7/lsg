@@ -102,8 +102,11 @@ export default function AddCardsPage() {
       setPreview(null);
       setCloudinaryUrl(null);
       (e.target as HTMLFormElement).reset();
-    } catch (err: any) {
-      setMessage({ type: "error", text: err.message });
+    } catch (err: unknown) {
+      // SOLUTION: Check if err is an instance of Error to safely access .message
+      const errorMessage =
+        err instanceof Error ? err.message : "An unexpected error occurred";
+      setMessage({ type: "error", text: errorMessage });
     } finally {
       setLoading(false);
     }
