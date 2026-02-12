@@ -65,8 +65,11 @@ export default function GetInTouchWithUs() {
         const data = await res.json();
         throw new Error(data.error || "Something went wrong.");
       }
-    } catch (err: any) {
-      setStatus({ type: "error", msg: err.message });
+    } catch (err: unknown) {
+      // Logic: Check if err is an Error object to safely access .message
+      const errorMessage =
+        err instanceof Error ? err.message : "An unknown error occurred";
+      setStatus({ type: "error", msg: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -153,7 +156,6 @@ export default function GetInTouchWithUs() {
                 className={`${inputStyles} h-[128px] resize-none`}
               />
 
-              {/* reCAPTCHA Checkbox */}
               <div className="my-2">
                 <ReCAPTCHA
                   ref={recaptchaRef}
