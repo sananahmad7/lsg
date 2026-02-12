@@ -3,7 +3,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FiExternalLink, FiSearch, FiRefreshCcw } from "react-icons/fi";
+import {
+  FiExternalLink,
+  FiSearch,
+  FiRefreshCcw,
+  FiEdit3,
+  FiTrash2,
+} from "react-icons/fi";
 
 type Slab = {
   id: number;
@@ -28,7 +34,7 @@ export default function AllSlabsPage() {
       const data = await res.json();
       setSlabs(data);
     } catch (err) {
-      console.error("Failed to load slabs");
+      console.error("Failed to load slabs", err);
     } finally {
       setLoading(false);
     }
@@ -38,6 +44,27 @@ export default function AllSlabsPage() {
     fetchSlabs();
   }, []);
 
+  const onDelete = async (id: number) => {
+    if (
+      !confirm(
+        "Are you sure you want to delete this slab? This action cannot be undone.",
+      )
+    )
+      return;
+
+    try {
+      const res = await fetch(`/api/deleteSlab?id=${id}`, { method: "DELETE" });
+      if (res.ok) {
+        // Optimistic UI update
+        setSlabs((prev) => prev.filter((slab) => slab.id !== id));
+      } else {
+        alert("Failed to delete slab");
+      }
+    } catch (err) {
+      console.error("Delete error", err);
+    }
+  };
+
   const filteredSlabs = slabs.filter(
     (s) =>
       s.certificationNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -46,12 +73,11 @@ export default function AllSlabsPage() {
 
   return (
     <div className="min-h-screen bg-black text-white p-6 lg:p-10 font-poppins">
-      {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
         <div>
           <h1 className="text-3xl font-bold text-[#00D0FF]">Slab Inventory</h1>
           <p className="text-zinc-400 text-sm mt-1">
-            Manage and view all registered LSG graded cards.
+            Manage, edit, and delete registered LSG graded cards.
           </p>
         </div>
 
@@ -75,7 +101,6 @@ export default function AllSlabsPage() {
         </div>
       </div>
 
-      {/* Table Section */}
       <div className="bg-zinc-900/50 border border-white/10 rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -104,9 +129,6 @@ export default function AllSlabsPage() {
                   >
                     <td className="px-6 py-4">
                       <div className="relative w-12 h-16 rounded bg-[#1A1A1A] border border-white/5 overflow-hidden flex items-center justify-center">
-                        {/* Validation: Checks if imageUrl exists, is not an empty string, 
-       and starts with http to prevent 'Invalid URL' crashes.
-    */}
                         {slab.imageUrl &&
                         slab.imageUrl.trim() !== "" &&
                         slab.imageUrl.startsWith("http") ? (
@@ -115,25 +137,12 @@ export default function AllSlabsPage() {
                             alt={slab.name}
                             fill
                             className="object-cover"
-                            unoptimized // Useful for testing external Cloudinary links
+                            unoptimized
                           />
                         ) : (
-                          /* Fallback state when no image exists */
                           <div className="flex flex-col items-center gap-1 opacity-20">
-                            <svg
-                              className="w-5 h-5 text-zinc-500"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={1.5}
-                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                              />
-                            </svg>
-                            <span className="text-[8px] uppercase tracking-tighter text-zinc-500 font-bold">
+                            <FiTrash2 className="w-5 h-5 text-zinc-500" />
+                            <span className="text-[8px] uppercase font-bold text-zinc-500">
                               Empty
                             </span>
                           </div>
@@ -160,13 +169,30 @@ export default function AllSlabsPage() {
                         {slab.grade}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right">
-                      <Link
-                        href={`/verify?cert=${slab.certificationNumber}&step=result`}
-                        className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-white transition-colors"
-                      >
-                        View <FiExternalLink />
-                      </Link>
+                    <td className="px-6 py-4">
+                      <div className="flex justify-end items-center gap-3">
+                        <Link
+                          href={`/admin/editSlab/${slab.certificationNumber}`}
+                          className="p-2 text-zinc-400 hover:text-[#00D0FF] hover:bg-[#00D0FF]/10 rounded-lg transition-all"
+                          title="Edit Slab"
+                        >
+                          <FiEdit3 size={18} />
+                        </Link>
+                        <button
+                          onClick={() => onDelete(slab.id)}
+                          className="p-2 text-zinc-400 hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all"
+                          title="Delete Slab"
+                        >
+                          <FiTrash2 size={18} />
+                        </button>
+                        <Link
+                          href={`/verify?cert=${slab.certificationNumber}&step=result`}
+                          className="p-2 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                          title="View Public Link"
+                        >
+                          <FiExternalLink size={18} />
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))
@@ -176,7 +202,7 @@ export default function AllSlabsPage() {
                     colSpan={6}
                     className="px-6 py-20 text-center text-zinc-500"
                   >
-                    No slabs found in the database.
+                    No slabs found.
                   </td>
                 </tr>
               )}
