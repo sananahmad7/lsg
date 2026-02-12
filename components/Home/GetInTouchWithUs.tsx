@@ -38,9 +38,10 @@ export default function GetInTouchWithUs() {
   return (
     <section className="w-full bg-transparent py-16 px-4 xl:px-8">
       <div className="mx-auto w-full max-w-[1300px] rounded-[20px] bg-black/80 border-[2.34px] border-white/15 p-6 sm:p-10 lg:p-[45px]">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-[80px]">
+        {/* Changed from lg:flex-row to xl:flex-row to stack on lg screens */}
+        <div className="flex flex-col xl:flex-row items-center xl:items-stretch justify-between gap-10 xl:gap-[80px]">
           {/* --- LEFT SIDE: TEXT & FORM --- */}
-          <div className="w-full lg:w-[500px] flex-shrink-0 flex flex-col gap-8">
+          <div className="w-full xl:w-[500px] flex-shrink-0 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <h2
                 className="text-[#00EFFE] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
@@ -118,14 +119,15 @@ export default function GetInTouchWithUs() {
           </div>
 
           {/* --- RIGHT SIDE: IMAGE --- */}
-          <div className="w-full relative min-h-[300px] sm:min-h-[400px] xl:left-13 lg:min-h-0 lg:flex-1 lg:h-[589px] rounded-[12px]">
+          {/* Adjusted width logic: w-full on lg, back to flex-1 on xl */}
+          <div className="w-full relative min-h-[300px] sm:min-h-[400px] xl:left-13 xl:min-h-0 xl:flex-1 xl:h-[589px] rounded-[12px] ">
             <Image
               src="/touch.png"
               alt="Cards artwork"
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 600px"
-              className="object-contain lg:object-cover object-center overflow-visible"
+              sizes="(max-width: 1280px) 100vw, 700px"
+              className="object-contain xl:object-cover object-center overflow-visible"
             />
           </div>
         </div>

@@ -83,7 +83,7 @@ export default function LSGInsider() {
                 type="button"
                 onClick={onJoin}
                 className="
-                  h-full w-[100px] sm:w-[120px] 
+                  h-full w-[90px] sm:w-[120px] 
                   bg-[#00D0FF] hover:bg-[#00D0FF]/90 transition-colors
                   text-[#062126] font-bold text-[16px]
                   flex items-center justify-center
