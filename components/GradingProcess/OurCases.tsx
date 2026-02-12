@@ -160,7 +160,7 @@ export default function OurCases() {
                       fontWeight: 500,
                       fontSize: "22px",
                       lineHeight: "100%",
-                      color: "rgba(255, 255, 255, 0.8)",
+                      color: "#A1C7D6",
                     }}
                   >
                     The front of the slab showcases your card and its overall
@@ -275,7 +275,7 @@ export default function OurCases() {
                       fontWeight: 500,
                       fontSize: "22px",
                       lineHeight: "100%",
-                      color: "rgba(255, 255, 255, 0.8)",
+                      color: "#A1C7D6",
                     }}
                   >
                     The back of the slab is designed for easy verification and

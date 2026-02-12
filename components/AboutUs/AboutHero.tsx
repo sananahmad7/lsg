@@ -32,7 +32,7 @@ export default function AboutHero() {
               {/* --- LEFT TOP HEADER --- */}
               <div className="flex flex-col gap-[20.08px]">
                 <div className="flex items-center w-[145px] h-[10px] opacity-100 rotate-0">
-                  <span className="text-[#00D0FF] font-semibold text-[16px] uppercase tracking-wider font-poppins">
+                  <span className="text-[#FFFFFF] font-semibold text-[16px] uppercase tracking-wider font-poppins">
                     What We Do
                   </span>
                 </div>

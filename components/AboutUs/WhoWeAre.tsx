@@ -48,7 +48,7 @@ export default function WhoWeAre() {
           {/* Header */}
           <div className="flex flex-col gap-[12px]">
             <h2
-              className="text-[#00D0FF] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] lg:leading-[60px] tracking-[-0.02em] capitalize"
+              className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] lg:leading-[60px] tracking-[-0.02em] capitalize"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Who We Are
@@ -58,7 +58,7 @@ export default function WhoWeAre() {
           {/* Description */}
           <div className="w-full">
             <p
-              className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] lg:leading-[140%] tracking-[-0.01em] text-white/90"
+              className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] lg:leading-[140%] tracking-[-0.01em] text-[#A1C7D6]"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               LSG is a custom card grading company, run by collectors — for
@@ -79,16 +79,11 @@ export default function WhoWeAre() {
             className="
               inline-flex items-center justify-center
               w-full sm:w-[311px] h-[60px]
-              rounded-[12px]
+              rounded-[12px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)]
               text-[#062126] font-bold text-[16px] leading-[151%]
               transition-transform hover:scale-[1.02] active:scale-[0.98]
-              mx-auto lg:mx-0
+              mx-auto lg:mx-0 font-sora
             "
-            style={{
-              background:
-                "linear-gradient(93.95deg, #00F2FE 4.94%, #00D0FF 97.42%)",
-              fontFamily: "Sora, sans-serif",
-            }}
           >
             Inquire Now
           </Link>

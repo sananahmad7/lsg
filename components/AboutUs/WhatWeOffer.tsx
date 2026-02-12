@@ -46,7 +46,7 @@ export default function WhatWeOffer() {
           <div className="flex flex-col justify-center gap-8 lg:gap-[30px] w-full lg:max-w-[592px]">
             {/* Heading */}
             <h2
-              className="text-[#00D0FF] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[50px] tracking-[-0.02em] capitalize text-center lg:text-left"
+              className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[50px] tracking-[-0.02em] capitalize text-center lg:text-left"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               What We Offer
@@ -60,7 +60,7 @@ export default function WhatWeOffer() {
                   className="flex items-center gap-4 lg:gap-[20px]"
                 >
                   {/* Icon */}
-                  <div className="flex-shrink-0 w-[30px] h-[30px] rounded-full bg-[#00D0FF] flex items-center justify-center ">
+                  <div className="flex-shrink-0 w-[30px] h-[30px] rounded-full bg-[#00EFFE] flex items-center justify-center ">
                     <FaCheck size={14} color="#000" />
                   </div>
 

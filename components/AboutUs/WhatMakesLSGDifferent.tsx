@@ -13,7 +13,7 @@ export default function WhatMakesLSGDifferent() {
         {/* --- TOP HEADER --- */}
         <div className="w-full flex justify-center">
           <h2
-            className="text-[#00D0FF] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] lg:leading-[60px] tracking-[-0.02em] text-center capitalize"
+            className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] lg:leading-[60px] tracking-[-0.02em] text-center capitalize"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             What Makes LSG Different?

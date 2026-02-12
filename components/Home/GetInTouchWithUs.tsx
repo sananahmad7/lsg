@@ -40,7 +40,7 @@ export default function GetInTouchWithUs() {
           <div className="w-full lg:w-[500px] flex-shrink-0 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <h2
-                className="text-[#00D0FF] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
+                className="text-[#00EFFE] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Get in Touch with Us
@@ -68,7 +68,7 @@ export default function GetInTouchWithUs() {
                     bg-[#FFFFFF0D] text-white
                     placeholder:text-white/35   
                     px-4 py-3 outline-none
-                    focus:border-[#00D0FF]/50 transition-colors
+                    focus:border-[#00EFFE]/50 transition-colors
                   "
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 />
@@ -83,7 +83,7 @@ export default function GetInTouchWithUs() {
                     bg-[#FFFFFF0D] text-white
                     placeholder:text-white/35
                     px-4 py-3 outline-none
-                    focus:border-[#00D0FF]/50 transition-colors
+                    focus:border-[#00EFFE]/50 transition-colors
                   "
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 />
@@ -101,7 +101,7 @@ export default function GetInTouchWithUs() {
                   bg-[#FFFFFF0D] text-white
                   placeholder:text-white/35
                   px-4 py-3 outline-none
-                  focus:border-[#00D0FF]/50 transition-colors
+                  focus:border-[#00EFFE]/50 transition-colors
                 "
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
@@ -118,7 +118,7 @@ export default function GetInTouchWithUs() {
                   bg-[#FFFFFF0D] text-white
                   placeholder:text-white/35
                   px-4 py-3 outline-none
-                  focus:border-[#00D0FF]/50 transition-colors
+                  focus:border-[#00EFFE]/50 transition-colors
                 "
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
@@ -134,7 +134,7 @@ export default function GetInTouchWithUs() {
                   bg-[#FFFFFF0D] text-white
                   placeholder:text-white/35
                   px-4 py-3 outline-none resize-none
-                  focus:border-[#00D0FF]/50 transition-colors
+                  focus:border-[#00EFFE]/50 transition-colors
                 "
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
@@ -144,8 +144,8 @@ export default function GetInTouchWithUs() {
                 className="
                   w-full h-[50px]
                   rounded-[5px]
-                  bg-[#00D0FF] text-[#062126]
-                  font-medium text-[18px]
+                  bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126]
+                  font-bold text-[18px]
                   flex items-center justify-center
                   transition-transform hover:scale-[1.01] active:scale-[0.99]
                 "

@@ -121,9 +121,9 @@ export default function PrivacyPolicy() {
                 {item.title}
               </h2>
 
-              {/* Alpha Description */}
+              {/* Alpha Description - FIXED LEADING TO 140% */}
               <div
-                className="font-medium text-[16px] lg:text-[18px] leading-[160%] lg:leading-[100%] tracking-[-0.01em] text-[#A1C7D6]"
+                className="font-medium text-[16px] lg:text-[18px] leading-[140%] tracking-[-0.01em] text-[#A1C7D6]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 <p>{item.content}</p>
@@ -149,7 +149,7 @@ export default function PrivacyPolicy() {
         {/* FOOTER AREA */}
         <div className="w-full max-w-[1300px] mx-auto mt-10 flex flex-col items-start gap-8">
           <p
-            className="text-white font-medium text-[18px] leading-[100%]"
+            className="text-white font-medium text-[18px] leading-[140%]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Last updated: April 2025

@@ -55,7 +55,7 @@ export default function LSGProcess() {
         {/* --- HEADER --- */}
         <div className="w-full flex flex-col items-center gap-4 text-center">
           <h2
-            className="text-[#00D0FF] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] tracking-[-0.01em]"
+            className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] tracking-[-0.01em]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             The LSG Process
