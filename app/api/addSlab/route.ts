@@ -39,14 +39,22 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(newSlab, { status: 201 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Handle unique constraint violation for certificationNumber
-    if (error.code === "P2002") {
+    // We check if error is an object with a 'code' property
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "code" in error &&
+      error.code === "P2002"
+    ) {
       return NextResponse.json(
         { error: "Certification number already exists" },
         { status: 409 },
       );
     }
+
+    console.error("Internal Server Error:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },

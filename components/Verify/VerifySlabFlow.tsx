@@ -75,8 +75,13 @@ export default function VerifySlabFlow() {
       // Successfully found the card
       setResult(data);
       setStep("result");
-    } catch (e: any) {
-      setError(e.message || "Could not verify this number. Try again.");
+    } catch (e: unknown) {
+      // Logic: Use type guarding to check if e is an Error object
+      const errorMessage =
+        e instanceof Error
+          ? e.message
+          : "Could not verify this number. Try again.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
