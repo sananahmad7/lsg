@@ -1,26 +1,42 @@
-import { SignJWT, jwtVerify } from "jose";
+import { SignJWT, jwtVerify, type JWTPayload as JosePayload } from "jose";
 import { cookies } from "next/headers";
+
+// Define the structure of your user data in the token
+interface JWTPayload extends JosePayload {
+  id: number | string;
+  email: string;
+  name?: string | null;
+}
 
 const secretKey = process.env.JWT_SECRET || "your-secret-key-change-me";
 const key = new TextEncoder().encode(secretKey);
 
-export async function encrypt(payload: any) {
+export async function encrypt(payload: JWTPayload) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("24h") // Token expires in 24 hours
+    .setExpirationTime("24h")
     .sign(key);
 }
 
-export async function decrypt(input: string): Promise<any> {
+export async function decrypt(input: string): Promise<JWTPayload> {
   const { payload } = await jwtVerify(input, key, {
     algorithms: ["HS256"],
   });
-  return payload;
+
+  // Cast the payload to our specific interface
+  return payload as JWTPayload;
 }
 
 export async function getSession() {
-  const session = (await cookies()).get("session")?.value;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("session")?.value;
   if (!session) return null;
-  return await decrypt(session);
+
+  try {
+    return await decrypt(session);
+  } catch (error) {
+    console.error("Failed to decrypt session:", error);
+    return null;
+  }
 }
