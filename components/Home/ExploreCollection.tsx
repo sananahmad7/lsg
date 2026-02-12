@@ -124,7 +124,9 @@ export default function ExploreCollection() {
                       </span>
 
                       {/* View Detail Button */}
-                      <button
+                      {/* ... inside collectionItems.map ... */}
+                      <Link
+                        href={`/grading-scale?img=${encodeURIComponent(item.image)}`}
                         className="bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-black hover:bg-[#00D0FF]/90 transition-colors flex items-center justify-center"
                         style={{
                           width: "113px",
@@ -147,7 +149,7 @@ export default function ExploreCollection() {
                         >
                           View Details
                         </span>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

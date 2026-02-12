@@ -4,9 +4,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { MdAddCircle, MdDashboard, MdListAlt, MdLogout } from "react-icons/md";
 
 const menuItems = [
-  { name: "Overview", href: "/admin/dashboard", icon: MdDashboard },
   { name: "Add Cards", href: "/admin/addCards", icon: MdAddCircle },
-  { name: "View Inventory", href: "/admin/inventory", icon: MdListAlt },
+  { name: "View Inventory", href: "/admin/allSlabs", icon: MdListAlt },
 ];
 
 export default function AdminSidebar() {

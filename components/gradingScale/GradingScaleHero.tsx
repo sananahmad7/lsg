@@ -1,9 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { useSearchParams } from "next/navigation"; // [ADD THIS]
 import { FaCheck } from "react-icons/fa";
 
 export default function GradingScaleHero() {
+  const searchParams = useSearchParams(); // [ADD THIS]
+
+  // Get the 'img' parameter from URL, fallback to Hero3 if null
+  const cardImage = searchParams.get("img") || "/Hero3.png";
+
   const bulletPoints = [
     { label: "Corners", value: "Up to 1 soft tip allowed" },
     { label: "Edges", value: "Slight edge touch on one side" },
@@ -13,7 +19,7 @@ export default function GradingScaleHero() {
 
   return (
     <section className="relative w-full bg-black overflow-hidden font-poppins">
-      {/* --- BACKGROUND LAYER --- */}
+      {/* ... BACKGROUND LAYER REMAINS SAME ... */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
         <div className="relative opacity-100 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] lg:w-[1097.12px] lg:h-[1097.12px]">
           <Image
@@ -26,9 +32,8 @@ export default function GradingScaleHero() {
         </div>
       </div>
 
-      {/* --- CONTENT LAYER --- */}
       <div className="relative z-10 w-full flex flex-col items-center pt-[50px] pb-[50px] lg:pb-[100px] px-4">
-        {/* Topmost Logo */}
+        {/* ... LOGO AND HEADER REMAIN SAME ... */}
         <div className="relative mb-[23.34px] w-[150px] h-[62px] lg:w-[231px] lg:h-[95.66px]">
           <Image
             src="/logo.png"
@@ -39,7 +44,6 @@ export default function GradingScaleHero() {
           />
         </div>
 
-        {/* Header & Description */}
         <div className="flex flex-col items-center gap-4 text-center mb-10 lg:mb-[80px] w-full max-w-[1195px]">
           <h1 className="font-semibold text-[#00EEFE] leading-[120%] lg:leading-[140%] text-[28px] sm:text-[36px] lg:text-[44px]">
             LegacySlabsGrading (LSG) – Official Score Definitions
@@ -50,25 +54,18 @@ export default function GradingScaleHero() {
           </p>
         </div>
 
-        {/* Main Content Container */}
         <div className="flex items-center justify-center w-full max-w-[1292px] lg:h-[697.89px]">
-          {/* Inner Container */}
           <div className="flex flex-col lg:flex-row items-center justify-center relative w-full lg:w-[1072px] lg:h-[697.89px] gap-10 lg:gap-0">
-            {/* LEFT: Beta Component */}
+            {/* LEFT COMPONENT REMAINS SAME */}
             <div className="flex flex-col bg-[#141414] border-[1px] border-solid border-[#00EFFE] rounded-[12px] justify-between p-6 sm:p-8 z-0 relative w-full lg:w-[675px] h-auto lg:h-[557.38px] gap-6 lg:gap-0">
-              {/* Beta Top Header */}
               <h2 className="font-semibold text-[#00EFFE] leading-[130%] text-[32px] lg:text-[44px]">
                 LSG 10 – Flawless
               </h2>
-
-              {/* Beta Description */}
               <p className="font-medium text-[#C9C9C9] text-[18px] lg:text-[22px] leading-[140%] lg:leading-[130%]">
                 A high-end card with near-perfect visual appeal. May have one or
                 two minor, non-distracting imperfections such as soft corner,
                 print speck, or slight off-centering.
               </p>
-
-              {/* Beta Bullet Points */}
               <div className="flex flex-col gap-[14.34px] w-full lg:w-[585.83px]">
                 <h3 className="font-medium text-[#A1C7D6] text-[18px] lg:text-[22px] leading-[140%] lg:leading-[188%]">
                   Our streamlined process includes:
@@ -93,24 +90,20 @@ export default function GradingScaleHero() {
                   ))}
                 </div>
               </div>
-
-              {/* Beta Last Component */}
               <p className="font-medium text-[#A1C7D6] text-[18px] lg:text-[22px] leading-[140%] lg:leading-normal">
                 A card with slight natural wear that still looks pristine in any
                 case or display.
               </p>
             </div>
 
-            {/* RIGHT: Image container */}
+            {/* RIGHT: DYNAMIC Image container */}
             <div
               className="relative rounded-[9.2px] overflow-hidden lg:ml-[-11px] z-10 bg-black w-[280px] h-[480px] sm:w-[350px] sm:h-[600px] lg:w-[408px] lg:h-[697.89px]"
-              style={{
-                padding: "15.34px 12.27px",
-              }}
+              style={{ padding: "15.34px 12.27px" }}
             >
               <Image
-                src="/Hero3.png"
-                alt="LSG 10 Card Display"
+                src={cardImage} // [MODIFIED: Uses variable from URL]
+                alt="Selected Graded Card"
                 fill
                 className="object-contain"
                 priority

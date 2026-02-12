@@ -1,9 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function GetInTouchWithUs() {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    msg: string;
+  }>({
+    type: "",
+    msg: "",
+  });
+
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -18,12 +29,49 @@ export default function GetInTouchWithUs() {
       setForm((p) => ({ ...p, [key]: e.target.value }));
     };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form:", form);
+    setStatus({ type: "", msg: "" });
+
+    const captchaToken = recaptchaRef.current?.getValue();
+    if (!captchaToken) {
+      setStatus({ type: "error", msg: "Please complete the reCAPTCHA." });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, captchaToken }),
+      });
+
+      if (res.ok) {
+        setStatus({
+          type: "success",
+          msg: "Message sent! We will get back to you soon.",
+        });
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+        recaptchaRef.current?.reset();
+      } else {
+        const data = await res.json();
+        throw new Error(data.error || "Something went wrong.");
+      }
+    } catch (err: any) {
+      setStatus({ type: "error", msg: err.message });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Reusable Tailwind Class string for the "Etched" input style
   const inputStyles = `
     w-full h-[50px] rounded-[6px] 
     bg-gradient-to-b from-[#121212] to-[#080808]
@@ -38,9 +86,7 @@ export default function GetInTouchWithUs() {
   return (
     <section className="w-full bg-transparent py-16 px-4 xl:px-8">
       <div className="mx-auto w-full max-w-[1300px] rounded-[20px] bg-black/80 border-[2.34px] border-white/15 p-6 sm:p-10 lg:p-[45px]">
-        {/* Changed from lg:flex-row to xl:flex-row to stack on lg screens */}
         <div className="flex flex-col xl:flex-row items-center xl:items-stretch justify-between gap-10 xl:gap-[80px]">
-          {/* --- LEFT SIDE: TEXT & FORM --- */}
           <div className="w-full xl:w-[500px] flex-shrink-0 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <h2
@@ -54,73 +100,80 @@ export default function GetInTouchWithUs() {
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Got a question about your LSG slab, grading details, or
-                what&apos;s in stock? Reach out — we&apos;re happy to help you
-                get what you&apos;re looking for.
+                what&apos;s in stock? Reach out.
               </p>
             </div>
 
             <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full">
+              {status.msg && (
+                <div
+                  className={`p-3 rounded text-sm ${status.type === "success" ? "bg-green-500/10 text-green-400" : "bg-red-500/10 text-red-400"}`}
+                >
+                  {status.msg}
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
-                  aria-label="First Name"
+                  required
                   placeholder="First Name"
                   value={form.firstName}
                   onChange={onChange("firstName")}
                   className={inputStyles}
-                  style={{ fontFamily: "Poppins, sans-serif" }}
                 />
                 <input
-                  aria-label="Last Name"
+                  required
                   placeholder="Last Name"
                   value={form.lastName}
                   onChange={onChange("lastName")}
                   className={inputStyles}
-                  style={{ fontFamily: "Poppins, sans-serif" }}
                 />
               </div>
 
               <input
-                aria-label="Email"
+                required
                 placeholder="Email"
                 type="email"
                 value={form.email}
                 onChange={onChange("email")}
                 className={inputStyles}
-                style={{ fontFamily: "Poppins, sans-serif" }}
               />
-
               <input
-                aria-label="Phone (optional)"
                 placeholder="Phone (optional)"
                 type="tel"
                 value={form.phone}
                 onChange={onChange("phone")}
                 className={inputStyles}
-                style={{ fontFamily: "Poppins, sans-serif" }}
               />
-
               <textarea
-                aria-label="Message"
+                required
                 placeholder="Message"
                 value={form.message}
                 onChange={onChange("message")}
                 className={`${inputStyles} h-[128px] resize-none`}
-                style={{ fontFamily: "Poppins, sans-serif" }}
               />
+
+              {/* reCAPTCHA Checkbox */}
+              <div className="my-2">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                  theme="dark"
+                />
+              </div>
 
               <button
                 type="submit"
-                className="w-full h-[50px] rounded-[5px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-bold text-[18px] flex items-center justify-center transition-transform hover:scale-[1.01] active:scale-[0.99]"
+                disabled={loading}
+                className="w-full h-[50px] rounded-[5px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-bold text-[18px] flex items-center justify-center transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:grayscale"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
-                Send
+                {loading ? "Sending..." : "Send"}
               </button>
             </form>
           </div>
 
-          {/* --- RIGHT SIDE: IMAGE --- */}
-          {/* Adjusted width logic: w-full on lg, back to flex-1 on xl */}
-          <div className="w-full relative min-h-[300px] sm:min-h-[400px] xl:left-13 xl:min-h-0 xl:flex-1 xl:h-[589px] rounded-[12px] ">
+          <div className="w-full relative min-h-[300px] xl:left-13 sm:min-h-[400px] xl:min-h-0 xl:flex-1 xl:h-[589px] rounded-[12px] ">
             <Image
               src="/touch.png"
               alt="Cards artwork"

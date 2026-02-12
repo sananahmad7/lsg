@@ -42,8 +42,7 @@ export default function VerifySlabFlow() {
 
   useEffect(() => {
     router.replace(buildQuery(step, cert || undefined), { scroll: false });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step, cert]);
+  }, [step, cert, router]);
 
   const onGoToForm = () => {
     setError(null);
@@ -62,23 +61,22 @@ export default function VerifySlabFlow() {
     setError(null);
 
     try {
-      // Dummy response (replace with real API call)
-      const data: VerificationResult = {
-        certificationNumber: trimmed,
-        set: "00",
-        name: "357642",
-        number: "ioi",
-        language: "dfsa",
-        variant: "dsf",
-        grade: "dsf",
-        subgrade: "32323223",
-        year: "32",
-      };
+      // Calling your real API
+      const response = await fetch(
+        `/api/getSlab?certificationNumber=${trimmed}`,
+      );
+      const data = await response.json();
 
+      if (!response.ok) {
+        // This catches 404 (Not Found) or 400 (Missing field) from your API
+        throw new Error(data.error || "Verification failed");
+      }
+
+      // Successfully found the card
       setResult(data);
       setStep("result");
-    } catch (e) {
-      setError("Could not verify this number. Try again.");
+    } catch (e: any) {
+      setError(e.message || "Could not verify this number. Try again.");
     } finally {
       setLoading(false);
     }
@@ -124,7 +122,7 @@ export default function VerifySlabFlow() {
             <button
               type="button"
               onClick={onGoToForm}
-              className="inline-flex font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px] border px-[25px] py-[11px] font-semibold text-[16px]"
+              className="inline-flex font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px] border px-[25px] py-[11px] text-[16px]"
               style={{
                 borderColor: "#00D0FF",
                 color: "#062126",
@@ -150,13 +148,7 @@ export default function VerifySlabFlow() {
 
         {step === "form" && (
           <div
-            className="
-              w-full max-w-[519px]
-              rounded-[12px]
-              border
-              bg-[#3A3A3A]/90
-              shadow-[0_18px_60px_rgba(0,0,0,0.55)]
-            "
+            className="w-full max-w-[519px] rounded-[12px] border bg-[#3A3A3A]/90 shadow-[0_18px_60px_rgba(0,0,0,0.55)]"
             style={{
               fontFamily: "Poppins, sans-serif",
               borderWidth: 1,
@@ -204,16 +196,10 @@ export default function VerifySlabFlow() {
                   <input
                     value={cert}
                     onChange={(e) => setCert(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && onVerify()}
                     placeholder="Certification Number"
                     aria-label="Certification Number"
-                    className="
-                      w-full h-[48.5px]
-                      rounded-[6px]
-                      border
-                      outline-none
-                      text-white
-                      placeholder:text-white/40
-                    "
+                    className="w-full h-[48.5px] rounded-[6px] border outline-none text-white placeholder:text-white/40"
                     style={{
                       borderWidth: 1,
                       borderColor: "rgba(255,255,255,0.14)",
@@ -227,7 +213,9 @@ export default function VerifySlabFlow() {
 
                   <div className="mt-2 min-h-[18px]">
                     {error && (
-                      <p className="text-[13px] text-red-300">{error}</p>
+                      <p className="text-[14px] font-medium text-red-400">
+                        {error}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -236,16 +224,10 @@ export default function VerifySlabFlow() {
                   type="button"
                   onClick={onVerify}
                   disabled={loading}
-                  className="
-                    w-full h-[60px]
-                    rounded-[12px]
-                    border bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_100.42%)]
-                    inline-flex items-center justify-center
-                  "
+                  className="w-full h-[60px] rounded-[12px] border bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_100.42%)] inline-flex items-center justify-center"
                   style={{
                     borderWidth: 1,
                     borderColor: "#00D0FF",
-
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
                     fontSize: 16,
@@ -255,6 +237,7 @@ export default function VerifySlabFlow() {
                     paddingBottom: 11,
                     paddingLeft: 25,
                     paddingRight: 25,
+                    color: "#062126",
                   }}
                 >
                   {loading ? "Verifying..." : "Verify"}
@@ -279,7 +262,7 @@ export default function VerifySlabFlow() {
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             {/* Logo */}
-            <div className="relative w-[187px] h-[65.7421875px]">
+            <div className="relative w-[187px] h-[65.74px]">
               <Image
                 src="/logo.png"
                 alt="LSG"
@@ -295,13 +278,13 @@ export default function VerifySlabFlow() {
               </h2>
             </div>
 
-            {/* Table box: Updated border thickness and color */}
+            {/* Table box */}
             <div
               className="w-full rounded-[12px] overflow-hidden"
               style={{
-                borderWidth: "2px", // Changed from 2px to 1px
+                borderWidth: "1px",
                 borderStyle: "solid",
-                borderColor: "#00EFFE", // Changed color to #00EFFE
+                borderColor: "#00EFFE",
               }}
             >
               <TableRow
@@ -312,9 +295,9 @@ export default function VerifySlabFlow() {
               <TableRow label="Name" value={result.name} />
               <TableRow label="Number" value={result.number} />
               <TableRow label="Language" value={result.language} />
-              <TableRow label="Variant" value={result.variant} />
+              <TableRow label="Variant" value={result.variant || "N/A"} />
               <TableRow label="Grade" value={result.grade} />
-              <TableRow label="Subgrade" value={result.subgrade} />
+              <TableRow label="Subgrade" value={result.subgrade || "N/A"} />
               <TableRow label="Year" value={result.year} isLast />
             </div>
 
@@ -366,11 +349,10 @@ export default function VerifySlabFlow() {
                 <button
                   type="button"
                   onClick={onVerifyDifferent}
-                  className="h-[50px]  w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border inline-flex items-center justify-center"
+                  className="h-[50px] w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border inline-flex items-center justify-center"
                   style={{
                     borderWidth: 1,
                     borderColor: "#00D0FF",
-
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
                     fontSize: 16,
@@ -379,6 +361,7 @@ export default function VerifySlabFlow() {
                     paddingBottom: 11,
                     paddingLeft: 25,
                     paddingRight: 25,
+                    color: "#062126",
                   }}
                 >
                   Verify a Different Card
@@ -402,16 +385,16 @@ function TableRow({
   isLast?: boolean;
 }) {
   const cellStyle =
-    "w-[464px] h-[87px] flex items-center justify-start pl-5 text-center px-4";
+    "w-full sm:w-[464px] h-[87px] flex items-center justify-start pl-5 text-left px-4";
 
   return (
     <div
-      className={`flex w-full ${!isLast ? "border-b" : ""}`}
+      className={`flex flex-col sm:flex-row w-full ${!isLast ? "border-b" : ""}`}
       style={{ borderColor: "#00EFFE" }}
     >
       {/* Label Cell */}
       <div
-        className={`${cellStyle} font-semibold  text-[#FFFFFF] bg-black border-r`}
+        className={`${cellStyle} font-semibold text-[#FFFFFF] bg-black border-b sm:border-b-0 sm:border-r`}
         style={{ borderColor: "#00EFFE" }}
       >
         {label}
