@@ -4,6 +4,14 @@ import Image from "next/image";
 import { FaCheck } from "react-icons/fa";
 
 export default function AboutHero() {
+  const bulletPoints = [
+    "Sourcing from trusted channels",
+    "Light cleaning (no alterations)",
+    "Detailed grading of centering, surface, edges, and corners",
+    "Tamper-evident ultrasonic sealing",
+    "QR and serial-based verification",
+  ];
+
   return (
     <section className="relative isolate w-full bg-black overflow-hidden font-poppins">
       <div className="relative w-full min-h-[720px] sm:min-h-[820px] lg:h-[920px]">
@@ -22,29 +30,49 @@ export default function AboutHero() {
         </div>
 
         {/* --- CONTENT LAYER --- */}
-        <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
-          {/* Main Container: 1170.47px width */}
-          <div className="w-full max-w-[1170.47px] lg:h-[849.97px] flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-[117px] opacity-100 rotate-0">
+        <div className="relative z-10 h-full w-full flex items-center justify-center py-10 lg:py-0">
+          <div className="w-full max-w-[1170.47px] px-4 lg:px-0 lg:h-[859.97px] flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-[117px] opacity-100 rotate-0">
             {/* =========================================
-                LEFT ELEMENT
-               ========================================= */}
-            <div className="flex  flex-col w-full max-w-[602.47px]  h-[840.97px] gap-[20.08px] opacity-100 rotate-0">
-              {/* --- LEFT TOP HEADER --- */}
-              <div className="flex flex-col gap-[20.08px]">
-                <div className="flex items-center w-[145px] h-[10px] opacity-100 rotate-0">
-                  <span className="text-[#FFFFFF] font-semibold text-[16px] uppercase tracking-wider font-poppins">
-                    What We Do
-                  </span>
-                </div>
-
-                <h1 className="text-white w-full max-w-[630px] font-poppins font-semibold text-[44px] leading-[60px] tracking-[-0.02em] capitalize opacity-100 rotate-0">
+                LEFT ELEMENT (Inner Content Area)
+                ========================================= */}
+            <div
+              className="flex flex-col opacity-100 rotate-0 w-full lg:w-[602.47px] lg:h-[849.97px]"
+              style={{ gap: "20.08px" }}
+            >
+              {/* Left inner top div */}
+              <div className="flex flex-col opacity-100 w-full lg:w-[630px] lg:h-[180px]">
+                <span
+                  className="text-white font-medium capitalize"
+                  style={{
+                    fontSize: "24px",
+                    lineHeight: "60px",
+                    letterSpacing: "-2%",
+                  }}
+                >
+                  What We Do
+                </span>
+                <h1
+                  className="font-semibold capitalize text-[#00EFFE] w-full lg:w-[630px] lg:h-[120px]"
+                  style={{
+                    fontSize: "clamp(32px, 5vw, 44px)", // Responsive font size
+                    lineHeight: "1.2", // Dynamic line height for mobile
+                    letterSpacing: "-2%",
+                  }}
+                >
                   Inspection, Protection & Presentation
                 </h1>
               </div>
 
-              {/* --- LEFT DESCRIPTION --- */}
-              <div className="w-full max-w-[602.47px] opacity-100 rotate-0">
-                <p className="font-poppins font-medium text-[22px] leading-[100%] tracking-normal text-[#A1C7D6]">
+              {/* Description Paragraph */}
+              <div className="opacity-100 w-full lg:w-[602.47px] lg:h-[165px]">
+                <p
+                  className="font-medium text-[#A1C7D6]"
+                  style={{
+                    fontSize: "clamp(18px, 4vw, 22px)",
+                    lineHeight: "1.4",
+                    letterSpacing: "0%",
+                  }}
+                >
                   At LSG, we grade, authenticate, and encapsulate collectible
                   trading cards with a focus on clarity, protection, and display
                   value. Each card is hand-picked, inspected, and slabbed by our
@@ -52,38 +80,67 @@ export default function AboutHero() {
                 </p>
               </div>
 
-              {/* --- LEFT BULLETS --- */}
-              <div className="flex flex-col w-full max-w-[585.83px] gap-[14.34px] opacity-100 rotate-0">
-                <span className="font-poppins font-medium text-[22px] leading-[188%] tracking-normal text-[#A1C7D6]">
+              {/* Bullet Points Section */}
+              <div
+                className="flex flex-col opacity-100 w-full lg:w-[585.83px] lg:min-h-[312.72px]"
+                style={{
+                  gap: "14.34px",
+                }}
+              >
+                <h3
+                  className="font-medium text-[#A1C7D6] w-full lg:w-[384px]"
+                  style={{
+                    fontSize: "clamp(18px, 4vw, 22px)",
+                    lineHeight: "1.5",
+                    letterSpacing: "0%",
+                  }}
+                >
                   Our streamlined process includes:
-                </span>
+                </h3>
 
-                <ul className="flex flex-col gap-[14.34px]">
-                  {[
-                    "Sourcing from trusted channels",
-                    "Light cleaning (no alterations)",
-                    "Detailed grading of centering, surface, edges, and corners",
-                    "Tamper-evident ultrasonic sealing",
-                    "QR and serial-based verification",
-                  ].map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-3 w-full max-w-[536.49px] min-h-[60px] opacity-100 rotate-0"
+                <div className="flex flex-col gap-[14.34px]">
+                  {bulletPoints.map((point, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start lg:items-center opacity-100 w-full lg:w-[364.34px]"
+                      style={{
+                        minHeight: "35px",
+                        gap: "14.34px",
+                      }}
                     >
-                      <div className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#00D0FF] w-[24px] h-[24px]">
-                        <FaCheck size={12} color="#000" />
+                      {/* Left Icon: 35x35 */}
+                      <div
+                        className="flex-shrink-0 flex items-center justify-center bg-[#00EFFE] rounded-full mt-1 lg:mt-0"
+                        style={{ width: "35px", height: "35px" }}
+                      >
+                        <FaCheck className="text-black" />
                       </div>
-                      <span className="font-poppins font-normal text-[20px] leading-[100%] tracking-normal text-white">
-                        {item}
+                      {/* Right Text */}
+                      <span
+                        className="font-normal text-white flex-1 lg:w-[315px]"
+                        style={{
+                          fontSize: "clamp(16px, 4vw, 20px)",
+                          lineHeight: "1.2",
+                          letterSpacing: "0%",
+                        }}
+                      >
+                        {point}
                       </span>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
 
-              {/* --- LEFT BOTTOM TEXT --- */}
-              <div className="w-full max-w-[602.47px] opacity-100 rotate-0 mt-auto">
-                <p className="font-poppins font-medium text-[22px] leading-[100%] tracking-normal text-[#A1C7D6]">
+              {/* Bottom Text Div */}
+              <div className="opacity-100 w-full">
+                <p
+                  className="font-medium text-[#A1C7D6]"
+                  style={{
+                    fontSize: "clamp(18px, 4vw, 22px)",
+                    lineHeight: "1.4",
+                    letterSpacing: "0%",
+                  }}
+                >
                   We focus on cards that deserve the spotlight — from vintage
                   classics to modern hits — delivering ready-to-display slabs,
                   sealed with care and graded with transparency.
@@ -93,15 +150,13 @@ export default function AboutHero() {
 
             {/* =========================================
                 RIGHT ELEMENT (Image)
-                Width: 450px
-                Height: 840px (Requested)
-               ========================================= */}
-            <div className="relative w-full max-w-[450px] h-[840px] opacity-100 rotate-0  ">
+                ========================================= */}
+            <div className="relative w-full max-w-[450px] h-[550px] lg:h-[849px] opacity-100 rotate-0">
               <Image
                 src="/after.png"
                 alt="After Inspection"
                 fill
-                className="object-cover"
+                className="object-contain lg:object-cover"
                 priority
               />
             </div>

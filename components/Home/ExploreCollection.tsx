@@ -65,7 +65,7 @@ export default function ExploreCollection() {
                     {/* Placeholder for logo - center aligned */}
                     <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs">
                       <Image
-                        src="/Logo.png"
+                        src="/logo.png"
                         alt="Logo"
                         width={128}
                         height={45}

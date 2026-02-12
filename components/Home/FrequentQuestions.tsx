@@ -16,7 +16,7 @@ function CustomTriangle({ isOpen }: { isOpen: boolean }) {
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       className={`transition-transform duration-300 ease-in-out ${
-        isOpen ? "rotate-180 w-7 h-7" : "rotate-0 w-5 h-5"
+        isOpen ? "rotate-180 w-5 h-5" : "rotate-0 w-5 h-5"
       }`}
     >
       {/* Solid Triangle Pointing Down */}

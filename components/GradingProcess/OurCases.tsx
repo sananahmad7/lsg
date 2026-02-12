@@ -4,215 +4,71 @@ import Image from "next/image";
 import { FaCheck } from "react-icons/fa";
 
 export default function OurCases() {
+  const backSlabFeatures = [
+    "Silver-textured logo to signify authenticity",
+    "Embedded QR code for instant access to details",
+    "Crystal-clear, UV-resistant sealed display",
+    "Tamper-evident construction for added security",
+  ];
+
   return (
-    <section className="w-full flex bg-black justify-center">
-      {/* --- Main Component --- 
-          Width: 1200px
-          Height: 1764px
-          Gap: 40px
-      */}
-      <div
-        className="w-full flex flex-col items-center"
-        style={{
-          maxWidth: "1200px",
-          height: "1764px",
-          gap: "40px",
-          opacity: 1,
-          transform: "rotate(0deg)",
-        }}
-      >
-        {/* --- Header Component --- */}
-        <div
-          className="w-full flex items-center justify-center"
-          style={{
-            height: "90px",
-            maxWidth: "1200px",
-            opacity: 1,
-            transform: "rotate(0deg)",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: 700,
-              fontStyle: "normal",
-              fontSize: "60px",
-              lineHeight: "100%",
-              letterSpacing: "0%",
-              textAlign: "center",
-              color: "#00D0FF",
-            }}
-          >
+    <section className="w-full flex bg-black justify-center font-poppins antialiased overflow-hidden">
+      <div className="w-full flex flex-col items-center max-w-[1200px] gap-[20px] lg:gap-[40px] px-4 py-10">
+        {/* --- Header --- */}
+        <div className="w-full flex items-center justify-center lg:h-[90px]">
+          <h2 className="font-bold text-[32px] sm:text-[48px] lg:text-[60px] leading-[110%] text-center text-[#00D0FF]">
             Our Cases
           </h2>
         </div>
 
-        {/* --- Content Gradient Container --- */}
-        <div
-          className="w-full flex flex-col items-center border-white/10 "
-          style={{
-            maxWidth: "1200px",
-            height: "1634px",
-            gap: "30px",
-            opacity: 1,
-            transform: "rotate(0deg)",
-            borderRadius: "12px",
-            borderWidth: "1px",
-            paddingTop: "45px",
-            paddingRight: "70px",
-            paddingBottom: "45px",
-            paddingLeft: "70px",
-            background:
-              "linear-gradient(180deg, rgba(255, 255, 255, 0.084) 0%, rgba(217, 217, 217, 0.042) 100%)",
-          }}
-        >
-          {/* --- A1 (Inner Component) --- 
-              Width: 1124px, Height: 1544px, Gap: 50px
-          */}
-          <div
-            className="flex flex-col items-center justify-start border-yellow-900/0 "
-            style={{
-              maxWidth: "1124px",
-              width: "100%",
-              height: "1544px",
-              gap: "50px",
-              opacity: 1,
-              transform: "rotate(0deg)",
-              borderRadius: "12px",
-            }}
-          >
+        {/* --- Content Container --- */}
+        <div className="w-full flex flex-col items-center border-white/10 max-w-[1200px] gap-[30px] rounded-[12px] border p-6 sm:p-10 lg:pt-[45px] lg:pr-[70px] lg:pb-[45px] lg:pl-[70px] bg-gradient-to-b from-white/[0.084] to-zinc-400/[0.042]">
+          <div className="flex flex-col items-center justify-start max-w-[1124px] w-full gap-[60px] lg:gap-[50px]">
             {/* =========================================
-                1. FRONT SLAB (Image Left)
-               ========================================= */}
-            <div
-              className="flex flex-row items-center border-red-900/0"
-              style={{
-                maxWidth: "1078px",
-                width: "100%",
-                height: "656px",
-                justifyContent: "space-between",
-                opacity: 1,
-                transform: "rotate(0deg)",
-              }}
-            >
-              {/* LEFT: Image */}
-              <div
-                className="relative"
-                style={{
-                  width: "354px",
-                  height: "606px",
-                  gap: "10px",
-                  opacity: 1,
-                  transform: "rotate(0deg)",
-                  borderRadius: "6px",
-                  padding: "10px 8px",
-                }}
-              >
-                <div className="relative w-full h-full flex items-center justify-start">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/SlabDisplay.png"
-                      alt="Front Slab Display"
-                      fill
-                      className="object-contain object-left"
-                      priority
-                    />
-                  </div>
-                </div>
+                1. FRONT SLAB
+                ========================================= */}
+            <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between w-full max-w-[1078px] gap-8 lg:gap-0">
+              {/* IMAGE CONTAINER */}
+              <div className="relative w-[280px] h-[480px] sm:w-[320px] sm:h-[548px] lg:w-[354px] lg:h-[606px] rounded-[6px] overflow-hidden flex-shrink-0">
+                <Image
+                  src="/SlabDisplay.png"
+                  alt="Front Slab Display"
+                  fill
+                  className="object-contain lg:object-fill"
+                  priority
+                />
               </div>
 
-              {/* RIGHT: Text */}
-              <div
-                className="flex flex-col justify-center"
-                style={{
-                  width: "602.47px",
-                  height: "514.54px",
-                  gap: "20.08px",
-                  opacity: 1,
-                  transform: "rotate(0deg)",
-                }}
-              >
-                <div
-                  style={{
-                    width: "602.47px",
-                    height: "79px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: 700,
-                      fontSize: "44px",
-                      lineHeight: "180%",
-                      color: "#FFFFFF",
-                    }}
-                  >
-                    Front Slab Display
-                  </h3>
-                </div>
-
-                <div style={{ width: "602.47px", height: "132px" }}>
-                  <p
-                    style={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: 500,
-                      fontSize: "22px",
-                      lineHeight: "100%",
-                      color: "#A1C7D6",
-                    }}
-                  >
-                    The front of the slab showcases your card and its overall
-                    grade, providing a clear view of its condition. Each
-                    custom-made banner matches the card perfectly for a premium
-                    look.
-                  </p>
-                </div>
-
-                <div
-                  style={{
-                    width: "585.83px",
-                    height: "263.38px",
-                    gap: "14.34px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: 500,
-                      fontSize: "22px",
-                      lineHeight: "188%",
-                      color: "#A1C7D6",
-                    }}
-                  >
+              {/* Text Side (Beta) */}
+              <div className="flex flex-col justify-center w-full lg:w-[602.47px] gap-[20px]">
+                <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-white capitalize text-left lg:text-left">
+                  Front Slab Display
+                </h3>
+                <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[100%] text-[#A1C7D6] text-left lg:text-left">
+                  The front of the slab showcases your card and its overall
+                  grade, providing a clear view of its condition. Each
+                  custom-made banner matches the card perfectly for a premium
+                  look.
+                </p>
+                <div className="flex flex-col gap-[14px]">
+                  <h4 className="font-medium text-[18px] lg:text-[22px] text-[#A1C7D6] text-left">
                     Every Front Display includes:
-                  </span>
-                  <ul className="flex flex-col gap-3">
+                  </h4>
+                  <ul className="flex flex-col gap-[12px] lg:gap-[14px]">
                     {[
-                      "Unique barcode for quick verification",
-                      "Unique serial number for secure authentication.",
-                      "Detailed card name, including language, expansion, and exact title.",
-                      "Metallic silver-textured logo for authenticity",
+                      "Unique barcode",
+                      "Unique serial number",
+                      "Detailed card name",
+                      "Metallic silver logo",
                     ].map((item, i) => (
-                      <li key={i} className="flex items-center   gap-3">
-                        <div
-                          className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#00D0FF] "
-                          style={{ width: "24px", height: "24px" }}
-                        >
-                          <FaCheck size={12} color="#000" />
+                      <li
+                        key={i}
+                        className="flex items-start lg:items-center gap-[12px] lg:gap-[14.34px]"
+                      >
+                        <div className="flex-shrink-0 flex items-center justify-center w-[24px] h-[24px] lg:w-[29.17px] lg:h-[29.17px] rounded-full bg-[#00EFFE] mt-1 lg:mt-0">
+                          <FaCheck size={12} className="text-black" />
                         </div>
-                        <span
-                          style={{
-                            fontFamily: "Poppins, sans-serif",
-                            fontWeight: 400,
-                            fontSize: "20px",
-                            lineHeight: "100%",
-                            color: "#FFFFFF",
-                          }}
-                        >
+                        <span className="text-[16px] lg:text-[20px] leading-tight text-white">
                           {item}
                         </span>
                       </li>
@@ -223,109 +79,33 @@ export default function OurCases() {
             </div>
 
             {/* =========================================
-                2. BACK SLAB (Text Left, Image Right)
-               ========================================= */}
-            <div
-              className="flex flex-row items-center border-blue-900/0"
-              style={{
-                maxWidth: "1078px",
-                width: "100%",
-                height: "656px",
-                justifyContent: "space-between",
-                opacity: 1,
-                transform: "rotate(0deg)",
-              }}
-            >
-              {/* LEFT: Text Content */}
-              <div
-                className="flex flex-col justify-center"
-                style={{
-                  width: "602.47px",
-                  height: "514.54px",
-                  gap: "20.08px",
-                  opacity: 1,
-                  transform: "rotate(0deg)",
-                }}
-              >
-                <div
-                  style={{
-                    width: "602.47px",
-                    height: "79px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: 700,
-                      fontSize: "44px",
-                      lineHeight: "180%",
-                      color: "#FFFFFF",
-                    }}
-                  >
-                    Back Slab Display
-                  </h3>
-                </div>
+                2. BACK SLAB
+                ========================================= */}
+            <div className="flex flex-col-reverse lg:flex-row items-center lg:items-center justify-between w-full max-w-[1078px] gap-8 lg:gap-0">
+              {/* Alpha: Text Side */}
+              <div className="flex flex-col justify-center w-full lg:w-[602.47px] gap-[20px]">
+                <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-white capitalize text-left">
+                  Back Slab Display
+                </h3>
+                <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[100%] text-[#A1C7D6] text-left">
+                  The back of the slab is designed for easy verification and
+                  maximum security.
+                </p>
 
-                <div style={{ width: "602.47px", height: "132px" }}>
-                  <p
-                    style={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: 500,
-                      fontSize: "22px",
-                      lineHeight: "100%",
-                      color: "#A1C7D6",
-                    }}
-                  >
-                    The back of the slab is designed for easy verification and
-                    maximum security.
-                  </p>
-                </div>
-
-                <div
-                  style={{
-                    width: "585.83px",
-                    height: "263.38px",
-                    gap: "14.34px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: 500,
-                      fontSize: "22px",
-                      lineHeight: "188%",
-                      color: "#A1C7D6",
-                    }}
-                  >
+                <div className="flex flex-col gap-[14px]">
+                  <h4 className="font-medium text-[18px] lg:text-[22px] text-[#A1C7D6] text-left">
                     It includes:
-                  </span>
-                  <ul className="flex flex-col gap-3">
-                    {[
-                      "Silver-textured logo to signify authenticity",
-                      "Embedded QR code for instant access to the card's details",
-                      "Crystal-clear, UV-resistant sealed display to preserve the card's condition",
-                      "Tamper-evident construction for added security",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-center gap-3">
-                        <div
-                          className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#00D0FF] "
-                          style={{ width: "24px", height: "24px" }}
-                        >
-                          <FaCheck size={12} color="#000" />
+                  </h4>
+                  <ul className="flex flex-col gap-[12px] lg:gap-[14px]">
+                    {backSlabFeatures.map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start lg:items-center gap-[12px] lg:gap-[14.34px]"
+                      >
+                        <div className="flex-shrink-0 flex items-center justify-center w-[24px] h-[24px] lg:w-[35px] lg:h-[35px] rounded-full bg-[#00EFFE] mt-1 lg:mt-0">
+                          <FaCheck size={12} className="text-black" />
                         </div>
-                        <span
-                          style={{
-                            fontFamily: "Poppins, sans-serif",
-                            fontWeight: 400,
-                            fontSize: "20px",
-                            lineHeight: "100%",
-                            color: "#FFFFFF",
-                          }}
-                        >
+                        <span className="text-[16px] lg:text-[20px] leading-tight text-white">
                           {item}
                         </span>
                       </li>
@@ -334,66 +114,28 @@ export default function OurCases() {
                 </div>
               </div>
 
-              {/* RIGHT: Image Content */}
-              <div
-                className="relative"
-                style={{
-                  width: "354px",
-                  height: "606px",
-                  gap: "10px",
-                  opacity: 1,
-                  transform: "rotate(0deg)",
-                  borderRadius: "6px",
-                  padding: "10px 8px",
-                }}
-              >
-                <div className="relative w-full h-full flex items-center justify-end">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/BackSlabDisplay.png" // Assumed filename
-                      alt="Back Slab Display"
-                      fill
-                      className="object-contain object-right"
-                      priority
-                    />
-                  </div>
-                </div>
+              {/* Beta: Image side */}
+              <div className="relative w-[280px] h-[480px] sm:w-[320px] sm:h-[548px] lg:w-[354px] lg:h-[606px] rounded-[6px] overflow-hidden flex-shrink-0">
+                <Image
+                  src="/BackSlabDisplay.png"
+                  alt="Back Slab Display"
+                  fill
+                  className="object-contain lg:object-fill"
+                  priority
+                />
               </div>
             </div>
 
-            {/* =========================================
-                3. DISCLAIMER (Bottom Component)
-               ========================================= */}
-            <div
-              style={{
-                width: "1124px",
-                height: "132px",
-                opacity: 1,
-                transform: "rotate(0deg)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: 500,
-                  fontSize: "22px",
-                  lineHeight: "100%",
-                  letterSpacing: "0%",
-                  color: "#A1C7D6",
-                  textAlign: "left",
-                  margin: 0,
-                }}
-              >
-                Please Note: LSG Custom Grading is a collector-based,
-                independent grading project and is not affiliated with
-                professional third-party grading companies such as PSA, CGC,
-                ACE, or others. The assigned grade is based on an independent
-                evaluation, and is intended for display purposes. It should not
-                be considered an official certification or compared to
-                professional grading services
+            {/* --- DISCLAIMER --- */}
+            <div className="w-full lg:w-[1124px] lg:min-h-[132px] mt-4">
+              <p className="font-medium text-[14px] sm:text-[18px] lg:text-[22px] leading-[160%] lg:leading-[100%] text-[#A1C7D6] text-left">
+                <span className="font-bold text-white">Please Note:</span> LSG
+                Custom Grading is a collector-based, independent grading project
+                and is not affiliated with professional third-party grading
+                companies such as PSA, CGC, ACE, or others. The assigned grade
+                is based on an independent evaluation, and is intended for
+                display purposes. It should not be considered an official
+                certification or compared to professional grading services
               </p>
             </div>
           </div>

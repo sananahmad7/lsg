@@ -75,7 +75,7 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
       {/* Separator Line */}
       <div
         style={{
-          width: "100%", // 322px relative to parent padding
+          width: "100%",
           height: 0,
           borderTop: "1px solid #CBD4E1",
           opacity: 1,
@@ -125,17 +125,19 @@ export default function ServiceHero() {
     <section className="relative isolate w-full bg-black overflow-hidden">
       {/* Keep desktop height 920, but allow smaller screens to grow naturally */}
       <div className="relative w-full min-h-[720px] sm:min-h-[820px] lg:h-[920px]">
-        {/* Background */}
+        {/* Background - Adjusted for visibility and scale */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-x-0 top-8 bottom-8 sm:top-10 sm:bottom-10 lg:top-[70px] lg:bottom-[70px]">
-            <Image
-              src="/result.png"
-              alt="Services hero background"
-              fill
-              priority
-              sizes="100vw"
-              className="object-contain opacity-[0.27]"
-            />
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <div className="relative w-[150%] h-[150%] sm:w-[120%] sm:h-[120%] lg:w-[110%] lg:h-[110%]">
+              <Image
+                src="/result.png"
+                alt="Services hero background"
+                fill
+                priority
+                sizes="100vw"
+                className="object-contain opacity-80"
+              />
+            </div>
           </div>
         </div>
 

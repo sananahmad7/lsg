@@ -23,18 +23,21 @@ export default function GetInTouchWithUs() {
     console.log("Contact form:", form);
   };
 
+  // Reusable Tailwind Class string for the "Etched" input style
+  const inputStyles = `
+    w-full h-[50px] rounded-[6px] 
+    bg-gradient-to-b from-[#121212] to-[#080808]
+    border border-white/[0.05] border-t-white/10
+    text-white placeholder:text-[#FFFFFF99]
+    px-4 py-3 outline-none
+    shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]
+    focus:border-[#00EFFE]/40 focus:from-[#151515]
+    transition-all duration-300
+  `;
+
   return (
-    // Section is transparent
     <section className="w-full bg-transparent py-16 px-4 xl:px-8">
-      <div
-        className="
-          mx-auto w-full max-w-[1300px]
-          rounded-[20px] 
-          bg-black/80
-          border-[2.34px] border-white/15
-          p-6 sm:p-10 lg:p-[45px]
-        "
-      >
+      <div className="mx-auto w-full max-w-[1300px] rounded-[20px] bg-black/80 border-[2.34px] border-white/15 p-6 sm:p-10 lg:p-[45px]">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-[80px]">
           {/* --- LEFT SIDE: TEXT & FORM --- */}
           <div className="w-full lg:w-[500px] flex-shrink-0 flex flex-col gap-8">
@@ -62,14 +65,7 @@ export default function GetInTouchWithUs() {
                   placeholder="First Name"
                   value={form.firstName}
                   onChange={onChange("firstName")}
-                  className="
-                    w-full h-[50px]
-                    rounded-[6px] border border-white/10
-                    bg-[#FFFFFF0D] text-white
-                    placeholder:text-white/35   
-                    px-4 py-3 outline-none
-                    focus:border-[#00EFFE]/50 transition-colors
-                  "
+                  className={inputStyles}
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 />
                 <input
@@ -77,14 +73,7 @@ export default function GetInTouchWithUs() {
                   placeholder="Last Name"
                   value={form.lastName}
                   onChange={onChange("lastName")}
-                  className="
-                    w-full h-[50px]
-                    rounded-[6px] border border-white/10
-                    bg-[#FFFFFF0D] text-white
-                    placeholder:text-white/35
-                    px-4 py-3 outline-none
-                    focus:border-[#00EFFE]/50 transition-colors
-                  "
+                  className={inputStyles}
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 />
               </div>
@@ -95,14 +84,7 @@ export default function GetInTouchWithUs() {
                 type="email"
                 value={form.email}
                 onChange={onChange("email")}
-                className="
-                  w-full h-[50px]
-                  rounded-[6px] border border-white/10
-                  bg-[#FFFFFF0D] text-white
-                  placeholder:text-white/35
-                  px-4 py-3 outline-none
-                  focus:border-[#00EFFE]/50 transition-colors
-                "
+                className={inputStyles}
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
@@ -112,14 +94,7 @@ export default function GetInTouchWithUs() {
                 type="tel"
                 value={form.phone}
                 onChange={onChange("phone")}
-                className="
-                  w-full h-[50px]
-                  rounded-[6px] border border-white/10
-                  bg-[#FFFFFF0D] text-white
-                  placeholder:text-white/35
-                  px-4 py-3 outline-none
-                  focus:border-[#00EFFE]/50 transition-colors
-                "
+                className={inputStyles}
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
@@ -128,27 +103,13 @@ export default function GetInTouchWithUs() {
                 placeholder="Message"
                 value={form.message}
                 onChange={onChange("message")}
-                className="
-                  w-full h-[128px]
-                  rounded-[6px] border border-white/10
-                  bg-[#FFFFFF0D] text-white
-                  placeholder:text-white/35
-                  px-4 py-3 outline-none resize-none
-                  focus:border-[#00EFFE]/50 transition-colors
-                "
+                className={`${inputStyles} h-[128px] resize-none`}
                 style={{ fontFamily: "Poppins, sans-serif" }}
               />
 
               <button
                 type="submit"
-                className="
-                  w-full h-[50px]
-                  rounded-[5px]
-                  bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126]
-                  font-bold text-[18px]
-                  flex items-center justify-center
-                  transition-transform hover:scale-[1.01] active:scale-[0.99]
-                "
+                className="w-full h-[50px] rounded-[5px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-bold text-[18px] flex items-center justify-center transition-transform hover:scale-[1.01] active:scale-[0.99]"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Send

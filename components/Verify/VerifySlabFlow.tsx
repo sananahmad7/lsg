@@ -101,7 +101,7 @@ export default function VerifySlabFlow() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.27]"
+          className="object-cover opacity-[0.80]"
         />
       </div>
 
@@ -290,7 +290,7 @@ export default function VerifySlabFlow() {
 
             {/* Header */}
             <div className="w-full max-w-[426px] h-[66px] flex items-center justify-center">
-              <h2 className="text-[#00D0FF] font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[100%] text-center">
+              <h2 className="text-[#00EFFE] font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[100%] text-center">
                 Verification Result
               </h2>
             </div>
@@ -366,7 +366,7 @@ export default function VerifySlabFlow() {
                 <button
                   type="button"
                   onClick={onVerifyDifferent}
-                  className="h-[50px] w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border inline-flex items-center justify-center"
+                  className="h-[50px]  w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border inline-flex items-center justify-center"
                   style={{
                     borderWidth: 1,
                     borderColor: "#00D0FF",
@@ -395,28 +395,30 @@ export default function VerifySlabFlow() {
 function TableRow({
   label,
   value,
-  isLast,
+  isLast = false,
 }: {
   label: string;
-  value: string;
+  value: string | number;
   isLast?: boolean;
 }) {
+  const cellStyle =
+    "w-[464px] h-[87px] flex items-center justify-start pl-5 text-center px-4";
+
   return (
     <div
-      className="grid grid-cols-[1fr_1fr]"
-      style={{
-        borderBottom: isLast ? "none" : "2px solid #00EFFE", // Inner horizontal lines
-      }}
+      className={`flex w-full ${!isLast ? "border-b" : ""}`}
+      style={{ borderColor: "#00EFFE" }}
     >
+      {/* Label Cell */}
       <div
-        className="px-4 py-3 text-white/85 text-[13px]"
-        style={{
-          borderRight: "2px solid #00EFFE", // Inner vertical line
-        }}
+        className={`${cellStyle} font-semibold  text-[#FFFFFF] bg-black border-r`}
+        style={{ borderColor: "#00EFFE" }}
       >
         {label}
       </div>
-      <div className="px-4 py-3 text-white/85 text-[13px]">{value}</div>
+
+      {/* Value Cell */}
+      <div className={`${cellStyle} text-[#FFFFFF] bg-black`}>{value}</div>
     </div>
   );
 }
