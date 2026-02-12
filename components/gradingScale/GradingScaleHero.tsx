@@ -15,10 +15,7 @@ export default function GradingScaleHero() {
     <section className="relative w-full bg-black overflow-hidden font-poppins">
       {/* --- BACKGROUND LAYER --- */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        <div
-          className="relative opacity-100"
-          style={{ width: "1097.12px", height: "1097.12px" }}
-        >
+        <div className="relative opacity-100 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] lg:w-[1097.12px] lg:h-[1097.12px]">
           <Image
             src="/result.png"
             alt="Background rings"
@@ -30,12 +27,9 @@ export default function GradingScaleHero() {
       </div>
 
       {/* --- CONTENT LAYER --- */}
-      <div className="relative z-10 w-full flex flex-col items-center pt-[50px] pb-[100px] px-4">
+      <div className="relative z-10 w-full flex flex-col items-center pt-[50px] pb-[50px] lg:pb-[100px] px-4">
         {/* Topmost Logo */}
-        <div
-          className="relative mb-[23.34px]"
-          style={{ width: "231px", height: "95.66px" }}
-        >
+        <div className="relative mb-[23.34px] w-[150px] h-[62px] lg:w-[231px] lg:h-[95.66px]">
           <Image
             src="/logo.png"
             alt="LSG Logo"
@@ -46,63 +40,52 @@ export default function GradingScaleHero() {
         </div>
 
         {/* Header & Description */}
-        <div
-          className="flex flex-col items-center gap-4 text-center mb-[80px]"
-          style={{ maxWidth: "1195px" }}
-        >
-          <h1 className="font-semibold text-[#00EEFE] leading-[140%] text-[44px]">
+        <div className="flex flex-col items-center gap-4 text-center mb-10 lg:mb-[80px] w-full max-w-[1195px]">
+          <h1 className="font-semibold text-[#00EEFE] leading-[120%] lg:leading-[140%] text-[28px] sm:text-[36px] lg:text-[44px]">
             LegacySlabsGrading (LSG) – Official Score Definitions
           </h1>
-          <p className="text-[#C9C9C9] text-[18px] font-normal">
+          <p className="text-[#C9C9C9] text-[15px] sm:text-[18px] font-normal px-4">
             Each card is graded on a scale from LSG 10 to LSG 1 based on
             centering, corners, edges, and surface.
           </p>
         </div>
 
         {/* Main Content Container */}
-        <div
-          className="flex items-center justify-center"
-          style={{ width: "100%", maxWidth: "1292px", height: "697.89px" }}
-        >
-          {/* Inner Container - Adjusted to allow overlapping */}
-          <div
-            className="flex flex-row items-center justify-center relative"
-            style={{ width: "1072px", height: "697.89px" }}
-          >
-            {/* LEFT: Beta Component 
-                z-0 ensures it stays behind the image.
-            */}
-            <div
-              className="flex flex-col bg-[#141414] border-[1px] border-solid border-[#00EFFE] rounded-[12px] justify-between p-8 z-0 relative"
-              style={{ width: "675px", height: "557.38px" }}
-            >
+        <div className="flex items-center justify-center w-full max-w-[1292px] lg:h-[697.89px]">
+          {/* Inner Container */}
+          <div className="flex flex-col lg:flex-row items-center justify-center relative w-full lg:w-[1072px] lg:h-[697.89px] gap-10 lg:gap-0">
+            {/* LEFT: Beta Component */}
+            <div className="flex flex-col bg-[#141414] border-[1px] border-solid border-[#00EFFE] rounded-[12px] justify-between p-6 sm:p-8 z-0 relative w-full lg:w-[675px] h-auto lg:h-[557.38px] gap-6 lg:gap-0">
               {/* Beta Top Header */}
-              <h2 className="font-semibold text-[#00EFFE] leading-[130%] text-[44px]">
+              <h2 className="font-semibold text-[#00EFFE] leading-[130%] text-[32px] lg:text-[44px]">
                 LSG 10 – Flawless
               </h2>
 
               {/* Beta Description */}
-              <p className="font-medium text-[#C9C9C9] text-[22px] leading-[130%]">
+              <p className="font-medium text-[#C9C9C9] text-[18px] lg:text-[22px] leading-[140%] lg:leading-[130%]">
                 A high-end card with near-perfect visual appeal. May have one or
                 two minor, non-distracting imperfections such as soft corner,
                 print speck, or slight off-centering.
               </p>
 
               {/* Beta Bullet Points */}
-              <div className="flex flex-col gap-[14.34px]">
-                <h3 className="font-medium text-[#A1C7D6] text-[22px] leading-[188%]">
+              <div className="flex flex-col gap-[14.34px] w-full lg:w-[585.83px]">
+                <h3 className="font-medium text-[#A1C7D6] text-[18px] lg:text-[22px] leading-[140%] lg:leading-[188%]">
                   Our streamlined process includes:
                 </h3>
                 <div className="flex flex-col gap-[14.34px]">
                   {bulletPoints.map((point, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-[14.34px]"
+                      className="flex items-start lg:items-center gap-[14.34px] w-full"
                     >
-                      <div className="flex-shrink-0 flex items-center justify-center bg-[#00EFFE] rounded-full w-[35px] h-[35px]">
-                        <FaCheck size={16} className="text-black" />
+                      <div className="flex-shrink-0 flex items-center justify-center bg-[#00EFFE] rounded-full w-[28px] h-[28px] lg:w-[35px] lg:h-[35px] mt-1 lg:mt-0">
+                        <FaCheck
+                          size={12}
+                          className="text-black lg:text-[16px]"
+                        />
                       </div>
-                      <span className="text-white text-[20px]">
+                      <span className="text-white text-[16px] lg:text-[20px] leading-[140%] lg:leading-[100%]">
                         <span className="font-semibold">{point.label}:</span>{" "}
                         {point.value}
                       </span>
@@ -112,21 +95,16 @@ export default function GradingScaleHero() {
               </div>
 
               {/* Beta Last Component */}
-              <p className="font-medium text-[#A1C7D6] text-[22px]">
+              <p className="font-medium text-[#A1C7D6] text-[18px] lg:text-[22px] leading-[140%] lg:leading-normal">
                 A card with slight natural wear that still looks pristine in any
-                case or display.{" "}
+                case or display.
               </p>
             </div>
 
-            {/* RIGHT: Image container
-                ml-[-11px] pushes the image over the left component's border.
-                z-10 ensures the image sits on top of the border.
-            */}
+            {/* RIGHT: Image container */}
             <div
-              className="relative rounded-[9.2px] overflow-hidden ml-[-11px] z-10 bg-black"
+              className="relative rounded-[9.2px] overflow-hidden lg:ml-[-11px] z-10 bg-black w-[280px] h-[480px] sm:w-[350px] sm:h-[600px] lg:w-[408px] lg:h-[697.89px]"
               style={{
-                width: "408px",
-                height: "697.89px",
                 padding: "15.34px 12.27px",
               }}
             >
