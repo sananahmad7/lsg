@@ -102,8 +102,10 @@ export default function GetInTouchWithUs() {
                 className="text-[#A1C7D6] text-[16px] lg:text-[18px] leading-[160%] font-normal"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
-                Got a question about your LSG slab, grading details, or
-                what&apos;s in stock? Reach out.
+                Got a question about your LSG slab, grading details, or what’s
+                in stock?
+                <br />
+                Reach out — we’re happy to help you get what you’re looking for.
               </p>
             </div>
 
@@ -167,7 +169,7 @@ export default function GetInTouchWithUs() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-[50px] rounded-[5px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-bold text-[18px] flex items-center justify-center transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:grayscale"
+                className="w-full h-[50px] cursor-pointer rounded-[5px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-bold text-[18px] flex items-center justify-center transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:grayscale"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 {loading ? "Sending..." : "Send"}
