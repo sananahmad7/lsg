@@ -33,7 +33,7 @@ export default function ExploreCollection() {
               // W: 308, H: 628, Radius: 20.91, Padding: 12px (Y) 9px (X)
               <div
                 key={item.id}
-                className="bg-[#111111] border border-gray-800 flex flex-col items-center box-border"
+                className="bg-[#303030]  flex flex-col items-center box-border"
                 style={{
                   width: "308px",
                   height: "628px",
@@ -127,12 +127,12 @@ export default function ExploreCollection() {
                       {/* ... inside collectionItems.map ... */}
                       <Link
                         href={`/grading-scale?img=${encodeURIComponent(item.image)}`}
-                        className="bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-black hover:bg-[#00D0FF]/90 hover:scale-101 transition-colors flex items-center justify-center"
+                        className="bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] shadow-[0px_13.71px_30.86px_0px_#008CFF40] text-black hover:bg-[#00D0FF]/90 hover:scale-101 transition-colors flex items-center justify-center"
                         style={{
                           width: "113px",
                           height: "39px",
                           borderRadius: "10.29px",
-                          borderWidth: "0.86px",
+
                           padding: "9.43px 21.43px",
                           gap: "2.57px",
                         }}
