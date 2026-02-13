@@ -2,72 +2,82 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
 
 export default function GradingWithCare() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const imageVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.9, x: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
     <section className="w-full bg-black py-10">
-      {/* Outer Frame (Figma: Whole Component) 
-        W: 1440 (max), H: 607
-        Padding: 25px (Y), 70px (X)
-        Border: 1px, Radius: 12px
-      */}
-      <div className="mx-auto w-full  px-4 lg:px-0">
+      <div className="mx-auto w-full px-4 lg:px-0">
         <div
-          className="w-full relative overflow-hidden flex items-center justify-center"
+          className="w-full relative overflow-hidden flex items-center justify-center rounded-[12px] border border-white/10"
           style={{
-            // Exact Figma Gradient & Border
             background:
               "linear-gradient(180deg, rgba(255, 255, 255, 0.084) 0%, rgba(217, 217, 217, 0.042) 100%)",
-            borderRadius: "12px",
-            border: "1px solid rgba(255, 255, 255, 0.1)", // Added slight opacity to border for realism
             paddingTop: "75px",
             paddingBottom: "75px",
           }}
         >
-          {/* Desktop Padding Override to match Figma 70px */}
-          <div
-            className="hidden lg:block absolute inset-0 pointer-events-none"
-            style={{ paddingLeft: "70px", paddingRight: "70px" }}
-          />
-
-          {/* Inner Component "Beta" 
-            W: 1179.52, H: 488, Gap: 97px
-          */}
-          <div className="w-full max-w-[1179px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[97px] px-4 lg:px-[70px]">
-            {/* LEFT INNER COMPONENT 
-              W: 715, H: 423
-            */}
-            <div className="w-full lg:w-[715px] flex flex-col gap-[40px]">
-              {/* Heading: H: 66px */}
-              <div className="w-full">
+          <motion.div
+            className="w-full max-w-[1179.52px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[97px] px-4 lg:px-[70px]"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={containerVariants}
+          >
+            <div className="w-full lg:w-[715px] flex flex-col gap-10">
+              <motion.div variants={itemVariants}>
                 <h2
-                  className="font-semibold text-[#00EEFE]"
+                  className="font-semibold text-[#00EEFE] leading-[110%] -tracking-[0.01em]"
                   style={{
                     fontFamily: "Poppins, sans-serif",
-                    fontSize: "44px", // Assumed based on height/style, adaptable for mobile
-                    lineHeight: "110%",
-                    letterSpacing: "-0.01em",
+                    fontSize: "44px",
                   }}
                 >
                   <span className="block text-[28px] sm:text-[36px] lg:text-[44px]">
                     Grading With Care & Protection
                   </span>
                 </h2>
-              </div>
+              </motion.div>
 
-              {/* Description Text 
-                W: 678, H: 217
-                Font: Poppins, 500 (Medium), 22px, 140% LH
-              */}
-              <div className="w-full lg:max-w-[678px]">
+              <motion.div
+                className="w-full lg:max-w-[678px]"
+                variants={itemVariants}
+              >
                 <p
-                  className="text-[#A1C7D6]"
+                  className="text-[#A1C7D6] font-medium leading-[140%] -tracking-[0.01em]"
                   style={{
                     fontFamily: "Poppins, sans-serif",
-                    fontWeight: 500,
                     fontSize: "22px",
-                    lineHeight: "140%",
-                    letterSpacing: "-0.01em",
                   }}
                 >
                   <span className="block text-[16px] sm:text-[18px] lg:text-[22px]">
@@ -82,45 +92,26 @@ export default function GradingWithCare() {
                     for any collection.
                   </span>
                 </p>
-              </div>
+              </motion.div>
 
-              {/* Button 
-                W: 237, H: 60, Radius: 12px
-              */}
-              <div>
+              <motion.div variants={itemVariants}>
                 <Link
                   href="/services"
-                  className="inline-flex hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-transform hover:scale-105"
+                  className="inline-flex hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-all active:scale-95 rounded-[12px] border border-[#00EEFE]"
                   style={{
                     width: "237px",
                     height: "60px",
-
-                    borderRadius: "12px",
-                    border: "1px solid #00EEFE",
                     padding: "11px 25px",
-                    gap: "3px",
                   }}
                 >
-                  <span
-                    style={{
-                      fontFamily: "Sora, sans-serif",
-                      fontWeight: 700,
-                      fontSize: "16px",
-                      lineHeight: "151%",
-                      color: "#000000",
-                      textAlign: "center",
-                    }}
-                  >
+                  <span className="font-sora font-bold text-[16px] leading-[151%] text-black text-center">
                     Learn More
                   </span>
                 </Link>
-              </div>
+              </motion.div>
             </div>
 
-            {/* RIGHT INNER COMPONENT (Image)
-              W: 433.71, H: 468.84
-            */}
-            <div className="relative flex-shrink-0">
+            <motion.div className="relative shrink-0" variants={imageVariants}>
               <div className="relative w-[280px] sm:w-[360px] lg:w-[433.7px] h-[300px] sm:h-[390px] lg:h-[468.8px]">
                 <Image
                   src="/pika.png"
@@ -131,8 +122,8 @@ export default function GradingWithCare() {
                   sizes="(max-width: 1024px) 100vw, 434px"
                 />
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

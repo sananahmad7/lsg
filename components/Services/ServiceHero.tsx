@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaCheck, FaCheckCircle } from "react-icons/fa";
+import { motion } from "framer-motion"; // Added for animations
 
 type FeatureCard = {
   title: string;
@@ -39,9 +40,35 @@ const featureCards: FeatureCard[] = [
   },
 ];
 
-function ServiceFeatureCard({ card }: { card: FeatureCard }) {
+// Animation Variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+function ServiceFeatureCard({
+  card,
+  index,
+}: {
+  card: FeatureCard;
+  index: number;
+}) {
   return (
-    <div
+    <motion.div
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
       className={[
         "w-full mx-auto",
         "rounded-[12px] border",
@@ -117,37 +144,48 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
       >
         Inquire Now
       </Link>
-    </div>
+    </motion.div>
   );
 }
 
 export default function ServiceHero() {
   return (
     <section className="relative isolate w-full bg-black overflow-hidden">
-      {/* Keep desktop height 920, but allow smaller screens to grow naturally */}
       <div className="relative w-full min-h-[720px] sm:min-h-[820px] lg:h-[920px]">
-        {/* Background - Adjusted for visibility and scale */}
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-            <div className="relative w-[150%] h-[150%] sm:w-[120%] sm:h-[120%] lg:w-[110%] lg:h-[110%]">
+            <motion.div
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1, opacity: 0.8 }}
+              transition={{ duration: 1.5 }}
+              className="relative w-[150%] h-[150%] sm:w-[120%] sm:h-[120%] lg:w-[110%] lg:h-[110%]"
+            >
               <Image
                 src="/result.png"
                 alt="Services hero background"
                 fill
                 priority
                 sizes="100vw"
-                className="object-contain opacity-80"
+                className="object-contain"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Content */}
         <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
           <div className="w-full max-w-[1132px] flex flex-col items-center gap-[50px] py-10 lg:py-0">
-            {/* A1 Header Section */}
-            <div className="w-full max-w-[923px] flex flex-col items-center gap-[22px] sm:gap-[31px]">
-              <h1
+            {/* Header Section */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="w-full max-w-[923px] flex flex-col items-center gap-[22px] sm:gap-[31px]"
+            >
+              <motion.h1
+                variants={fadeInUp}
                 className="text-center text-[#00EEFE] font-semibold px-2"
                 style={{
                   fontFamily: "Poppins, sans-serif",
@@ -156,9 +194,10 @@ export default function ServiceHero() {
                 <span className="block text-[26px] sm:text-[34px] lg:text-[44px] leading-[120%] lg:leading-[88.32px]">
                   Everything That Comes with an LSG Slab
                 </span>
-              </h1>
+              </motion.h1>
 
-              <p
+              <motion.p
+                variants={fadeInUp}
                 className="text-center text-[#A1C7D6] font-medium px-2"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
@@ -167,13 +206,16 @@ export default function ServiceHero() {
                   authentication, grading, and sealing— all built into the
                   product you receive. No subscriptions, no extra fees
                 </span>
-              </p>
+              </motion.p>
 
               {/* Buttons */}
-              <div className="w-full flex flex-col  sm:flex-row items-center justify-center gap-4 sm:gap-[25px]">
+              <motion.div
+                variants={fadeInUp}
+                className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-[25px]"
+              >
                 <Link
                   href="/contact"
-                  className="inline-flex hover:scale-[1.01] items-center  justify-center bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px]  w-full sm:w-[237px] h-[60px]"
+                  className="inline-flex hover:scale-[1.01] active:scale-[0.98] items-center justify-center bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] w-full sm:w-[237px] h-[60px] transition-transform"
                   style={{
                     fontFamily: "Sora, sans-serif",
                     fontWeight: 700,
@@ -190,17 +232,27 @@ export default function ServiceHero() {
                 >
                   Verify Your Slab
                 </Link>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            {/* A2: Feature Cards Grid */}
-            <div className="w-full flex justify-center">
+            {/* Feature Cards Grid */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={staggerContainer}
+              className="w-full flex justify-center"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px]">
-                {featureCards.map((card) => (
-                  <ServiceFeatureCard key={card.title} card={card} />
+                {featureCards.map((card, index) => (
+                  <ServiceFeatureCard
+                    key={card.title}
+                    card={card}
+                    index={index}
+                  />
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
