@@ -13,16 +13,76 @@ export default function GradingTable() {
   ];
 
   const rows = [
-    ["10", "50/50 - 60/40", "Sharp", "Clean", "Perfect"],
-    ["09", "60/40 - 65/35", "Minor Wear", "Slight Chipping", "Minor Scratches"],
-    ["08", "65/35 - 70/30", "Soft", "Notable Chipping", "Light Staining"],
-    ["07", "70/30 - 75/25", "Rounded", "Heavy Wear", "Print Lines"],
-    ["06", "75/25 - 80/20", "Damage", "Dings", "Scratches"],
-    ["05", "80/20 - 85/15", "Heavy Damage", "Worn", "Creased"],
-    ["04", "85/15 - 90/10", "Flaws", "Peeled", "Stained"],
-    ["03", "90/10 - 100/0", "Poor", "Cracked", "Holes"],
-    ["02", "Off-center", "Beaten", "Rough", "Multiple Flaws"],
-    ["01", "Miscut", "Poor", "Poor", "Poor"],
+    [
+      "10",
+      "Up to 65/35 or better",
+      "All sharp or near-sharp",
+      "All sharp or near-sharp",
+      "Clean, glossy, no flaws under normal light",
+    ],
+    [
+      "09",
+      "Up to 70/30",
+      "One slightly soft corner",
+      "One slightly soft corner",
+      "One light roller line or small speck",
+    ],
+    [
+      "08",
+      "Up to 75/25",
+      "Two slightly soft tips",
+      "Two slightly soft tips",
+      "Slight scuff or light print line",
+    ],
+    [
+      "07",
+      "Up to 80/20",
+      "Minor roundness on 2+ corners",
+      "Minor roundness on 2+ corners",
+      "Light marks or gloss dip",
+    ],
+    [
+      "06",
+      "Up to 85/15",
+      "Rounded on two corners, soft on others",
+      "Rounded on two corners, soft on others",
+      "Light gloss loss or surface dullness",
+    ],
+    [
+      "05",
+      "Up to 90/10",
+      "Noticeably soft tips",
+      "Noticeably soft tips",
+      "Surface fading, visible scratches",
+    ],
+    [
+      "04",
+      "Up to 95/5",
+      "Soft or dull corners with minor bends",
+      "Soft or dull corners with minor bends",
+      "Light crease or major scuffing, still presentable",
+    ],
+    [
+      "03",
+      "Very off-center but full image present",
+      "Very soft or visibly damaged corners",
+      "Very soft or visibly damaged corners",
+      "Obvious creases, dirt spots, or gloss loss",
+    ],
+    [
+      "02",
+      "Extremely off-center, image touches edge",
+      "Major rounding or crushed tips",
+      "Major rounding or crushed tips",
+      "Deep scratches, fading, or major scuffing",
+    ],
+    [
+      "01",
+      "Miscut but no missing print",
+      "Heavily worn, fully rounded, but no missing pap",
+      "Heavily worn, fully rounded, but no missing pap",
+      "Heavy surface wear, dirt, stains, or ink loss",
+    ],
   ];
 
   return (
