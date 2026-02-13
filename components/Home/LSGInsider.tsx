@@ -2,21 +2,73 @@
 
 import React, { useState } from "react";
 
+type Status = { type: "success" | "error" | "info"; message: string } | null;
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
 export default function LSGInsider() {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<Status>(null);
 
-  const onJoin = () => {
-    console.log("Join:", email);
+  const onJoin = async () => {
+    if (loading) return; // prevent double-submits
+
+    const normalized = email.trim().toLowerCase();
+
+    if (!normalized) {
+      setStatus({ type: "error", message: "Please enter an email address." });
+      return;
+    }
+
+    // Optional client-side format check (server still validates)
+    if (!EMAIL_REGEX.test(normalized)) {
+      setStatus({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
+      return;
+    }
+
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch("/api/joinList", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: normalized }),
+      });
+
+      const result = await response.json().catch(() => ({}) as any);
+
+      if (!response.ok) {
+        setStatus({
+          type: "error",
+          message:
+            result?.error || result?.message || "Failed to join the list.",
+        });
+        return;
+      }
+
+      setStatus({
+        type: "success",
+        message: result?.message || "You’re in! 🎉",
+      });
+      setEmail("");
+    } catch {
+      setStatus({
+        type: "error",
+        message: "Network error. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <section className="w-full bg-black py-16 px-4 lg:px-8">
-      {/* Main Container:
-        - Max width constrained for large screens
-        - Background dark gray
-        - Rounded corners
-        - Responsive padding
-      */}
+      {/* Main Container */}
       <div
         className="
           mx-auto w-full max-w-[1272px]
@@ -27,11 +79,7 @@ export default function LSGInsider() {
         "
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
-        {/* Content Wrapper:
-          - Flex column on mobile (stack vertical)
-          - Flex row on large screens (side-by-side)
-          - Gap handles spacing between text and form
-        */}
+        {/* Content Wrapper */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-16">
           {/* --- LEFT SIDE: TEXT CONTENT --- */}
           <div className="flex flex-col gap-6 w-full lg:max-w-[700px] text-center lg:text-left">
@@ -52,46 +100,76 @@ export default function LSGInsider() {
           </div>
 
           {/* --- RIGHT SIDE: EMAIL FORM --- */}
-          {/* Centered vertically relative to the text block on desktop */}
           <div className="w-full lg:w-auto flex flex-col justify-center items-center lg:items-end lg:h-full lg:self-center">
-            <div
-              className="
-                w-full max-w-[400px] h-[62px]
-                rounded-[10px] border border-white/20
-                flex items-stretch overflow-hidden
-                bg-[#383838]
-              "
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                onJoin();
+              }}
+              className="w-full flex flex-col items-center lg:items-end gap-3"
             >
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter email address"
+              <div
                 className="
-                  flex-1 h-full bg-transparent
-                  px-[20px]
-                  text-white placeholder:text-white/40
-                  outline-none text-[16px]
-                  focus:bg-white/5 transition-colors
-                "
-                style={{
-                  fontWeight: 400,
-                  lineHeight: "151%",
-                }}
-              />
-
-              <button
-                type="button"
-                onClick={onJoin}
-                className="
-                  h-full w-[90px] sm:w-[120px] 
-                  bg-[#00D0FF] hover:bg-[#00D0FF]/90 transition-colors
-                  text-[#062126] font-bold text-[16px]
-                  flex items-center justify-center
+                  w-full max-w-[400px] h-[62px]
+                  rounded-[10px] border border-white/20
+                  flex items-stretch overflow-hidden
+                  bg-[#383838]
+                  grid grid-cols-3 sm:flex
                 "
               >
-                Join
-              </button>
-            </div>
+                <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter email address"
+                  disabled={loading}
+                  className="
+                    col-span-2
+                    flex-1 h-full bg-transparent
+                    px-[15px] sm:px-[20px]
+                    text-white placeholder:text-white/40
+                    outline-none text-[14px] sm:text-[16px]
+                    focus:bg-white/5 transition-colors
+                    min-w-0
+                    disabled:opacity-60
+                  "
+                  style={{
+                    fontWeight: 400,
+                    lineHeight: "151%",
+                  }}
+                />
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="
+                    col-span-1
+                    h-full w-full sm:w-[120px] 
+                    bg-[#00D0FF] hover:bg-[#00D0FF]/90 transition-colors
+                    text-[#062126] font-bold text-[14px] sm:text-[16px]
+                    flex items-center cursor-pointer justify-center
+                    disabled:opacity-70 disabled:cursor-not-allowed
+                  "
+                >
+                  {loading ? "Joining..." : "Join"}
+                </button>
+              </div>
+
+              {/* Status Message */}
+              {status && (
+                <p
+                  aria-live="polite"
+                  className={`w-full max-w-[400px] text-sm sm:text-base ${
+                    status.type === "success"
+                      ? "text-green-300"
+                      : status.type === "error"
+                        ? "text-red-300"
+                        : "text-white/80"
+                  }`}
+                >
+                  {status.message}
+                </p>
+              )}
+            </form>
           </div>
         </div>
       </div>

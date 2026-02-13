@@ -1,25 +1,25 @@
+// app/(admin)/admin/AdminSidebar.tsx
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { MdAddCircle, MdDashboard, MdListAlt, MdLogout } from "react-icons/md";
+import { MdAddCircle, MdListAlt, MdLogout, MdEmail } from "react-icons/md";
 
 const menuItems = [
   { name: "Add Cards", href: "/admin/addCards", icon: MdAddCircle },
   { name: "View Inventory", href: "/admin/allSlabs", icon: MdListAlt },
+  { name: "Insider List", href: "/admin/insiderList", icon: MdEmail },
 ];
 
-export default function AdminSidebar() {
+// Added onClose prop
+export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("/api/logout", {
-        method: "POST",
-      });
-
+      const res = await fetch("/api/logout", { method: "POST" });
       if (res.ok) {
-        // Redirect to login page and refresh to clear any cached states
+        if (onClose) onClose(); // Close sidebar on logout
         router.push("/admin");
         router.refresh();
       }
@@ -29,18 +29,17 @@ export default function AdminSidebar() {
   };
 
   return (
-    // 'h-full' ensures the nav takes up the whole sidebar height
     <nav className="flex flex-col h-full p-4 gap-2">
       <div className="text-[#00D0FF] font-bold text-xl px-4 mb-6">
         LSG ADMIN
       </div>
 
-      {/* Main Menu Items */}
       <div className="flex-1 flex flex-col gap-2">
         {menuItems.map((item) => (
           <Link
             key={item.name}
             href={item.href}
+            onClick={() => onClose?.()} // Close sidebar when link is clicked
             className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
               pathname === item.href
                 ? "bg-[#00D0FF]/10 text-[#00D0FF]"
@@ -53,7 +52,6 @@ export default function AdminSidebar() {
         ))}
       </div>
 
-      {/* Logout Button at the Bottom */}
       <div className="pt-4 border-t border-white/10">
         <button
           onClick={handleLogout}

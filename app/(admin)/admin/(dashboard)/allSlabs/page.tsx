@@ -185,13 +185,6 @@ export default function AllSlabsPage() {
                         >
                           <FiTrash2 size={18} />
                         </button>
-                        <Link
-                          href={`/verify?cert=${slab.certificationNumber}&step=result`}
-                          className="p-2 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg transition-all"
-                          title="View Public Link"
-                        >
-                          <FiExternalLink size={18} />
-                        </Link>
                       </div>
                     </td>
                   </tr>

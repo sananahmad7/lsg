@@ -101,7 +101,8 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
       {/* Push button to bottom */}
       <div className="flex-1" />
 
-      <button
+      <Link
+        href={"/contact"}
         type="button"
         className="w-full rounded-[8px] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] border inline-flex items-center justify-center transition-transform active:scale-[0.98]"
         style={{
@@ -115,7 +116,7 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
         }}
       >
         Inquire Now
-      </button>
+      </Link>
     </div>
   );
 }

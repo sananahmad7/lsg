@@ -61,7 +61,7 @@ export default function Footer() {
                 { label: "Verify Slab", href: "/verify-slab" },
                 { label: "Services", href: "/services" },
                 { label: "Grading Process", href: "/grading-process" },
-                { label: "About Us", href: "/about" },
+                { label: "About Us", href: "/about-us" },
                 { label: "Contact Us", href: "/contact" },
               ]}
             />

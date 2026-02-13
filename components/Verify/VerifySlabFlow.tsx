@@ -30,18 +30,28 @@ export default function VerifySlabFlow() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const initialStep = (searchParams.get("step") as Step) || "landing";
-  const initialCert = searchParams.get("cert") || "";
-
-  const [step, setStep] = useState<Step>(initialStep);
-  const [cert, setCert] = useState(initialCert);
+  const [step, setStep] = useState<Step>("landing");
+  const [cert, setCert] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<VerificationResult | null>(null);
 
+  // RESET LOGIC: When the component mounts for the first time (page load/return),
+  // force it back to the landing step and clear the URL params.
   useEffect(() => {
-    router.replace(buildQuery(step, cert || undefined), { scroll: false });
+    setStep("landing");
+    setCert("");
+    setResult(null);
+    setError(null);
+    router.replace("/verify-slab", { scroll: false });
+  }, [router]);
+
+  // Sync state changes to the URL during the active session
+  useEffect(() => {
+    if (step !== "landing" || cert !== "") {
+      router.replace(buildQuery(step, cert || undefined), { scroll: false });
+    }
   }, [step, cert, router]);
 
   const onGoToForm = () => {
@@ -61,22 +71,18 @@ export default function VerifySlabFlow() {
     setError(null);
 
     try {
-      // Calling your real API
       const response = await fetch(
         `/api/getSlab?certificationNumber=${trimmed}`,
       );
       const data = await response.json();
 
       if (!response.ok) {
-        // This catches 404 (Not Found) or 400 (Missing field) from your API
         throw new Error(data.error || "Verification failed");
       }
 
-      // Successfully found the card
       setResult(data);
       setStep("result");
     } catch (e: unknown) {
-      // Logic: Use type guarding to check if e is an Error object
       const errorMessage =
         e instanceof Error
           ? e.message
@@ -96,7 +102,6 @@ export default function VerifySlabFlow() {
 
   return (
     <section className="relative isolate w-full min-h-screen bg-black overflow-x-hidden py-10">
-      {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
           src={step === "result" ? "/result.png" : "/home1.webp"}
@@ -108,7 +113,6 @@ export default function VerifySlabFlow() {
         />
       </div>
 
-      {/* Content layer */}
       <div className="relative z-10 min-h-screen w-full flex items-center justify-center px-4">
         {step === "landing" && (
           <div
@@ -127,7 +131,7 @@ export default function VerifySlabFlow() {
             <button
               type="button"
               onClick={onGoToForm}
-              className="inline-flex font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px] border px-[25px] py-[11px] text-[16px]"
+              className="inline-flex cursor-pointer font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px] border px-[25px] py-[11px] text-[16px]"
               style={{
                 borderColor: "#00D0FF",
                 color: "#062126",
@@ -229,7 +233,7 @@ export default function VerifySlabFlow() {
                   type="button"
                   onClick={onVerify}
                   disabled={loading}
-                  className="w-full h-[60px] rounded-[12px] border bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_100.42%)] inline-flex items-center justify-center"
+                  className="w-full h-[60px] rounded-[12px] cursor-pointer border bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_100.42%)] inline-flex items-center justify-center"
                   style={{
                     borderWidth: 1,
                     borderColor: "#00D0FF",
@@ -251,7 +255,7 @@ export default function VerifySlabFlow() {
                 <button
                   type="button"
                   onClick={() => setStep("landing")}
-                  className="w-full text-center text-[13px] text-white/70 hover:text-white transition-colors"
+                  className="w-full text-center cursor-pointer text-[13px] text-white/70 hover:text-white transition-colors"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   Back
@@ -266,7 +270,6 @@ export default function VerifySlabFlow() {
             className="w-full max-w-[904px] flex flex-col items-center gap-[60px]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            {/* Logo */}
             <div className="relative w-[187px] h-[65.74px]">
               <Image
                 src="/logo.png"
@@ -276,14 +279,12 @@ export default function VerifySlabFlow() {
               />
             </div>
 
-            {/* Header */}
             <div className="w-full max-w-[426px] h-[66px] flex items-center justify-center">
               <h2 className="text-[#00EFFE] font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[100%] text-center">
                 Verification Result
               </h2>
             </div>
 
-            {/* Table box */}
             <div
               className="w-full rounded-[12px] overflow-hidden"
               style={{
@@ -306,7 +307,6 @@ export default function VerifySlabFlow() {
               <TableRow label="Year" value={result.year} isLast />
             </div>
 
-            {/* Below table content */}
             <div
               className="w-full max-w-[904px] rounded-[12px] border"
               style={{
@@ -354,7 +354,7 @@ export default function VerifySlabFlow() {
                 <button
                   type="button"
                   onClick={onVerifyDifferent}
-                  className="h-[50px] w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border inline-flex items-center justify-center"
+                  className="h-[50px] cursor-pointer w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border inline-flex items-center justify-center"
                   style={{
                     borderWidth: 1,
                     borderColor: "#00D0FF",
@@ -397,7 +397,6 @@ function TableRow({
       className={`flex flex-col sm:flex-row w-full ${!isLast ? "border-b" : ""}`}
       style={{ borderColor: "#00EFFE" }}
     >
-      {/* Label Cell */}
       <div
         className={`${cellStyle} font-semibold text-[#FFFFFF] bg-black border-b sm:border-b-0 sm:border-r`}
         style={{ borderColor: "#00EFFE" }}
@@ -405,7 +404,6 @@ function TableRow({
         {label}
       </div>
 
-      {/* Value Cell */}
       <div className={`${cellStyle} text-[#FFFFFF] bg-black`}>{value}</div>
     </div>
   );

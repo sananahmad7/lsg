@@ -30,3 +30,9 @@ model Slab {
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 }
+
+model InsiderEmailList {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
