@@ -6,7 +6,7 @@ import { FaCheck } from "react-icons/fa";
 export default function OurCases() {
   const backSlabFeatures = [
     "Silver-textured logo to signify authenticity",
-    "Embedded QR code for instant access to details",
+    "Embedded QR code for instant access to card's details",
     "Crystal-clear, UV-resistant sealed display to preserve the card’s condition",
     "Tamper-evident construction for added security",
   ];

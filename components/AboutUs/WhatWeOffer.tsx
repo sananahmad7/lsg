@@ -110,7 +110,7 @@ export default function WhatWeOffer() {
               src="/Offer.png"
               alt="What We Offer - Card Diagram"
               fill
-              className="object-contain lg:object-cover "
+              className="object-contain scale-125 "
               priority
             />
           </motion.div>

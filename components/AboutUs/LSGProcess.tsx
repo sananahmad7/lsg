@@ -8,42 +8,42 @@ const steps = [
     id: "01",
     title: "Authentication",
     description: "Visual checks to verify originality and release",
-    color: "#7C3AED", // Purple
+    color: "1. #8A00E6", // Purple
     position: "top", // Row 1 Top
   },
   {
     id: "02",
     title: "Cleaning",
     description: "Light surface dust removal (no tampering)",
-    color: "#D946EF", // Magenta
+    color: "#CB00E6", // Magenta
     position: "bottom", // Row 1 Bottom (Offset)
   },
   {
     id: "03",
     title: "Surface Evaluation",
     description: "Scans for damage, print flaws, and dirt",
-    color: "#EC4899", // Pink
+    color: "#E600D6", // Pink
     position: "top", // Row 1 Top
   },
   {
     id: "04",
     title: "Corners, Edges, Centering",
     description: "Scored individually with subgrades",
-    color: "#EF4444", // Red
+    color: "#E60004", // Red
     position: "bottom", // Row 2 Bottom (Visual flow: 3 -> 4)
   },
   {
     id: "05",
     title: "Final Grade",
     description: "An averaged result based on all four areas",
-    color: "#22C55E", // Green
+    color: "#00E645", // Green
     position: "top", // Row 2 Top (Visual flow: 4 -> 5)
   },
   {
     id: "06",
     title: "Encapsulation",
     description: "Ultrasonically sealed, UV-protected, and tamper-proof slabs",
-    color: "#3B82F6", // Blue
+    color: "#0060E6", // Blue
     position: "bottom", // Row 2 Bottom (Visual flow: 5 -> 6)
   },
 ];
@@ -60,9 +60,9 @@ export default function LSGProcess() {
           >
             The LSG Process
           </h2>
-          <div className="w-full max-w-[763px] border-b border-white/10 pb-4">
+          <div className="w-full max-w-[763px]  pb-4">
             <p
-              className="font-medium text-[18px] lg:text-[22px] leading-[140%] text-[#A1C7D6]"
+              className="font-medium text-[18px] lg:text-[22px] leading-[32px] text-[#A1C7D6]"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               We’ve built a full in-house system for careful, consistent

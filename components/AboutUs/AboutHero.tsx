@@ -24,7 +24,7 @@ export default function AboutHero() {
               fill
               priority
               sizes="100vw"
-              className="object-contain opacity-[0.27]"
+              className="object-contain opacity-[0.67]"
             />
           </div>
         </div>

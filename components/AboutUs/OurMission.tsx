@@ -30,7 +30,7 @@ export default function OurMission() {
           {/* Description */}
           <div className="w-full">
             <p
-              className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] lg:leading-[140%] tracking-[-0.01em] text-[#A1C7D6]"
+              className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[28px] lg:leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               At Legacy Slabs Grading, we believe every collectible card
