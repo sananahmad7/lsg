@@ -20,7 +20,7 @@ export default function OurMission() {
           {/* Header */}
           <div className="flex flex-col gap-[12px]">
             <h2
-              className="text-[#00D0FF] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[60px] tracking-[-0.02em] capitalize"
+              className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[60px] tracking-[-0.02em] capitalize"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Our Mission
@@ -51,6 +51,7 @@ export default function OurMission() {
               rounded-[12px]
               text-[#062126] font-bold text-[16px] leading-[151%]
               transition-transform hover:scale-[1.02] active:scale-[0.98]
+              shadow-[0px_16px_36px_0px_#008CFF40]
             "
             style={{
               background:

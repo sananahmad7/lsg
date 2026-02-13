@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/navigation"; // 1. Import the hook
 
 // --- CONTENT DATA EXTRACTED FROM IMAGES ---
 const privacyContent = [
@@ -80,6 +82,7 @@ const privacyContent = [
 ];
 
 export default function PrivacyPolicy() {
+  const router = useRouter(); // 2. Initialize the router
   return (
     <div className="relative w-full min-h-screen bg-black overflow-hidden flex justify-center py-20 px-4">
       {/* --- BACKGROUND LAYER --- */}
@@ -100,7 +103,7 @@ export default function PrivacyPolicy() {
       <div className="relative z-10 w-full max-w-[1300px] flex flex-col gap-[30px]">
         {/* HEADER */}
         <h1
-          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[150%] text-[#00D0FF]"
+          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[150%] text-[#00EFFE]"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           Privacy Policy | Legacy Slabs Grading (LSG)
@@ -115,7 +118,7 @@ export default function PrivacyPolicy() {
             >
               {/* Alpha Header */}
               <h2
-                className="font-semibold text-[18px] lg:text-[20px] leading-[100%] tracking-[-0.02em] capitalize text-[#00D0FF]"
+                className="font-semibold text-[18px] lg:text-[20px] leading-[100%] tracking-[-0.02em] capitalize text-[#00EFFE]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {item.title}
@@ -155,20 +158,22 @@ export default function PrivacyPolicy() {
             Last updated: April 2025
           </p>
 
-          <Link
-            href="/"
+          <button
+            type="button"
+            onClick={() => router.back()} // Trigger the back navigation
             className="
-              inline-flex items-center justify-center
-              w-[140px] h-[50px]
-              rounded-[8px]
-              bg-[#00D0FF] text-black
-              font-bold text-[16px]
-              transition-transform hover:scale-[1.02] active:scale-[0.98]
-            "
+          inline-flex items-center justify-center
+          w-[190px] h-[50px]
+          rounded-[8px]
+          bg-[#00EFFE] text-black
+          font-bold text-[16px]
+          transition-transform hover:scale-[1.02] active:scale-[0.98]
+          cursor-pointer
+        "
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Back
-          </Link>
+          </button>
         </div>
       </div>
     </div>

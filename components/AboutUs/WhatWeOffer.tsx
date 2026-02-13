@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FaCheck } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 // --- DATA ---
 const features = [
@@ -12,15 +13,31 @@ const features = [
   "Cards From Pokémon, Yu-Gi-Oh!, Magic, Sports, Lorcana, And More",
 ];
 
+// --- ANIMATION VARIANTS ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 export default function WhatWeOffer() {
   return (
     <section className="w-full bg-black py-16 px-4 lg:px-8">
-      {/* Outer Container:
-        - Max Width: 1300px
-        - Fixed Height on Desktop (min-h-[580px])
-        - Gradient Background & Blur
-        - Border
-      */}
+      {/* Outer Container */}
       <div
         className="
           mx-auto w-full max-w-[1300px]
@@ -39,24 +56,29 @@ export default function WhatWeOffer() {
       >
         {/* Inner Flex Container (A1) */}
         <div className="w-full max-w-[1160px] flex flex-col lg:flex-row items-center gap-12 lg:gap-[50px]">
-          {/* =========================================
-              LEFT ELEMENT (Text Content)
-              Desktop: ~592px width
-             ========================================= */}
-          <div className="flex flex-col justify-center gap-8 lg:gap-[30px] w-full lg:max-w-[592px]">
+          {/* LEFT ELEMENT (Text Content) */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex flex-col justify-center gap-8 lg:gap-[30px] w-full lg:max-w-[592px]"
+          >
             {/* Heading */}
-            <h2
+            <motion.h2
+              variants={itemVariants}
               className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[50px] tracking-[-0.02em] capitalize text-center lg:text-left"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               What We Offer
-            </h2>
+            </motion.h2>
 
             {/* Bullet Points */}
             <ul className="flex flex-col gap-6 lg:gap-[20px]">
               {features.map((item, index) => (
-                <li
+                <motion.li
                   key={index}
+                  variants={itemVariants}
                   className="flex items-center gap-4 lg:gap-[20px]"
                 >
                   {/* Icon */}
@@ -71,24 +93,27 @@ export default function WhatWeOffer() {
                   >
                     {item}
                   </span>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* =========================================
-              RIGHT ELEMENT (Image)
-              Desktop: Takes remaining space (approx 500px+)
-             ========================================= */}
-          <div className="relative w-full lg:flex-1 h-[300px] sm:h-[400px] lg:h-[500px]">
+          {/* RIGHT ELEMENT (Image) */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            className="relative w-full lg:flex-1 h-[300px] sm:h-[400px] lg:h-[500px]"
+          >
             <Image
-              src="/Offer.png" // Ensure this image is in your public folder
+              src="/Offer.png"
               alt="What We Offer - Card Diagram"
               fill
               className="object-contain"
               priority
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

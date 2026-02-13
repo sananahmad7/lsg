@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation"; // 1. Import the hook
 import React from "react";
 
 // --- CONTENT DATA ---
@@ -77,6 +78,8 @@ const termsContent = [
 ];
 
 export default function TermsAndConditions() {
+  const router = useRouter(); // 2. Initialize the router
+
   return (
     <div className="relative w-full min-h-screen bg-black overflow-hidden flex justify-center py-20 px-4">
       {/* --- BACKGROUND LAYER --- */}
@@ -97,7 +100,7 @@ export default function TermsAndConditions() {
       <div className="relative z-10 w-full max-w-[1300px] flex flex-col gap-[30px]">
         {/* HEADER */}
         <h1
-          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[150%] text-[#00D0FF]"
+          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[150%] text-[#00EFFE]"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           Terms and Conditions
@@ -143,29 +146,30 @@ export default function TermsAndConditions() {
           ))}
         </div>
 
-        {/* FOOTER AREA */}
         <div className="w-full max-w-[1300px] mx-auto mt-10 flex flex-col items-start gap-8">
           <p
-            className="text-white font-medium text-[18px] leading-[100%]"
+            className="text-white font-medium text-[18px] leading-[140%]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Last updated: April 2025
           </p>
 
-          <Link
-            href="/"
+          <button
+            type="button"
+            onClick={() => router.back()} // Trigger the back navigation
             className="
-              inline-flex items-center justify-center
-              w-[140px] h-[50px]
-              rounded-[8px]
-              bg-[#00D0FF] text-black
-              font-bold text-[16px]
-              transition-transform hover:scale-[1.02] active:scale-[0.98]
-            "
+          inline-flex items-center justify-center
+          w-[190px] h-[50px]
+          rounded-[8px]
+          bg-[#00EFFE] text-black
+          font-bold text-[16px]
+          transition-transform hover:scale-[1.02] active:scale-[0.98]
+          cursor-pointer
+        "
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Back
-          </Link>
+          </button>
         </div>
       </div>
     </div>

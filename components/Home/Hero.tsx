@@ -57,15 +57,11 @@ export default function HomeHero() {
     // --- CENTER CARD ---
     if (offset === 0) {
       return {
-        // Base: 160px width (fits 330px screens)
-        // SM: 220px
-        // LG: 266px
         className: `${baseClasses} z-30 opacity-100 left-1/2 
           w-[160px] h-[274px] 
           sm:w-[220px] sm:h-[376px] rounded-xl
           lg:w-[266px] lg:h-[446px]`,
         style: {
-          // Updated Shadow
           boxShadow:
             "0px 0px 31px 0px #00D5FFD9, 0px 0px 52.3px 3px #00D5FF80, 0px 0px 4.8px 0px #00D5FFA6, 0px 0px 1px 0px #00D5FF05",
         },
@@ -75,15 +71,13 @@ export default function HomeHero() {
     // --- INNER NEIGHBORS (Offset ±1) ---
     if (Math.abs(offset) === 1) {
       const isLeft = offset === -1;
-      // Base Offset: 90px (keeps cards tight on small screens)
-      // SM Offset: 140px
-      // LG Offset: 240px
       const leftClass = isLeft
         ? "left-[calc(50%-90px)] sm:left-[calc(50%-140px)] lg:left-[calc(50%-240px)]"
         : "left-[calc(50%+90px)] sm:left-[calc(50%+140px)] lg:left-[calc(50%+240px)]";
 
       return {
-        className: `${baseClasses} z-20 opacity-100 
+        // Set opacity to 60% (opacity-60) for side cards to make center pop
+        className: `${baseClasses} z-20 opacity-60 
           w-[130px] h-[222px] 
           sm:w-[190px] sm:h-[320px] 
           lg:w-[229px] lg:h-[390px] 
@@ -100,7 +94,6 @@ export default function HomeHero() {
         : "lg:left-[calc(50%+445px)]";
 
       return {
-        // Hidden on mobile/tablet, visible on desktop
         className: `${baseClasses} z-10 
           w-[195px] h-[332px] 
           opacity-0 lg:opacity-100 
@@ -114,7 +107,6 @@ export default function HomeHero() {
   };
 
   return (
-    // Changed min-h for mobile to accommodate content better without excessive whitespace
     <section className="relative isolate w-full bg-black box-border min-h-[650px] lg:h-[806px] py-10 lg:py-0 overflow-visible z-20">
       {/* Background Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -164,22 +156,27 @@ export default function HomeHero() {
 
         {/* --- BOTTOM CAROUSEL SECTION --- */}
         <div
-          className="flex items-center justify-center w-full mt-10 lg:mt-0 px-4 gap-2 lg:translate-y-[30px]"
+          className="flex items-center justify-center w-full mt-10 lg:mt-0 px-2 sm:px-4 gap-1 sm:gap-2 lg:translate-y-[30px]"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          {/* Left Arrow */}
+          {/* Left Arrow - Removed 'hidden sm:block' to show on mobile */}
           <button
             onClick={handlePrev}
-            className="hidden sm:block z-50 p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
+            className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
             aria-label="Previous card"
           >
-            <Image src="/left.png" alt="Previous" width={38} height={38} />
+            <Image
+              src="/left.png"
+              alt="Previous"
+              width={30}
+              height={30}
+              className=""
+            />
           </button>
 
           {/* Cards Container */}
-          {/* Adjusted height for mobile ratio */}
           <div className="relative w-full max-w-[1114px] h-[300px] sm:h-[380px] lg:h-[455px] flex items-center justify-center touch-pan-y">
             {images.map((src, index) => {
               const { className, style } = getCardProps(index);
@@ -200,13 +197,19 @@ export default function HomeHero() {
             })}
           </div>
 
-          {/* Right Arrow */}
+          {/* Right Arrow - Removed 'hidden sm:block' to show on mobile */}
           <button
             onClick={handleNext}
-            className="hidden sm:block z-50 p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
+            className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
             aria-label="Next card"
           >
-            <Image src="/right.png" alt="Next" width={38} height={38} />
+            <Image
+              src="/right.png"
+              alt="Next"
+              width={30}
+              height={30}
+              className=""
+            />
           </button>
         </div>
       </div>

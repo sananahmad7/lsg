@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function WhoWeAre() {
   return (
@@ -20,6 +21,7 @@ export default function WhoWeAre() {
           gap-10 lg:gap-[133px]
           px-6 py-12 
           lg:pl-[130px] lg:pr-[100px] lg:pb-[50px] lg:pt-[50px]
+          overflow-hidden
         "
         style={{
           background:
@@ -28,23 +30,35 @@ export default function WhoWeAre() {
       >
         {/* =========================================
             LEFT ELEMENT (Logo Image)
-            Desktop: ~427px width
+            Animate: Slide in from Left
            ========================================= */}
-        <div className="relative w-full max-w-[300px] lg:max-w-[427.46px] aspect-[427/524] flex-shrink-0">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative w-full max-w-[300px] lg:max-w-[427.46px] aspect-[427/524] flex-shrink-0"
+        >
           <Image
-            src="/LogoTransparent.png" // Ensure this file exists in your public folder (add .png/.jpg as needed)
+            src="/LogoTransparent.png"
             alt="LSG Grading Logo"
             fill
             className="object-contain"
             priority
           />
-        </div>
+        </motion.div>
 
         {/* =========================================
             RIGHT ELEMENT (Text Content)
-            Desktop: ~630px width
+            Animate: Slide in from Right
            ========================================= */}
-        <div className="flex flex-col gap-[30px] w-full max-w-[630px] text-center lg:text-left">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col gap-[30px] w-full max-w-[630px] text-center lg:text-left"
+        >
           {/* Header */}
           <div className="flex flex-col gap-[12px]">
             <h2
@@ -81,13 +95,14 @@ export default function WhoWeAre() {
               w-full sm:w-[311px] h-[60px]
               rounded-[12px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)]
               text-[#062126] font-bold text-[16px] leading-[151%]
-              transition-transform hover:scale-[1.02] active:scale-[0.98]
+              transition-all hover:scale-[1.02] active:scale-[0.98]
               mx-auto lg:mx-0 font-sora
+              shadow-[0px_16px_36px_0px_#008CFF40]
             "
           >
             Inquire Now
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

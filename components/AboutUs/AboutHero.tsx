@@ -42,7 +42,7 @@ export default function AboutHero() {
               {/* Left inner top div */}
               <div className="flex flex-col opacity-100 w-full lg:w-[630px] lg:h-[180px]">
                 <span
-                  className="text-white font-medium capitalize"
+                  className="text-[#FFFFFF] font-medium capitalize"
                   style={{
                     fontSize: "24px",
                     lineHeight: "60px",
@@ -117,7 +117,7 @@ export default function AboutHero() {
                       </div>
                       {/* Right Text */}
                       <span
-                        className="font-normal text-white flex-1 lg:w-[315px]"
+                        className="font-normal text-[#FFFFFF] flex-1 lg:w-[315px]"
                         style={{
                           fontSize: "clamp(16px, 4vw, 20px)",
                           lineHeight: "1.2",
