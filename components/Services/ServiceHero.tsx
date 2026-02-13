@@ -93,7 +93,7 @@ function ServiceFeatureCard({
 
         <span
           className="inline-flex items-center justify-center rounded-full"
-          style={{ width: 20, height: 20, backgroundColor: "#00EEFE" }}
+          style={{ width: 32, height: 32, backgroundColor: "#00EEFE" }}
         >
           <FaCheck size={12} color="#062126" />
         </span>
@@ -114,11 +114,11 @@ function ServiceFeatureCard({
         {card.items.map((t) => (
           <li key={t} className="flex items-start gap-2">
             <FaCheckCircle
-              size={16}
+              size={20}
               className="mt-[3px] shrink-0"
               color="#FFFFFF"
             />
-            <span className="text-[#FFFFFF] text-[14px] sm:text-[15px] leading-[20px]">
+            <span className="text-[#FFFFFF] text-[14px] sm:text-[15px] leading-[28px]">
               {t}
             </span>
           </li>
