@@ -54,7 +54,7 @@ export default function GradingWithCare() {
             viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
-            <div className="w-full lg:w-[715px] flex flex-col gap-10">
+            <div className="w-full lg:w-[715px] overflow-visible border flex flex-col gap-10">
               <motion.div variants={itemVariants}>
                 <h2
                   className="font-semibold text-[#00EEFE] leading-[110%] -tracking-[0.01em]"
@@ -63,7 +63,7 @@ export default function GradingWithCare() {
                     fontSize: "44px",
                   }}
                 >
-                  <span className="block text-[28px] sm:text-[36px] lg:text-[44px]">
+                  <span className="block text-[28px]  sm:text-[36px] lg:text-[44px] ">
                     Grading With Care & Protection
                   </span>
                 </h2>
@@ -84,12 +84,10 @@ export default function GradingWithCare() {
                     At LSG, we grade cards using our own scale, and we only work
                     with cards from our own collection. Every slab is sealed and
                     secured for long-term preservation, with attention to
-                    condition, presentation, and collector value.
-                    <br />
-                    <br />
-                    We clean the card moderately (no tampering), seal it with
-                    tamper-proof slabs, and display it in its best form — ready
-                    for any collection.
+                    condition, presentation, and collector value. We clean the
+                    card moderately (no tampering), seal it with tamper-proof
+                    slabs, and display it in its best form — ready for any
+                    collection.
                   </span>
                 </p>
               </motion.div>
@@ -112,7 +110,7 @@ export default function GradingWithCare() {
             </div>
 
             <motion.div className="relative shrink-0" variants={imageVariants}>
-              <div className="relative w-[280px] sm:w-[360px] lg:w-[433.7px] h-[300px] sm:h-[390px] lg:h-[468.8px]">
+              <div className="relative w-[280px] sm:w-[360px] border lg:w-[433.7px] h-[300px] sm:h-[390px] lg:h-[468.8px]">
                 <Image
                   src="/pika.png"
                   alt="Pokemon Cards Collage"
