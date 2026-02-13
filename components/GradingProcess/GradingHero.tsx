@@ -2,13 +2,14 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
 
 // --- TYPES ---
 type Step = {
   side: "left" | "right";
   title: string;
   description: string;
-  imageSrc: string; // Updated from icon
+  imageSrc: string;
 };
 
 const steps: Step[] = [
@@ -70,53 +71,114 @@ const steps: Step[] = [
   },
 ];
 
+// --- ANIMATION VARIANTS ---
+
+const cardVariants: Variants = {
+  hidden: (side: "left" | "right") => ({
+    opacity: 0,
+    x: side === "left" ? -50 : 50,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const dotVariants: Variants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 260, damping: 20 },
+  },
+};
+
+const arrowVariants: Variants = {
+  hidden: { scaleX: 0, opacity: 0, originX: 0 },
+  visible: {
+    scaleX: 1,
+    opacity: 1,
+    transition: { duration: 0.4, delay: 0.3 },
+  },
+};
+
 // --- COMPONENTS ---
 
 function AccentBracket({ side }: { side: "left" | "right" }) {
   const GAP_X = 14;
   const EXT_Y = 14;
   const THICK = 4;
-  const R = 26;
+  const R = 11; // Increased radius for much "roundier" appearance
   const glow =
-    "pointer-events-none absolute bg-[#00EEFE] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
-
+    "pointer-events-none absolute bg-[#00EFFE] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
   const visibilityClass = "hidden xl:block";
 
   if (side === "right") {
     return (
       <div className={visibilityClass}>
+        {/* Main Vertical Segment */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
-            top: -EXT_Y,
-            bottom: -EXT_Y,
+            top: -EXT_Y + R,
+            bottom: -EXT_Y + R,
             width: THICK,
-            borderRadius: R,
           }}
         />
+        {/* Top Corner Curve */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
             top: -EXT_Y,
-            height: THICK,
-            width: "50%",
-            maxWidth: 240,
+            height: R,
+            width: R,
+            background: "transparent",
+            borderRight: `${THICK}px solid #00EFFE`,
+            borderTop: `${THICK}px solid #00EFFE`,
             borderTopRightRadius: R,
-            borderBottomRightRadius: R,
+            boxShadow: "none",
+            filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
           }}
         />
+        {/* Bottom Corner Curve */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
             bottom: -EXT_Y,
+            height: R,
+            width: R,
+            background: "transparent",
+            borderRight: `${THICK}px solid #00EFFE`,
+            borderBottom: `${THICK}px solid #00EFFE`,
+            borderBottomRightRadius: R,
+            boxShadow: "none",
+            filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
+          }}
+        />
+        {/* Top Horizontal Segment */}
+        <span
+          className={glow}
+          style={{
+            right: -GAP_X + R,
+            top: -EXT_Y,
             height: THICK,
             width: "50%",
             maxWidth: 240,
-            borderTopRightRadius: R,
-            borderBottomRightRadius: R,
+          }}
+        />
+        {/* Bottom Horizontal Segment */}
+        <span
+          className={glow}
+          style={{
+            right: -GAP_X + R,
+            bottom: -EXT_Y,
+            height: THICK,
+            width: "50%",
+            maxWidth: 240,
           }}
         />
       </div>
@@ -124,38 +186,68 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
   }
   return (
     <div className={visibilityClass}>
+      {/* Main Vertical Segment */}
       <span
         className={glow}
         style={{
           left: -GAP_X,
-          top: -EXT_Y,
-          bottom: -EXT_Y,
+          top: -EXT_Y + R,
+          bottom: -EXT_Y + R,
           width: THICK,
-          borderRadius: R,
         }}
       />
+      {/* Top Corner Curve */}
       <span
         className={glow}
         style={{
           left: -GAP_X,
           top: -EXT_Y,
-          height: THICK,
-          width: "50%",
-          maxWidth: 240,
+          height: R,
+          width: R,
+          background: "transparent",
+          borderLeft: `${THICK}px solid #00EFFE`,
+          borderTop: `${THICK}px solid #00EFFE`,
           borderTopLeftRadius: R,
-          borderBottomLeftRadius: R,
+          boxShadow: "none",
+          filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
         }}
       />
+      {/* Bottom Corner Curve */}
       <span
         className={glow}
         style={{
           left: -GAP_X,
           bottom: -EXT_Y,
+          height: R,
+          width: R,
+          background: "transparent",
+          borderLeft: `${THICK}px solid #00EFFE`,
+          borderBottom: `${THICK}px solid #00EFFE`,
+          borderBottomLeftRadius: R,
+          boxShadow: "none",
+          filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
+        }}
+      />
+      {/* Top Horizontal Segment */}
+      <span
+        className={glow}
+        style={{
+          left: -GAP_X + R,
+          top: -EXT_Y,
           height: THICK,
           width: "50%",
           maxWidth: 240,
-          borderTopLeftRadius: R,
-          borderBottomLeftRadius: R,
+        }}
+      />
+      {/* Bottom Horizontal Segment */}
+      <span
+        className={glow}
+        style={{
+          left: -GAP_X + R,
+          bottom: -EXT_Y,
+          height: THICK,
+          width: "50%",
+          maxWidth: 240,
         }}
       />
     </div>
@@ -173,7 +265,11 @@ function DottedArrow({ dir }: { dir: "toRight" | "toLeft" }) {
   };
 
   return (
-    <div className="relative w-full h-0.5">
+    <motion.div
+      variants={arrowVariants}
+      style={{ originX: dir === "toRight" ? 0 : 1 }}
+      className="relative w-full h-0.5"
+    >
       <div className="absolute inset-0" style={dotsStyle} />
       <div
         className={`absolute top-1/2 -translate-y-1/2 ${dir === "toRight" ? "right-0" : "left-0"}`}
@@ -183,12 +279,12 @@ function DottedArrow({ dir }: { dir: "toRight" | "toLeft" }) {
           borderTop: "6px solid transparent",
           borderBottom: "6px solid transparent",
           ...(dir === "toRight"
-            ? { borderLeft: "10px solid #00EEFE" }
-            : { borderRight: "10px solid #00EEFE" }),
+            ? { borderLeft: "10px solid #00EFFE" }
+            : { borderRight: "10px solid #00EFFE" }),
           filter: "drop-shadow(0 0 10px rgba(0,208,255,0.45))",
         }}
       />
-    </div>
+    </motion.div>
   );
 }
 
@@ -197,20 +293,23 @@ function StepCard({
   description,
   imageSrc,
   accentSide,
+  side,
 }: {
   title: string;
   description: string;
   imageSrc: string;
   accentSide: "left" | "right";
+  side: "left" | "right";
 }) {
   return (
-    <div
+    <motion.div
+      custom={side}
+      variants={cardVariants}
       className="relative h-auto xl:h-[237px] w-full max-w-[505px] rounded-xl bg-[#3A3A3A] px-7 py-6 flex flex-col gap-2.5 shadow-[0_10px_40px_rgba(0,0,0,0.35)] overflow-visible mx-auto"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <AccentBracket side={accentSide} />
 
-      {/* 60x60 Image Container - No Background */}
       <div className="relative h-[60px] w-[60px] flex items-center justify-center shrink-0">
         <Image
           src={imageSrc}
@@ -221,14 +320,14 @@ function StepCard({
         />
       </div>
 
-      <h3 className="font-semibold text-[24px] leading-[130%] tracking-[0px] text-white">
+      <h3 className="font-semibold text-[24px] leading-[130%] tracking-[0px] text-[#FFFFFF]">
         {title}
       </h3>
 
       <p className="font-normal text-[16px] leading-[150%] text-[#A1C7D6]">
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -271,20 +370,34 @@ export default function OurGradingProcess() {
 
         <div className="relative z-10 w-full h-full flex justify-center px-4 lg:px-[70px] pt-20 lg:pt-24">
           <div className="w-full max-w-[1440px] flex flex-col items-center gap-[50px]">
-            <h2 className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[140%] font-poppins text-[#00EEFE]">
+            <motion.h2
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[140%] font-poppins text-[#00EFFE]"
+            >
               Our Grading Process
-            </h2>
+            </motion.h2>
 
             {/* DESKTOP TIMELINE */}
             <div className="hidden xl:block w-full max-w-[1236px] mx-auto">
               <div className="relative">
                 <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[30px] flex justify-center">
-                  <div className="w-1 rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.55)]" />
+                  <motion.div
+                    initial={{ height: 0 }}
+                    whileInView={{ height: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "linear" }}
+                    className="w-1 rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.55)] origin-top"
+                  />
                 </div>
                 <div className="flex flex-col gap-[60px]">
                   {steps.map((s, idx) => (
-                    <div
+                    <motion.div
                       key={`${s.title}-${idx}`}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-100px" }}
                       className="grid items-center grid-cols-[505px_98px_30px_98px_505px] relative"
                     >
                       <div className="flex justify-end">
@@ -294,6 +407,7 @@ export default function OurGradingProcess() {
                             description={s.description}
                             imageSrc={s.imageSrc}
                             accentSide="right"
+                            side="left"
                           />
                         ) : (
                           <div className="w-[505px]" />
@@ -307,7 +421,10 @@ export default function OurGradingProcess() {
                         )}
                       </div>
                       <div className="relative z-10 flex items-center justify-center">
-                        <div className="h-[30px] w-[30px] rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.65)]" />
+                        <motion.div
+                          variants={dotVariants}
+                          className="h-[30px] w-[30px] rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.65)]"
+                        />
                       </div>
                       <div className="flex items-center justify-center">
                         {s.side === "right" ? (
@@ -323,12 +440,13 @@ export default function OurGradingProcess() {
                             description={s.description}
                             imageSrc={s.imageSrc}
                             accentSide="left"
+                            side="right"
                           />
                         ) : (
                           <div className="w-[505px]" />
                         )}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -338,21 +456,41 @@ export default function OurGradingProcess() {
             <div className="xl:hidden w-full max-w-[700px] mx-auto">
               <div className="relative pl-8 sm:pl-12">
                 <div className="absolute left-[10px] sm:left-[14px] top-[20px] bottom-[20px] w-[4px] bg-[#00EEFE]/20 rounded-full">
-                  <div className="w-full h-full bg-[#00EEFE] shadow-[0_0_12px_rgba(0,208,255,0.55)] rounded-full opacity-80" />
+                  <motion.div
+                    initial={{ height: 0 }}
+                    whileInView={{ height: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5 }}
+                    className="w-full bg-[#00EEFE] shadow-[0_0_12px_rgba(0,208,255,0.55)] rounded-full origin-top"
+                  />
                 </div>
                 <div className="flex flex-col gap-8">
                   {steps.map((s, idx) => (
-                    <div key={`${s.title}-m-${idx}`} className="relative">
-                      <div className="absolute -left-[35px] sm:-left-[47px] top-[24px] h-[30px] w-[30px] rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.65)] z-10" />
-                      <div className="w-full flex justify-center sm:justify-start">
+                    <motion.div
+                      key={`${s.title}-m-${idx}`}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-50px" }}
+                      className="relative"
+                    >
+                      <motion.div
+                        variants={dotVariants}
+                        className="absolute -left-[35px] sm:-left-[47px] top-[24px] h-[30px] w-[30px] rounded-full bg-[#00EEFE] shadow-[0_0_18px_rgba(0,208,255,0.65)] z-10"
+                      />
+                      <motion.div
+                        variants={cardVariants}
+                        custom="right"
+                        className="w-full flex justify-center sm:justify-start"
+                      >
                         <StepCard
                           title={s.title}
                           description={s.description}
                           imageSrc={s.imageSrc}
                           accentSide="left"
+                          side="right"
                         />
-                      </div>
-                    </div>
+                      </motion.div>
+                    </motion.div>
                   ))}
                 </div>
               </div>

@@ -48,7 +48,7 @@ export default function GradingWithCare() {
           }}
         >
           <motion.div
-            className="w-full max-w-[1179.52px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[97px] px-4 lg:px-[70px]"
+            className="w-full max-w-[1179.52px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[97px] px-6 lg:px-0"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}

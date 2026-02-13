@@ -7,7 +7,7 @@ export default function OurCases() {
   const backSlabFeatures = [
     "Silver-textured logo to signify authenticity",
     "Embedded QR code for instant access to details",
-    "Crystal-clear, UV-resistant sealed display",
+    "Crystal-clear, UV-resistant sealed display to preserve the card’s condition",
     "Tamper-evident construction for added security",
   ];
 
@@ -16,7 +16,7 @@ export default function OurCases() {
       <div className="w-full flex flex-col items-center max-w-[1200px] gap-[20px] lg:gap-[40px] px-4 py-10">
         {/* --- Header --- */}
         <div className="w-full flex items-center justify-center lg:h-[90px]">
-          <h2 className="font-bold text-[32px] sm:text-[48px] lg:text-[60px] leading-[110%] text-center text-[#00D0FF]">
+          <h2 className="font-bold text-[32px] sm:text-[48px] lg:text-[60px] leading-[110%] text-center text-[#00EFFE]">
             Our Cases
           </h2>
         </div>
@@ -41,7 +41,7 @@ export default function OurCases() {
 
               {/* Text Side (Beta) */}
               <div className="flex flex-col justify-center w-full lg:w-[602.47px] gap-[20px]">
-                <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-white capitalize text-left lg:text-left">
+                <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-[#FFFFFF] capitalize text-left lg:text-left">
                   Front Slab Display
                 </h3>
                 <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[100%] text-[#A1C7D6] text-left lg:text-left">
@@ -56,10 +56,10 @@ export default function OurCases() {
                   </h4>
                   <ul className="flex flex-col gap-[12px] lg:gap-[14px]">
                     {[
-                      "Unique barcode",
-                      "Unique serial number",
-                      "Detailed card name",
-                      "Metallic silver logo",
+                      "Unique barcode for quick verification",
+                      "Unique serial number for secure authentication.",
+                      "Detailed card name, including language, expansion, and exact title.",
+                      "Metallic silver-textured logo for authenticity",
                     ].map((item, i) => (
                       <li
                         key={i}
@@ -84,7 +84,7 @@ export default function OurCases() {
             <div className="flex flex-col-reverse lg:flex-row items-center lg:items-center justify-between w-full max-w-[1078px] gap-8 lg:gap-0">
               {/* Alpha: Text Side */}
               <div className="flex flex-col justify-center w-full lg:w-[602.47px] gap-[20px]">
-                <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-white capitalize text-left">
+                <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-[#FFFFFF] capitalize text-left">
                   Back Slab Display
                 </h3>
                 <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[100%] text-[#A1C7D6] text-left">
@@ -128,7 +128,7 @@ export default function OurCases() {
 
             {/* --- DISCLAIMER --- */}
             <div className="w-full lg:w-[1124px] lg:min-h-[132px] mt-4">
-              <p className="font-medium text-[14px] sm:text-[18px] lg:text-[22px] leading-[160%] lg:leading-[100%] text-[#A1C7D6] text-left">
+              <p className="font-medium text-[14px] sm:text-[18px] lg:text-[22px] leading-[160%] lg:leading-[110%] text-[#A1C7D6] text-left">
                 <span className="font-bold text-white">Please Note:</span> LSG
                 Custom Grading is a collector-based, independent grading project
                 and is not affiliated with professional third-party grading
