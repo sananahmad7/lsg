@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
           src="/home1.webp" // Using the same background texture
           alt="Background Texture"
           fill
-          className="object-cover opacity-40"
+          className="object-cover opacity-60"
           priority
         />
         {/* Gradient mask to fade the image into the black background at the bottom */}
@@ -103,7 +103,7 @@ export default function PrivacyPolicy() {
       <div className="relative z-10 w-full max-w-[1300px] flex flex-col gap-[30px]">
         {/* HEADER */}
         <h1
-          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[150%] text-[#00EFFE]"
+          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[28px] text-[#00EFFE]"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           Privacy Policy | Legacy Slabs Grading (LSG)

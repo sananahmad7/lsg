@@ -89,7 +89,7 @@ export default function TermsAndConditions() {
           src="/home1.webp"
           alt="Background Texture"
           fill
-          className="object-cover opacity-40" // Adjusted opacity for visibility
+          className="object-cover opacity-60" // Adjusted opacity for visibility
           priority
         />
         {/* Gradient mask to fade the image into the black background at the bottom */}
