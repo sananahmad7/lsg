@@ -131,7 +131,7 @@ export default function VerifySlabFlow() {
             <button
               type="button"
               onClick={onGoToForm}
-              className="inline-flex cursor-pointer hover:bg-[#00EFFE]/30 transition-transform active:scale-[0.98] hover:scale-[1.02] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px] border px-[25px] py-[11px] text-[16px]"
+              className="inline-flex cursor-pointer hover:bg-[#00EFFE]/30 transition-transform active:scale-[0.98] hover:scale-[1.02] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px]  px-[25px] py-[11px] text-[16px]"
               style={{
                 color: "#000000",
                 fontFamily: "Poppins, sans-serif",

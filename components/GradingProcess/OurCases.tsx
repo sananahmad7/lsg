@@ -87,7 +87,7 @@ export default function OurCases() {
                 <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-[#FFFFFF] capitalize text-left">
                   Back Slab Display
                 </h3>
-                <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[130%] text-[#A1C7D6] text-left">
+                <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[28px] lg:leading-[32px] text-[#A1C7D6] text-left">
                   The back of the slab is designed for easy verification and
                   maximum security.
                 </p>
@@ -128,14 +128,14 @@ export default function OurCases() {
 
             {/* --- DISCLAIMER --- */}
             <div className="w-full lg:w-[1124px] lg:min-h-[132px] mt-4">
-              <p className="font-medium text-[14px] sm:text-[18px] lg:text-[22px] leading-[160%] lg:leading-[120%] text-[#A1C7D6] text-left">
-                <span className="font-bold">Please Note:</span> LSG Custom
-                Grading is a collector-based, independent grading project and is
-                not affiliated with professional third-party grading companies
-                such as PSA, CGC, ACE, or others. The assigned grade is based on
-                an independent evaluation, and is intended for display purposes.
-                It should not be considered an official certification or
-                compared to professional grading services
+              <p className="font-medium text-[14px] sm:text-[18px] lg:text-[22px] leading-[28px] lg:leading-[32px] text-[#A1C7D6] text-left">
+                <span>Please Note:</span> LSG Custom Grading is a
+                collector-based, independent grading project and is not
+                affiliated with professional third-party grading companies such
+                as PSA, CGC, ACE, or others. The assigned grade is based on an
+                independent evaluation, and is intended for display purposes. It
+                should not be considered an official certification or compared
+                to professional grading services
               </p>
             </div>
           </div>
