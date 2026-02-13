@@ -1,7 +1,13 @@
 import GetInTouchWithUs from "@/components/Home/GetInTouchWithUs";
 import Image from "next/image";
 import React from "react";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: " Contact | LSG Grading",
+  description:
+    "Got a question about your LSG slab, grading details, or what’s in stock? Reach out — we’re happy to help you get what you’re looking for.",
+};
 function Contact() {
   return (
     // Relative container with black background

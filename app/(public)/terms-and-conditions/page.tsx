@@ -111,11 +111,11 @@ export default function TermsAndConditions() {
           {termsContent.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col gap-[12px] w-full max-w-[1300px] mx-auto"
+              className="flex flex-col gap-[20px] w-full max-w-[1300px] mx-auto"
             >
               {/* Alpha Header */}
               <h2
-                className="font-semibold text-[18px] lg:text-[20px] leading-[100%] tracking-[-0.02em] capitalize text-[#00EFFE]"
+                className="font-semibold text-[18px] lg:text-[20px] leading-[32px] tracking-[-0.02em] capitalize text-[#00EFFE]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {item.title}
@@ -123,7 +123,7 @@ export default function TermsAndConditions() {
 
               {/* Alpha Description - FIXED LEADING TO 140% */}
               <div
-                className="font-medium text-[16px] lg:text-[18px] leading-[150%] tracking-[-0.01em] text-[#A1C7D6]"
+                className="font-medium text-[16px] lg:text-[18px] leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 <p>{item.content}</p>
