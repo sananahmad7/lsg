@@ -44,7 +44,7 @@ export default function OurCases() {
                 <h3 className="font-bold text-[28px] sm:text-[36px] lg:text-[44px] leading-[120%] lg:leading-[180%] text-[#FFFFFF] capitalize text-left lg:text-left">
                   Front Slab Display
                 </h3>
-                <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[130%] text-[#A1C7D6] text-left lg:text-left">
+                <p className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[30px] text-[#A1C7D6] text-left lg:text-left">
                   The front of the slab showcases your card and its overall
                   grade, providing a clear view of its condition. Each
                   custom-made banner matches the card perfectly for a premium

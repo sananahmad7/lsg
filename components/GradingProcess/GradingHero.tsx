@@ -352,7 +352,7 @@ export default function OurGradingProcess() {
                   alt="Background"
                   fill
                   priority
-                  className="object-contain opacity-[0.27]"
+                  className="object-contain opacity-[0.77]"
                 />
               </div>
               <div className="lg:hidden absolute inset-0 -translate-x-1/4 -translate-y-1/4 w-[150%] h-[150%]">

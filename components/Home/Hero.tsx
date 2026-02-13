@@ -129,7 +129,7 @@ export default function HomeHero() {
             Card Grading You Can Count On
           </h1>
           <p
-            className="max-w-[980px] text-center font-normal text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] sm:leading-[100%] text-[#A1C7D6]"
+            className="max-w-[980px] text-center font-normal text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px] leading-[26px] sm:leading-[32px] text-[#A1C7D6]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             At LSG, we focus on quality, consistency, and presentation, sealing
