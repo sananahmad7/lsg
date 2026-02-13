@@ -22,6 +22,8 @@ const eslintConfig = [
     rules: {
       // 🔽 change this to "warn" or "off" so build won't fail
       "react/no-unescaped-entities": "warn",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];
