@@ -138,7 +138,7 @@ export default function VerifySlabFlow() {
                 fontWeight: 700,
               }}
             >
-              Verify
+              Verify Slab
             </button>
 
             <div className="relative w-[149px] h-[111px]">

@@ -90,7 +90,7 @@ export default function GradingWithCare() {
               <div>
                 <Link
                   href="/services"
-                  className="inline-flex bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-transform hover:scale-105"
+                  className="inline-flex hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-transform hover:scale-105"
                   style={{
                     width: "237px",
                     height: "60px",
@@ -107,7 +107,7 @@ export default function GradingWithCare() {
                       fontWeight: 700,
                       fontSize: "16px",
                       lineHeight: "151%",
-                      color: "#062126",
+                      color: "#000000",
                       textAlign: "center",
                     }}
                   >

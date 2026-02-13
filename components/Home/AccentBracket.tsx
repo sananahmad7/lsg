@@ -118,7 +118,7 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
   const GAP_X = 14;
   const EXT_Y = 14;
   const THICK = 4;
-  const R = 26;
+  const R = 11; // Increased radius for much "roundier" appearance
   const glow =
     "pointer-events-none absolute bg-[#00EFFE] shadow-[0_0_16px_rgba(0,208,255,0.6)]";
   const visibilityClass = "hidden xl:block";
@@ -126,38 +126,68 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
   if (side === "right") {
     return (
       <div className={visibilityClass}>
+        {/* Main Vertical Segment */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
-            top: -EXT_Y,
-            bottom: -EXT_Y,
+            top: -EXT_Y + R,
+            bottom: -EXT_Y + R,
             width: THICK,
-            borderRadius: R,
           }}
         />
+        {/* Top Corner Curve */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
             top: -EXT_Y,
-            height: THICK,
-            width: "50%",
-            maxWidth: 240,
+            height: R,
+            width: R,
+            background: "transparent",
+            borderRight: `${THICK}px solid #00EFFE`,
+            borderTop: `${THICK}px solid #00EFFE`,
             borderTopRightRadius: R,
-            borderBottomRightRadius: R,
+            boxShadow: "none",
+            filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
           }}
         />
+        {/* Bottom Corner Curve */}
         <span
           className={glow}
           style={{
             right: -GAP_X,
             bottom: -EXT_Y,
+            height: R,
+            width: R,
+            background: "transparent",
+            borderRight: `${THICK}px solid #00EFFE`,
+            borderBottom: `${THICK}px solid #00EFFE`,
+            borderBottomRightRadius: R,
+            boxShadow: "none",
+            filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
+          }}
+        />
+        {/* Top Horizontal Segment */}
+        <span
+          className={glow}
+          style={{
+            right: -GAP_X + R,
+            top: -EXT_Y,
             height: THICK,
             width: "50%",
             maxWidth: 240,
-            borderTopRightRadius: R,
-            borderBottomRightRadius: R,
+          }}
+        />
+        {/* Bottom Horizontal Segment */}
+        <span
+          className={glow}
+          style={{
+            right: -GAP_X + R,
+            bottom: -EXT_Y,
+            height: THICK,
+            width: "50%",
+            maxWidth: 240,
           }}
         />
       </div>
@@ -165,38 +195,68 @@ function AccentBracket({ side }: { side: "left" | "right" }) {
   }
   return (
     <div className={visibilityClass}>
+      {/* Main Vertical Segment */}
       <span
         className={glow}
         style={{
           left: -GAP_X,
-          top: -EXT_Y,
-          bottom: -EXT_Y,
+          top: -EXT_Y + R,
+          bottom: -EXT_Y + R,
           width: THICK,
-          borderRadius: R,
         }}
       />
+      {/* Top Corner Curve */}
       <span
         className={glow}
         style={{
           left: -GAP_X,
           top: -EXT_Y,
-          height: THICK,
-          width: "50%",
-          maxWidth: 240,
+          height: R,
+          width: R,
+          background: "transparent",
+          borderLeft: `${THICK}px solid #00EFFE`,
+          borderTop: `${THICK}px solid #00EFFE`,
           borderTopLeftRadius: R,
-          borderBottomLeftRadius: R,
+          boxShadow: "none",
+          filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
         }}
       />
+      {/* Bottom Corner Curve */}
       <span
         className={glow}
         style={{
           left: -GAP_X,
           bottom: -EXT_Y,
+          height: R,
+          width: R,
+          background: "transparent",
+          borderLeft: `${THICK}px solid #00EFFE`,
+          borderBottom: `${THICK}px solid #00EFFE`,
+          borderBottomLeftRadius: R,
+          boxShadow: "none",
+          filter: "drop-shadow(0 0 8px rgba(0,208,255,0.6))",
+        }}
+      />
+      {/* Top Horizontal Segment */}
+      <span
+        className={glow}
+        style={{
+          left: -GAP_X + R,
+          top: -EXT_Y,
           height: THICK,
           width: "50%",
           maxWidth: 240,
-          borderTopLeftRadius: R,
-          borderBottomLeftRadius: R,
+        }}
+      />
+      {/* Bottom Horizontal Segment */}
+      <span
+        className={glow}
+        style={{
+          left: -GAP_X + R,
+          bottom: -EXT_Y,
+          height: THICK,
+          width: "50%",
+          maxWidth: 240,
         }}
       />
     </div>

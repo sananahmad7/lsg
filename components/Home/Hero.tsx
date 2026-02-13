@@ -124,7 +124,7 @@ export default function HomeHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.27]"
+          className="object-cover opacity-[0.70]"
         />
       </div>
 

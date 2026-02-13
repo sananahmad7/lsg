@@ -52,7 +52,7 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
         minHeight: 516,
         padding: 20,
         borderWidth: 1.47,
-        borderColor: "rgba(255,255,255,0.35)",
+        borderColor: "#CBD4E1",
         backgroundColor: card.highlighted ? "#383838" : "rgba(0,0,0,0.45)",
         fontFamily: "Poppins, sans-serif",
         backdropFilter: "blur(2px)",
@@ -60,7 +60,7 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
     >
       {/* Card header */}
       <div className="w-full flex items-center justify-between">
-        <h3 className="text-white font-semibold text-[20px] sm:text-[22px] lg:text-[24px] leading-[32px]">
+        <h3 className="text-[#FFFFFF] font-semibold text-[20px] sm:text-[22px] lg:text-[24px] leading-[32px]">
           {card.title}
         </h3>
 
@@ -89,9 +89,9 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
             <FaCheckCircle
               size={16}
               className="mt-[3px] shrink-0"
-              color="rgba(255,255,255,0.85)"
+              color="#FFFFFF"
             />
-            <span className="text-white/85 text-[14px] sm:text-[15px] leading-[20px]">
+            <span className="text-[#FFFFFF] text-[14px] sm:text-[15px] leading-[20px]">
               {t}
             </span>
           </li>
@@ -104,7 +104,7 @@ function ServiceFeatureCard({ card }: { card: FeatureCard }) {
       <Link
         href={"/contact"}
         type="button"
-        className="w-full rounded-[8px] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] border inline-flex items-center justify-center transition-transform active:scale-[0.98]"
+        className="w-full rounded-[8px] text-[#000000] hover:scale-[1.01] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] border inline-flex items-center justify-center transition-transform active:scale-[0.98]"
         style={{
           height: 44,
           borderColor: "#00EEFE",
@@ -173,11 +173,8 @@ export default function ServiceHero() {
               <div className="w-full flex flex-col  sm:flex-row items-center justify-center gap-4 sm:gap-[25px]">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border w-full sm:w-[237px] h-[60px]"
+                  className="inline-flex hover:scale-[1.01] items-center  justify-center bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px]  w-full sm:w-[237px] h-[60px]"
                   style={{
-                    borderWidth: 1,
-                    borderColor: "#00EEFE",
-
                     fontFamily: "Sora, sans-serif",
                     fontWeight: 700,
                     fontSize: 16,
@@ -189,17 +186,7 @@ export default function ServiceHero() {
 
                 <Link
                   href="/verify-slab"
-                  className="inline-flex items-center justify-center rounded-[12px] border w-full sm:w-[237px] h-[60px]"
-                  style={{
-                    borderWidth: 1,
-                    borderColor: "#00EEFE",
-                    backgroundColor: "transparent",
-                    color: "#00EEFE",
-                    fontFamily: "Sora, sans-serif",
-                    fontWeight: 700,
-                    fontSize: 16,
-                    lineHeight: "151%",
-                  }}
+                  className="inline-flex items-center justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] font-semibold text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
                 >
                   Verify Your Slab
                 </Link>
