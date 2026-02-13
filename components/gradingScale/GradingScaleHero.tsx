@@ -27,7 +27,7 @@ export default function GradingScaleHero() {
             alt="Background rings"
             fill
             priority
-            className="object-contain opacity-[0.57]"
+            className="object-contain opacity-[0.77]"
           />
         </div>
       </div>
@@ -39,7 +39,7 @@ export default function GradingScaleHero() {
             src="/logo.png"
             alt="LSG Logo"
             fill
-            className="object-contain"
+            className="object-contain "
             priority
           />
         </div>
@@ -50,7 +50,8 @@ export default function GradingScaleHero() {
           </h1>
           <p className="text-[#C9C9C9] text-[15px] sm:text-[18px] font-normal px-4">
             Each card is graded on a scale from LSG 10 to LSG 1 based on
-            centering, corners, edges, and surface.
+            centering, corners, edges, and surface — while maintaining more
+            flexible, collector-friendly standards.
           </p>
         </div>
 
