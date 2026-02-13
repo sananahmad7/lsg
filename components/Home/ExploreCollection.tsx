@@ -127,7 +127,7 @@ export default function ExploreCollection() {
                       {/* ... inside collectionItems.map ... */}
                       <Link
                         href={`/grading-scale?img=${encodeURIComponent(item.image)}`}
-                        className="bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-black hover:bg-[#00D0FF]/90 transition-colors flex items-center justify-center"
+                        className="bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-black hover:bg-[#00D0FF]/90 hover:scale-101 transition-colors flex items-center justify-center"
                         style={{
                           width: "113px",
                           height: "39px",

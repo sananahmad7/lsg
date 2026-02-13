@@ -49,7 +49,7 @@ function FeatureCard({
       <div className="relative w-[40px] h-[40px]">
         <Image src={imageSrc} alt={title} fill className="object-contain" />
       </div>
-      <h3 className="font-semibold text-[24px] leading-[140%] tracking-[-0.18px] text-white">
+      <h3 className="font-semibold text-[24px] leading-[140%] tracking-[-0.18px] text-[#FFFFFF]">
         {title}
       </h3>
       <p className="font-normal text-[22px] leading-[140%] tracking-[-0.18px] text-[#A1C7D6]">
@@ -69,8 +69,8 @@ export default function WhyLSG() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[140%]"
-            style={{ fontFamily: "Poppins, sans-serif", color: "#00D0FF" }}
+            className="text-center font-semibold text-[28px] text-[#00EFFE] sm:text-[36px] lg:text-[44px] leading-[140%]"
+            style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Why LSG Grading?
           </motion.h2>

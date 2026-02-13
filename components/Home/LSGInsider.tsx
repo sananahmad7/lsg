@@ -85,7 +85,7 @@ export default function LSGInsider() {
           <div className="flex flex-col gap-6 w-full lg:max-w-[700px] text-center lg:text-left">
             <h2
               className="font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[130%] tracking-[1px]"
-              style={{ color: "#00D0FF" }}
+              style={{ color: "#00EFFE" }}
             >
               Join the LSG Insider List
             </h2>
@@ -111,7 +111,7 @@ export default function LSGInsider() {
               <div
                 className="
                   w-full max-w-[400px] h-[62px]
-                  rounded-[10px] border border-white/20
+                  rounded-[10px] border border-[#00EFFE]
                   flex items-stretch overflow-hidden
                   bg-[#383838]
                   grid grid-cols-3 sm:flex
@@ -144,10 +144,11 @@ export default function LSGInsider() {
                   className="
                     col-span-1
                     h-full w-full sm:w-[120px] 
-                    bg-[#00D0FF] hover:bg-[#00D0FF]/90 transition-colors
+                    bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] hover:bg-[#00D0FF]/90 transition-colors
                     text-[#062126] font-bold text-[14px] sm:text-[16px]
                     flex items-center cursor-pointer justify-center
                     disabled:opacity-70 disabled:cursor-not-allowed
+                    
                   "
                 >
                   {loading ? "Joining..." : "Join"}

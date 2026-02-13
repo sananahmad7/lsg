@@ -114,7 +114,7 @@ export default function VerifyYourSlab() {
             className="w-full lg:w-[578.6654663085938px] flex flex-col justify-center px-0 lg:pr-6"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            <h2 className="text-center lg:text-left font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[140%] text-[#00D0FF]">
+            <h2 className="text-center lg:text-left font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[140%] text-[#00EFFE]">
               Verify Your Slab
             </h2>
             <p className="mt-4 text-center lg:text-left font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] text-[#A1C7D6]">

@@ -290,8 +290,8 @@ export default function OurGradingProcess() {
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[140%]"
-              style={{ fontFamily: "Poppins, sans-serif", color: "#00EFFE" }}
+              className="text-center font-bold text-[32px] sm:text-[40px] text-[#00EFFE] lg:text-[44px] leading-[140%]"
+              style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Our Grading Process
             </motion.h2>

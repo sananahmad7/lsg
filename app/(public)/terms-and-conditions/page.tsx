@@ -112,7 +112,7 @@ export default function TermsAndConditions() {
             >
               {/* Alpha Header */}
               <h2
-                className="font-semibold text-[18px] lg:text-[20px] leading-[100%] tracking-[-0.02em] capitalize text-[#00D0FF]"
+                className="font-semibold text-[18px] lg:text-[20px] leading-[100%] tracking-[-0.02em] capitalize text-[#00EFFE]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {item.title}

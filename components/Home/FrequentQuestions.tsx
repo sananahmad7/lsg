@@ -137,7 +137,7 @@ export default function FrequentQuestions() {
         <div className="flex flex-col items-center gap-[50px]">
           <div className="w-full flex items-center justify-center">
             <h2
-              className="text-center font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[140%] text-[#00D0FF]"
+              className="text-center font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[140%] text-[#00EFFE]"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Frequently Asked Questions

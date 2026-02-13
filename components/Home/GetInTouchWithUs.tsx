@@ -88,12 +88,12 @@ export default function GetInTouchWithUs() {
 
   return (
     <section className="w-full bg-transparent py-16 px-4 xl:px-8">
-      <div className="mx-auto w-full max-w-[1300px] rounded-[20px] bg-black/80 border-[2.34px] border-white/15 p-6 sm:p-10 lg:p-[45px]">
+      <div className="mx-auto w-full max-w-[1300px] rounded-[20px] bg-transparent border-[2.34px] border-white/15 p-6 sm:p-10 lg:p-[45px] ">
         <div className="flex flex-col xl:flex-row items-center xl:items-stretch justify-between gap-10 xl:gap-[80px]">
           <div className="w-full xl:w-[500px] flex-shrink-0 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <h2
-                className="text-[#00EFFE] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
+                className="text-[#00E8FE] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Get in Touch with Us
@@ -169,7 +169,7 @@ export default function GetInTouchWithUs() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-[50px] cursor-pointer rounded-[5px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-bold text-[18px] flex items-center justify-center transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:grayscale"
+                className="w-full h-[50px] cursor-pointer rounded-[5px] bg-[#00EFFE] text-[#062126] font-bold text-[18px] flex items-center justify-center transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:grayscale"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 {loading ? "Sending..." : "Send"}
