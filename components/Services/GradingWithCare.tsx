@@ -48,13 +48,14 @@ export default function GradingWithCare() {
           }}
         >
           <motion.div
-            className="w-full max-w-[1179.52px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[97px] px-6 lg:px-0"
+            className="w-full max-w-[1179.52px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[40px] px-6 lg:px-0"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
-            <div className="w-full lg:w-[715px] overflow-visible border flex flex-col gap-10">
+            {/* Increased width from 715px to 850px to fit heading in one line */}
+            <div className="w-full lg:w-[850px]  flex flex-col my-auto gap-10">
               <motion.div variants={itemVariants}>
                 <h2
                   className="font-semibold text-[#00EEFE] leading-[110%] -tracking-[0.01em]"
@@ -63,7 +64,7 @@ export default function GradingWithCare() {
                     fontSize: "44px",
                   }}
                 >
-                  <span className="block text-[28px]  sm:text-[36px] lg:text-[44px] ">
+                  <span className="block text-[28px] sm:text-[36px] lg:text-[44px] whitespace-pre-wrap">
                     Grading With Care & Protection
                   </span>
                 </h2>
@@ -110,7 +111,7 @@ export default function GradingWithCare() {
             </div>
 
             <motion.div className="relative shrink-0" variants={imageVariants}>
-              <div className="relative w-[280px] sm:w-[360px] border lg:w-[433.7px] h-[300px] sm:h-[390px] lg:h-[468.8px]">
+              <div className="relative w-[280px] sm:w-[360px] lg:w-[433.7px] h-[300px] sm:h-[390px] lg:h-[468.8px]">
                 <Image
                   src="/pika.png"
                   alt="Pokemon Cards Collage"
