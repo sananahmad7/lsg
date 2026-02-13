@@ -76,7 +76,6 @@ export default function HomeHero() {
         : "left-[calc(50%+90px)] sm:left-[calc(50%+140px)] lg:left-[calc(50%+240px)]";
 
       return {
-        // Set opacity to 60% (opacity-60) for side cards to make center pop
         className: `${baseClasses} z-20 opacity-60 
           w-[130px] h-[222px] 
           sm:w-[190px] sm:h-[320px] 
@@ -90,8 +89,8 @@ export default function HomeHero() {
     if (Math.abs(offset) === 2) {
       const isLeft = offset === -2;
       const leftClass = isLeft
-        ? "lg:left-[calc(50%-445px)]"
-        : "lg:left-[calc(50%+445px)]";
+        ? "lg:left-[calc(50%-420px)]"
+        : "lg:left-[calc(50%+420px)]";
 
       return {
         className: `${baseClasses} z-10 
@@ -141,13 +140,13 @@ export default function HomeHero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-2 sm:mt-4 w-full px-4 sm:px-0">
             <Link
               href="/services"
-              className="inline-flex items-center transition-transform hover:scale-[1.02] active:scale-[0.98] hover:bg-[#00D0FF]/90 justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] font-semibold text-[16px] hover:bg-[#00D0FF]/90 transition-colors"
+              className="inline-flex items-center transition-transform hover:scale-[1.02] active:scale-[0.98] justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] text-[16px]"
             >
               View Services
             </Link>
             <Link
               href="/verify-slab"
-              className="inline-flex items-center justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] font-semibold text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
+              className="inline-flex items-center justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
             >
               Verify Your Slab
             </Link>
@@ -156,12 +155,12 @@ export default function HomeHero() {
 
         {/* --- BOTTOM CAROUSEL SECTION --- */}
         <div
-          className="flex items-center justify-center w-full mt-10 lg:mt-0 px-2 sm:px-4 gap-1 sm:gap-2 lg:translate-y-[30px]"
+          className="flex items-center justify-center w-full mt-10 lg:mt-0 px-2 sm:px-4 lg:translate-y-[30px]"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          {/* Left Arrow - Removed 'hidden sm:block' to show on mobile */}
+          {/* Left Arrow */}
           <button
             onClick={handlePrev}
             className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
@@ -177,7 +176,7 @@ export default function HomeHero() {
           </button>
 
           {/* Cards Container */}
-          <div className="relative w-full max-w-[1114px] h-[300px] sm:h-[380px] lg:h-[455px] flex items-center justify-center touch-pan-y">
+          <div className="relative w-full max-w-[340px] sm:max-w-[550px] lg:max-w-[1080px] h-[300px] sm:h-[380px] lg:h-[455px] flex items-center justify-center touch-pan-y mx-[-10px]">
             {images.map((src, index) => {
               const { className, style } = getCardProps(index);
               return (
@@ -197,7 +196,7 @@ export default function HomeHero() {
             })}
           </div>
 
-          {/* Right Arrow - Removed 'hidden sm:block' to show on mobile */}
+          {/* Right Arrow */}
           <button
             onClick={handleNext}
             className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"

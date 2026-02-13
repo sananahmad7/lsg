@@ -13,7 +13,7 @@ function Contact() {
             src="/result.png"
             alt="Background"
             fill
-            className="object-cover opacity-90" // Adjust opacity as needed (0.27 matches hero)
+            className="object-cover opacity-20" // Adjust opacity as needed (0.27 matches hero)
             priority
           />
         </div>

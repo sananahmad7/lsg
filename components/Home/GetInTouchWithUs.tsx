@@ -177,14 +177,14 @@ export default function GetInTouchWithUs() {
             </form>
           </div>
 
-          <div className="w-full relative min-h-[300px] xl:left-13 sm:min-h-[400px] xl:min-h-0 xl:flex-1 xl:h-[589px] rounded-[12px] ">
+          <div className="w-full relative min-h-[300px] xl:left-15 sm:min-h-[400px] xl:min-h-0 xl:flex-1 xl:h-[589px] rounded-[12px] ">
             <Image
               src="/touch.png"
               alt="Cards artwork"
               fill
               priority
               sizes="(max-width: 1280px) 100vw, 700px"
-              className="object-contain xl:object-cover object-center overflow-visible"
+              className="object-contain xl:object-contain object-center overflow-visible"
             />
           </div>
         </div>
