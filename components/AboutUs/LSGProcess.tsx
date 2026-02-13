@@ -8,7 +8,7 @@ const steps = [
     id: "01",
     title: "Authentication",
     description: "Visual checks to verify originality and release",
-    color: "1. #8A00E6", // Purple
+    color: "#8A00E6", // Purple
     position: "top", // Row 1 Top
   },
   {
