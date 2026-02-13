@@ -119,7 +119,7 @@ export default function VerifySlabFlow() {
             className="w-full max-w-[788px] flex flex-col items-center gap-[16px]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            <h1 className="text-center font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[100%] text-[#00D0FF]">
+            <h1 className="text-center font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[100%] text-[#00EFFE]">
               Verify your SLAB
             </h1>
 
@@ -131,10 +131,9 @@ export default function VerifySlabFlow() {
             <button
               type="button"
               onClick={onGoToForm}
-              className="inline-flex cursor-pointer font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px] border px-[25px] py-[11px] text-[16px]"
+              className="inline-flex cursor-pointer hover:bg-[#00EFFE]/30 transition-transform active:scale-[0.98] hover:scale-[1.02] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center h-[60px] w-[237px] rounded-[12px] border px-[25px] py-[11px] text-[16px]"
               style={{
-                borderColor: "#00D0FF",
-                color: "#062126",
+                color: "#000000",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: 700,
               }}
@@ -157,7 +156,7 @@ export default function VerifySlabFlow() {
 
         {step === "form" && (
           <div
-            className="w-full max-w-[519px] rounded-[12px] border bg-[#3A3A3A]/90 shadow-[0_18px_60px_rgba(0,0,0,0.55)]"
+            className="w-full max-w-[519px] rounded-[12px] border bg-[#262424] shadow-[0_18px_60px_rgba(0,0,0,0.55)]"
             style={{
               fontFamily: "Poppins, sans-serif",
               borderWidth: 1,
@@ -168,7 +167,7 @@ export default function VerifySlabFlow() {
             <div className="w-full flex flex-col items-center gap-[16px]">
               <div className="w-full h-[50px] flex items-center justify-center">
                 <h2
-                  className="text-center font-semibold text-[34px] leading-[50px] text-[#00D0FF] capitalize"
+                  className="text-center font-semibold text-[34px] leading-[50px] text-[#00EFFE] capitalize"
                   style={{ letterSpacing: "-0.02em" }}
                 >
                   Card Verification
@@ -194,7 +193,7 @@ export default function VerifySlabFlow() {
               <div className="w-full flex flex-col items-center gap-[20px]">
                 <div className="w-full h-[34px] flex items-center justify-center">
                   <p
-                    className="text-center font-semibold text-[24px] leading-[140%] text-white capitalize"
+                    className="text-center font-poppins font-semibold text-[24px] leading-[140%] text-white capitalize"
                     style={{ letterSpacing: "-0.02em" }}
                   >
                     Enter Certification Number
@@ -208,11 +207,10 @@ export default function VerifySlabFlow() {
                     onKeyDown={(e) => e.key === "Enter" && onVerify()}
                     placeholder="Certification Number"
                     aria-label="Certification Number"
-                    className="w-full h-[48.5px] rounded-[6px] border outline-none text-white placeholder:text-white/40"
+                    className="w-full h-[48.5px] rounded-[6px] bg-[#FFFFFF33] border outline-none text-white placeholder:text-[#FFFFFF99]"
                     style={{
                       borderWidth: 1,
                       borderColor: "rgba(255,255,255,0.14)",
-                      backgroundColor: "rgba(0,0,0,0.20)",
                       paddingTop: 14.05,
                       paddingBottom: 14.05,
                       paddingLeft: 16.4,
@@ -246,7 +244,7 @@ export default function VerifySlabFlow() {
                     paddingBottom: 11,
                     paddingLeft: 25,
                     paddingRight: 25,
-                    color: "#062126",
+                    color: "#000000",
                   }}
                 >
                   {loading ? "Verifying..." : "Verify"}
@@ -331,21 +329,25 @@ export default function VerifySlabFlow() {
                 >
                   <Link
                     href="/grading-scale"
-                    className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors"
+                    className="bg-gradient-to-r from-[#00F2FE] to-[#00D0FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity font-medium"
                   >
                     View Grading Scale
                   </Link>
+
                   <span className="text-white/30">|</span>
+
                   <Link
                     href="/grading-process"
-                    className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors"
+                    className="bg-gradient-to-r from-[#00F2FE] to-[#00D0FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity font-medium"
                   >
                     Our Grading Process
                   </Link>
+
                   <span className="text-white/30">|</span>
+
                   <Link
                     href="/contact"
-                    className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors"
+                    className="bg-gradient-to-r from-[#00F2FE] to-[#00D0FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity font-medium"
                   >
                     Contact Us
                   </Link>
@@ -354,10 +356,8 @@ export default function VerifySlabFlow() {
                 <button
                   type="button"
                   onClick={onVerifyDifferent}
-                  className="h-[50px] cursor-pointer w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] border inline-flex items-center justify-center"
+                  className="h-[50px] cursor-pointer w-full max-w-[844px] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] transition-transform hover:scale-[1.01] active:scale-[0.98]  inline-flex items-center justify-center"
                   style={{
-                    borderWidth: 1,
-                    borderColor: "#00D0FF",
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
                     fontSize: 16,
@@ -366,7 +366,7 @@ export default function VerifySlabFlow() {
                     paddingBottom: 11,
                     paddingLeft: 25,
                     paddingRight: 25,
-                    color: "#062126",
+                    color: "#000000",
                   }}
                 >
                   Verify a Different Card
