@@ -99,7 +99,7 @@ export default function GetInTouchWithUs() {
                 Get in Touch with Us
               </h2>
               <p
-                className="text-[#A1C7D6] text-[16px] lg:text-[18px] leading-[160%] font-normal"
+                className="text-[#A1C7D6] text-[16px] lg:text-[18px] leading-[32px] font-normal"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Got a question about your LSG slab, grading details, or what’s

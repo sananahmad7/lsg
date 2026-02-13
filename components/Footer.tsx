@@ -134,20 +134,19 @@ export default function Footer() {
           <div className="mx-auto w-full max-w-[1240px]">
             <div className="border-t border-white/20" />
 
-            <div className="pt-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-center relative">
-              {/* Center copyright */}
+            <div className="pt-6 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-center relative w-full">
+              {/* Copyright text: Centered by the parent's lg:justify-center */}
               <p
-                className="text-white/70 text-[13px] leading-[150%] text-center"
+                className="text-white/70 text-[13px] leading-[32px] text-center"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 © 2025 LSG Grading. All Rights Reserved.
               </p>
 
-              {/* Right inline links (positioned like screenshot on large screens) */}
-              <div className="lg:absolute lg:right-0 flex items-center justify-center gap-2 text-[13px]">
+              <div className="  flex items-center justify-center gap-2 text-[13px]">
                 <Link
                   href="/privacy-policy"
-                  className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors"
+                  className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors whitespace-nowrap"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   Privacy Policy
@@ -155,7 +154,7 @@ export default function Footer() {
                 <span className="text-white/40">|</span>
                 <Link
                   href="/terms-and-conditions"
-                  className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors"
+                  className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors whitespace-nowrap"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   Terms & Services
@@ -163,7 +162,7 @@ export default function Footer() {
                 <span className="text-white/40">|</span>
                 <Link
                   href="/#faqs"
-                  className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors"
+                  className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors whitespace-nowrap"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   Support & FAQ

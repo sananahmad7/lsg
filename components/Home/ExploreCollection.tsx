@@ -111,7 +111,6 @@ export default function ExploreCollection() {
                       <span
                         className="text-white flex items-center"
                         style={{
-                          width: "140px",
                           height: "30px",
                           fontFamily: "Poppins, sans-serif",
                           fontWeight: 600,

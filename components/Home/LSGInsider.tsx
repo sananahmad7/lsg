@@ -90,7 +90,7 @@ export default function LSGInsider() {
               Join the LSG Insider List
             </h2>
 
-            <p className="font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] text-[#A1C7D6]">
+            <p className="font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[32px] text-[#A1C7D6]">
               Want to stay ahead in the world of collecting? Subscribe to get
               early access to new graded card drops, exclusive deals you won’t
               find anywhere else, and instant notifications when fresh slabs hit
@@ -124,13 +124,14 @@ export default function LSGInsider() {
                   disabled={loading}
                   className="
                     col-span-2
-                    flex-1 h-full bg-transparent
+                    flex-1 h-full 
                     px-[15px] sm:px-[20px]
                     text-white placeholder:text-white/40
                     outline-none text-[14px] sm:text-[16px]
                     focus:bg-white/5 transition-colors
                     min-w-0
                     disabled:opacity-60
+                    bg-[#242424]
                   "
                   style={{
                     fontWeight: 400,
