@@ -75,7 +75,7 @@ export default function WhatMakesLSGDifferent() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="w-full bg-[#0B0B0B] rounded-[16px] border-l-[4px] border-[#00EFFE] p-6 lg:py-[20px] lg:px-[39px]"
+          className="w-full bg-[#0B0B0B] rounded-[16px] border-l-[4px] shadow-[0px_14px_50px_0px_#00697033] border-[#00EFFE] p-6 lg:py-[20px] lg:px-[39px]"
         >
           <div className="flex flex-col gap-6 lg:gap-4">
             <div className="flex flex-col gap-[10px]">
@@ -129,11 +129,11 @@ function InfoBox({
         border-l-[4px] border-[#00EFFE]
         rounded-[16px]
         p-6 lg:py-[20px] lg:px-[39px]
-        flex flex-col justify-center gap-[10px]
+        flex flex-col justify-center gap-[10px] shadow-[0px_14px_50px_0px_#00697033]
       "
     >
       <h3
-        className="text-[#FFFFFF] font-semibold text-[20px] lg:text-[22px] leading-[1.3] capitalize"
+        className="text-[#FFFFFF] font-semibold text-[20px] lg:text-[24px] leading-[1.3] capitalize"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
         {title}

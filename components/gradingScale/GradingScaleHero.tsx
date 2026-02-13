@@ -27,7 +27,7 @@ export default function GradingScaleHero() {
             alt="Background rings"
             fill
             priority
-            className="object-contain opacity-[0.27]"
+            className="object-contain opacity-[0.57]"
           />
         </div>
       </div>

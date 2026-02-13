@@ -102,7 +102,7 @@ export default function AboutHero() {
                   {bulletPoints.map((point, index) => (
                     <div
                       key={index}
-                      className="flex items-start lg:items-center opacity-100 w-full lg:w-[364.34px]"
+                      className="flex items-start lg:items-center opacity-100 w-full lg:w-[599.34px]"
                       style={{
                         minHeight: "35px",
                         gap: "14.34px",
@@ -117,7 +117,7 @@ export default function AboutHero() {
                       </div>
                       {/* Right Text */}
                       <span
-                        className="font-normal text-[#FFFFFF] flex-1 lg:w-[315px]"
+                        className="font-normal text-[#FFFFFF] flex-1 lg:w-[585px]"
                         style={{
                           fontSize: "clamp(16px, 4vw, 20px)",
                           lineHeight: "1.2",

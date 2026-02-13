@@ -126,7 +126,7 @@ export default function PrivacyPolicy() {
 
               {/* Alpha Description - FIXED LEADING TO 140% */}
               <div
-                className="font-medium text-[16px] lg:text-[18px] leading-[140%] tracking-[-0.01em] text-[#A1C7D6]"
+                className="font-medium text-[16px] lg:text-[18px] leading-[150%] tracking-[-0.01em] text-[#A1C7D6]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 <p>{item.content}</p>

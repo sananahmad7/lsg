@@ -118,7 +118,7 @@ function ServiceFeatureCard({
               className="mt-[3px] shrink-0"
               color="#FFFFFF"
             />
-            <span className="text-[#FFFFFF] text-[14px] sm:text-[15px] leading-[28px]">
+            <span className="text-[#FFFFFF] text-[14px] sm:text-[15px] leading-[130%]">
               {t}
             </span>
           </li>
