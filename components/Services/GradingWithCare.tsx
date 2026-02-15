@@ -93,12 +93,11 @@ export default function GradingWithCare() {
                 </p>
               </motion.div>
 
-              <motion.div variants={itemVariants}>
+              <motion.div variants={itemVariants} className="w-full lg:w-auto">
                 <Link
                   href="/services"
-                  className="inline-flex hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-all active:scale-95 rounded-[12px] border border-[#00EEFE]"
+                  className="inline-flex w-full sm:w-[237px] hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-all active:scale-95 rounded-[12px] border border-[#00EEFE]"
                   style={{
-                    width: "237px",
                     height: "60px",
                     padding: "11px 25px",
                   }}

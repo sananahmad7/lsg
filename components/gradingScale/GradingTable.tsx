@@ -106,10 +106,10 @@ export default function GradingTable() {
             >
               {/* Top Row Cell */}
               <div
-                className="flex items-center justify-center bg-[#141414] px-1 lg:px-4 py-3 lg:py-5 border-b-[1px] border-[#00EFFE]"
+                className="flex items-center justify-start bg-[#141414] px-2 lg:px-4 py-3 lg:py-5 border-b-[1px] border-[#00EFFE]"
                 style={{ height: "50px" }}
               >
-                <span className="font-poppins font-medium text-[9px] xs:text-[11px] sm:text-[14px] lg:text-[18px] leading-tight text-white text-center">
+                <span className="font-poppins font-medium text-[9px] xs:text-[11px] sm:text-[14px] lg:text-[18px] leading-tight text-white text-left">
                   {col.header}
                 </span>
               </div>
@@ -119,11 +119,11 @@ export default function GradingTable() {
                 {rows.map((row, rowIdx) => (
                   <div
                     key={rowIdx}
-                    className="flex items-center justify-center px-1 lg:px-4 py-2 lg:py-5 bg-black border-b-[1px] border-[#00EFFE] last:border-b-0"
+                    className="flex items-center justify-start px-2 lg:px-4 py-2 lg:py-5 bg-black border-b-[1px] border-[#00EFFE] last:border-b-0"
                     style={{ height: "60px" }}
                   >
                     <span
-                      className={`font-poppins text-center text-[8px] xs:text-[10px] sm:text-[13px] lg:text-[16px] leading-tight ${
+                      className={`font-poppins text-left text-[8px] xs:text-[10px] sm:text-[13px] lg:text-[16px] leading-tight ${
                         colIdx === 0
                           ? "text-[#C9C9C9] font-bold"
                           : "text-[#FFFFFF]"
