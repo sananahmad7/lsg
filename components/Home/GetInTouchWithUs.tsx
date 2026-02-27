@@ -94,7 +94,7 @@ export default function GetInTouchWithUs() {
             <div className="flex flex-col gap-4">
               <h2
                 className="text-[#00E8FE] text-[32px] sm:text-[40px] lg:text-[44px] leading-[100%] font-semibold tracking-[-0.02em]"
-                style={{ fontFamily: "Inter, sans-serif" }}
+                style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Get in Touch with Us
               </h2>

@@ -109,7 +109,7 @@ export default function VerifySlabFlow() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.80]"
+          className="object-cover opacity-[0.70]"
         />
       </div>
 
@@ -265,9 +265,20 @@ export default function VerifySlabFlow() {
 
         {step === "result" && result && (
           <div
-            className="w-full max-w-[904px] flex flex-col items-center gap-[60px]"
+            className="w-full max-w-[904px] flex flex-col items-center gap-[60px] relative" // Added relative to anchor the background
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
+            {/* --- Adjusted Background Image for Sharpness and 3xl Scaling --- */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none opacity-40 w-[400px] h-[400px] 3xl:w-[300px] 3xl:h-[300px] transition-all">
+              <Image
+                src="/VerificationResultBg.png"
+                alt="Background Glow"
+                fill
+                className="object-cover" // Contain ensures it stays sharp within the defined box
+                priority
+              />
+            </div>
+
             <div className="relative w-[187px] h-[65.74px]">
               <Image
                 src="/logo.png"
@@ -276,17 +287,17 @@ export default function VerifySlabFlow() {
                 className="object-contain"
               />
             </div>
-
             <div className="w-full max-w-[426px] h-[66px] flex items-center justify-center">
-              <h2 className="text-[#00EFFE] font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[100%] text-center">
+              <h2 className="text-[#00EFFE] font-semibold text-[28px] sm:text-[36px] lg:text-[44px]  leading-[100%] text-center">
                 Verification Result
               </h2>
             </div>
 
+            {/* --- Table Wrapper: Added overflow-hidden to fix corner edges --- */}
             <div
               className="w-full rounded-[12px] overflow-hidden"
               style={{
-                borderWidth: "1px",
+                borderWidth: "1.6px",
                 borderStyle: "solid",
                 borderColor: "#00EFFE",
               }}

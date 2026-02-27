@@ -78,7 +78,7 @@ function ServiceFeatureCard({
         maxWidth: 362,
         minHeight: 516,
         padding: 20,
-        borderWidth: 1.47,
+        borderWidth: 1.52,
         borderColor: "#CBD4E1",
         backgroundColor: card.highlighted ? "#383838" : "rgba(0,0,0,0.45)",
         fontFamily: "Poppins, sans-serif",

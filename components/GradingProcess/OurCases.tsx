@@ -77,7 +77,7 @@ export default function OurCases() {
                   src="/SlabDisplay.png"
                   alt="Front Slab Display"
                   fill
-                  className="object-contain lg:object-fill"
+                  className="object-contain scale-103"
                   priority
                 />
               </motion.div>
@@ -178,7 +178,7 @@ export default function OurCases() {
                   src="/BackSlabDisplay.png"
                   alt="Back Slab Display"
                   fill
-                  className="object-contain lg:object-fill"
+                  className="object-contain scale-103 "
                   priority
                 />
               </motion.div>

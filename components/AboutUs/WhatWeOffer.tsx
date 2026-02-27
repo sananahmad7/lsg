@@ -50,6 +50,7 @@ export default function WhatWeOffer() {
           flex items-center justify-center
         "
         style={{
+          borderWidth: 1.52,
           background:
             "linear-gradient(180deg, rgba(255, 255, 255, 0.084) 0%, rgba(217, 217, 217, 0.042) 100%)",
         }}

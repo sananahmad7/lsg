@@ -89,10 +89,11 @@ export default function GradingTable() {
     <div className="flex justify-center w-full bg-black py-10 lg:py-20 px-2 sm:px-4">
       <div className="w-full max-w-[1200px]">
         <div
-          className="relative grid grid-cols-12 overflow-hidden rounded-[8px] border-[1px] border-solid border-[#00EFFE]"
+          className="relative grid grid-cols-12 overflow-hidden rounded-[13px]  border-solid border-[#00EFFE]"
           style={{
             height: "auto",
             minHeight: "600px",
+            borderWidth: 1.6,
           }}
         >
           {columns.map((col, colIdx) => (

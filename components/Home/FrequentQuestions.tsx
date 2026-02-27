@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
 type FAQ = {
   id: string;
@@ -19,8 +20,6 @@ function CustomTriangle({ isOpen }: { isOpen: boolean }) {
         isOpen ? "rotate-180 w-5 h-5" : "rotate-0 w-5 h-5"
       }`}
     >
-      {/* Solid Triangle Pointing Down */}
-      {/* Points logic: Top-Left(0,0) -> Top-Right(27,0) -> Bottom-Center(13.5,18) */}
       <path d="M13.5 18L0.5 0L26.5 0L13.5 18Z" />
     </svg>
   );
@@ -36,47 +35,46 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onToggle}
-      className={[
-        "w-full text-left rounded-[8px] bg-[#383838]",
-        "transition-all duration-200",
-        isOpen ? "border border-[#00D0FF]" : "border border-transparent",
-      ].join(" ")}
-      style={{ fontFamily: "Poppins, sans-serif" }}
-    >
-      {/* Outer box: responsive padding */}
-      <div className="w-full px-[24px] py-[24px] sm:px-[37px] sm:py-[33px]">
-        <div className="flex w-full flex-col gap-3">
-          {/* Question row */}
-          <div className="flex items-center justify-between gap-6">
-            <h3 className="font-semibold text-[16px] sm:text-[18px] leading-[1.5] text-white capitalize">
-              {item.q}
-            </h3>
-
-            {/* Icon Container */}
-            <span
-              className="shrink-0 flex items-center justify-center"
-              style={{ color: isOpen ? "#00D0FF" : "#FFFFFF" }}
-            >
-              <CustomTriangle isOpen={isOpen} />
-            </span>
+    <div id={item.id} className="scroll-mt-32">
+      <button
+        type="button"
+        onClick={onToggle}
+        className={[
+          "w-full text-left rounded-[8px] bg-[#383838]",
+          "transition-all duration-200",
+          isOpen ? "border border-[#00D0FF]" : "border border-transparent",
+        ].join(" ")}
+        style={{ fontFamily: "Poppins, sans-serif" }}
+      >
+        <div className="w-full px-[24px] py-[24px] sm:px-[37px] sm:py-[33px]">
+          <div className="flex w-full flex-col gap-3">
+            <div className="flex items-center justify-between gap-6">
+              <h3 className="font-semibold text-[16px] sm:text-[18px] leading-[1.5] text-white capitalize">
+                {item.q}
+              </h3>
+              <span
+                className="shrink-0 flex items-center justify-center"
+                style={{ color: isOpen ? "#00D0FF" : "#FFFFFF" }}
+              >
+                <CustomTriangle isOpen={isOpen} />
+              </span>
+            </div>
+            {isOpen && (
+              <p className="font-normal text-[14px] sm:text-[16px] leading-[1.6] text-[#A1C7D6] capitalize pt-2">
+                {item.a}
+              </p>
+            )}
           </div>
-
-          {/* Answer (only renders when open) */}
-          {isOpen && (
-            <p className="font-normal text-[14px] sm:text-[16px] leading-[1.6] text-[#A1C7D6] capitalize pt-2">
-              {item.a}
-            </p>
-          )}
         </div>
-      </div>
-    </button>
+      </button>
+    </div>
   );
 }
 
 export default function FrequentQuestions() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const faqsLeft: FAQ[] = useMemo(
     () => [
       {
@@ -131,8 +129,24 @@ export default function FrequentQuestions() {
 
   const [openId, setOpenId] = useState<string | null>("l-1");
 
+  useEffect(() => {
+    const checkHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const allFaqs = [...faqsLeft, ...faqsRight];
+        if (allFaqs.some((f) => f.id === hash)) {
+          setOpenId(hash);
+        }
+      }
+    };
+
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+  }, [pathname, searchParams, faqsLeft, faqsRight]); // Re-run when navigation occurs
+
   return (
-    <section className="w-full bg-black">
+    <section id="faqs" className="w-full bg-black scroll-mt-20">
       <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-8 py-16">
         <div className="flex flex-col items-center gap-[50px]">
           <div className="w-full flex items-center justify-center">
@@ -145,7 +159,6 @@ export default function FrequentQuestions() {
           </div>
 
           <div className="w-full max-w-[1300px] flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-10">
-            {/* LEFT COLUMN */}
             <div className="w-full lg:flex-1 flex flex-col gap-[24px]">
               {faqsLeft.map((item) => (
                 <FAQItem
@@ -159,7 +172,6 @@ export default function FrequentQuestions() {
               ))}
             </div>
 
-            {/* RIGHT COLUMN */}
             <div className="w-full lg:flex-1 flex flex-col gap-[24px]">
               {faqsRight.map((item) => (
                 <FAQItem

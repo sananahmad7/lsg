@@ -52,19 +52,16 @@ export default function HomeHero() {
     if (offset > 2) offset -= length;
 
     const baseClasses =
-      "absolute transition-all duration-500 ease-in-out top-1/2 -translate-y-1/2 -translate-x-1/2 shadow-2xl";
+      "absolute transition-all duration-500 ease-in-out top-1/2 -translate-y-1/2 -translate-x-1/2";
 
     // --- CENTER CARD ---
     if (offset === 0) {
       return {
         className: `${baseClasses} z-30 opacity-100 left-1/2 
           w-[160px] h-[274px] 
-          sm:w-[220px] sm:h-[376px] rounded-xl
+          sm:w-[220px] sm:h-[376px] 
           lg:w-[266px] lg:h-[446px]`,
-        style: {
-          boxShadow:
-            "0px 0px 31px 0px #00D5FFD9, 0px 0px 52.3px 3px #00D5FF80, 0px 0px 4.8px 0px #00D5FFA6, 0px 0px 1px 0px #00D5FF05",
-        },
+        isCenter: true,
       };
     }
 
@@ -81,7 +78,7 @@ export default function HomeHero() {
           sm:w-[190px] sm:h-[320px] 
           lg:w-[229px] lg:h-[390px] 
           ${leftClass}`,
-        style: {},
+        isCenter: false,
       };
     }
 
@@ -98,11 +95,11 @@ export default function HomeHero() {
           opacity-0 lg:opacity-100 
           pointer-events-none lg:pointer-events-auto 
           left-1/2 ${leftClass}`,
-        style: {},
+        isCenter: false,
       };
     }
 
-    return { className: "hidden", style: {} };
+    return { className: "hidden", isCenter: false };
   };
 
   return (
@@ -166,22 +163,27 @@ export default function HomeHero() {
             className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
             aria-label="Previous card"
           >
-            <Image
-              src="/left.png"
-              alt="Previous"
-              width={30}
-              height={30}
-              className=""
-            />
+            <Image src="/left.png" alt="Previous" width={30} height={30} />
           </button>
 
           {/* Cards Container */}
           <div className="relative w-full max-w-[340px] sm:max-w-[550px] lg:max-w-[1080px] h-[300px] sm:h-[380px] lg:h-[455px] flex items-center justify-center touch-pan-y mx-[-10px]">
             {images.map((src, index) => {
-              const { className, style } = getCardProps(index);
+              const { className, isCenter } = getCardProps(index);
               return (
-                <div key={index} className={className} style={style}>
-                  <div className="relative w-full h-full">
+                <div key={index} className={className}>
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {/* Shadow Layer - Only rendered behind center card */}
+                    {isCenter && (
+                      <div
+                        className="absolute inset-[3%] mx-auto rounded-[10px] sm:rounded-[14px] lg:rounded-[18px] w-full max-w-[72%] sm:max-w-[85%] lg:max-w-[93%]"
+                        style={{
+                          boxShadow:
+                            "0px 0px 31px 0px #00D5FFD9, 0px 0px 52.3px 3px #00D5FF80, 0px 0px 4.8px 0px #00D5FFA6, 0px 0px 1px 0px #00D5FF05",
+                          zIndex: -1,
+                        }}
+                      />
+                    )}
                     <Image
                       src={src}
                       alt={`Hero card ${index + 1}`}
@@ -202,13 +204,7 @@ export default function HomeHero() {
             className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
             aria-label="Next card"
           >
-            <Image
-              src="/right.png"
-              alt="Next"
-              width={30}
-              height={30}
-              className=""
-            />
+            <Image src="/right.png" alt="Next" width={30} height={30} />
           </button>
         </div>
       </div>

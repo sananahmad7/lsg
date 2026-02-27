@@ -35,12 +35,9 @@ function Col({ title, links }: { title: string; links: LinkItem[] }) {
 export default function Footer() {
   return (
     <footer className="w-full bg-black">
-      {/* Footer: 1440 x 446, gap 75, padding 75/100/37.5/100 */}
       <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-[100px] pt-[75px] pb-[37.5px]">
         <div className="flex flex-col gap-[75px]">
-          {/* Inner content container: 1240 x 219.5, space-between */}
           <div className="mx-auto w-full max-w-[1240px] flex flex-col gap-10 lg:flex-row lg:justify-between">
-            {/* Logo */}
             <div className="flex flex-col gap-4">
               <div className="relative h-[45px] w-[170px]">
                 <Image
@@ -53,7 +50,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Columns (match screenshot) */}
             <Col
               title="Navigation"
               links={[
@@ -70,40 +66,57 @@ export default function Footer() {
               title="Privacy Policy"
               links={[
                 { label: "Privacy Policy", href: "/privacy-policy" },
-                { label: "Data Usage", href: "/data-usage" },
-                { label: "Cookie Settings", href: "/cookie-settings" },
-                { label: "User Rights", href: "/user-rights" },
+                {
+                  label: "Data Usage",
+                  href: "/privacy-policy#data-storage-security",
+                },
+                {
+                  label: "Cookie Settings",
+                  href: "/privacy-policy#cookies-tracking",
+                },
+                { label: "User Rights", href: "/privacy-policy#your-rights" },
               ]}
             />
 
             <Col
               title="Terms & Service"
               links={[
-                { label: "Terms of Use", href: "/terms-and-conditions" },
-                { label: "Grading Disclaimer", href: "/grading-disclaimer" },
-                { label: "Site Access Terms", href: "/site-access-terms" },
-                { label: "Legal Notice", href: "/legal-notice" },
+                {
+                  label: "Terms of Use",
+                  href: "/terms-and-conditions#acceptance",
+                },
+                {
+                  label: "Grading Disclaimer",
+                  href: "/terms-and-conditions#disclaimer",
+                },
+                {
+                  label: "Site Access Terms",
+                  href: "/terms-and-conditions#services",
+                },
+                {
+                  label: "Legal Notice",
+                  href: "/terms-and-conditions#intellectual-property",
+                },
               ]}
             />
 
             <Col
               title="Support & FAQ"
               links={[
-                { label: "Can I send in my own cards?", href: "/#faqs" },
-                { label: "How do I verify a slab?", href: "/verify-slab" },
+                { label: "Can I send in my own cards?", href: "/#r-1" },
+                { label: "How do I verify a slab?", href: "/#r-4" },
                 {
                   label: "What grading scale is used?",
-                  href: "/grading-process",
+                  href: "/#r-2",
                 },
                 {
                   label: "What types of cards do you grade?",
-                  href: "/services",
+                  href: "/#l-2",
                 },
                 { label: "Need help? Contact Us", href: "/contact" },
               ]}
             />
 
-            {/* Connect With Us */}
             <div className="flex flex-col gap-3">
               <h4
                 className="text-white font-semibold text-[15px] leading-[150%]"
@@ -111,18 +124,10 @@ export default function Footer() {
               >
                 Connect With Us
               </h4>
-
               <Link
                 href="https://instagram.com"
                 target="_blank"
-                className="
-                  h-[40px] w-[40px]
-                  rounded-[8px]
-                  border border-white/15
-                  bg-[#2F2F2F]
-                  flex items-center justify-center
-                  hover:border-[#00D0FF] transition-colors
-                "
+                className="h-[40px] w-[40px] rounded-[8px] border border-white/15 bg-[#2F2F2F] flex items-center justify-center hover:border-[#00D0FF] transition-colors"
                 aria-label="Instagram"
               >
                 <FaInstagram size={18} className="text-white" />
@@ -130,20 +135,16 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Bottom bar */}
           <div className="mx-auto w-full max-w-[1240px]">
             <div className="border-t border-white/20" />
-
             <div className="pt-6 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-center relative w-full">
-              {/* Copyright text: Centered by the parent's lg:justify-center */}
               <p
                 className="text-white/70 text-[13px] leading-[32px] text-center"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 © 2025 LSG Grading. All Rights Reserved.
               </p>
-
-              <div className="  flex items-center justify-center gap-2 text-[13px]">
+              <div className="flex items-center justify-center gap-2 text-[13px]">
                 <Link
                   href="/privacy-policy"
                   className="text-[#00D0FF] hover:text-[#00D0FF]/80 transition-colors whitespace-nowrap"

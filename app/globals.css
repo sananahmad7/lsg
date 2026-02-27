@@ -14,11 +14,13 @@
   --font-inter: var(--font-Inter);
   --font-sora: var(--font-sora);
 
-  /* --- ADD BREAKPOINTS HERE --- */
-  --breakpoint-xs: 475px;   /* Adds a new extra-small breakpoint */
-  --breakpoint-3xl: 1600px; /* Adds a new extra-large breakpoint */
-  /* You can also overwrite existing ones if needed */
-  /* --breakpoint-md: 800px; */ 
+ --breakpoint-xs: 475px; 
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1660px; /* Now this will correctly override 2xl */
 }
 
 body {

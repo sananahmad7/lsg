@@ -1,22 +1,59 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { getCollectionSlabs } from "@/app/actions/slabActions";
 
-// Data for the 4 cards
-const collectionItems = [
-  { id: 1, image: "/Hero1.png", name: "Disney Lorcana" },
-  { id: 2, image: "/Hero2.png", name: "Pokémon" },
-  { id: 3, image: "/Hero3.png", name: "Pokémon" },
-  { id: 4, image: "/Hero4.png", name: "Yu-Gi-Oh!" },
-];
+interface CollectionSlab {
+  certificationNumber: string;
+  imageUrl: string | null;
+  name: string;
+}
 
 export default function ExploreCollection() {
+  const [slabs, setSlabs] = useState<CollectionSlab[]>([]);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await getCollectionSlabs();
+      setSlabs(data as CollectionSlab[]);
+      setLoading(false);
+    }
+    loadData();
+  }, []);
+
+  const handleViewDetails = async (certNumber: string) => {
+    try {
+      // Fetch full details for the specific card
+      const response = await fetch(
+        `/api/getSlab?certificationNumber=${certNumber}`,
+      );
+      const data = await response.json();
+
+      if (response.ok) {
+        // Match your VerificationResultPage's expectation
+        sessionStorage.setItem("lastVerificationResult", JSON.stringify(data));
+        router.push("/verify-slab/result");
+      }
+    } catch (error) {
+      console.error("Error fetching card details:", error);
+    }
+  };
+
+  if (loading)
+    return (
+      <div className="w-full h-96 bg-black flex items-center justify-center text-[#00EFFE]">
+        Loading Collection...
+      </div>
+    );
+
   return (
     <section className="w-full bg-black py-20">
       <div className="mx-auto w-full max-w-[1320px] px-6 xl:px-0">
         <div className="flex flex-col items-center gap-[50px]">
-          {/* --- Section Header (Kept Same) --- */}
           <div className="w-full max-w-[708px] flex items-center justify-center">
             <h2
               className="text-center font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[133%] tracking-[1px]"
@@ -26,14 +63,11 @@ export default function ExploreCollection() {
             </h2>
           </div>
 
-          {/* --- Cards Grid --- */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center">
-            {collectionItems.map((item) => (
-              // 1. OUTER CARD FIGMA
-              // W: 308, H: 628, Radius: 20.91, Padding: 12px (Y) 9px (X)
+            {slabs.map((item) => (
               <div
-                key={item.id}
-                className="bg-[#303030]  flex flex-col items-center box-border"
+                key={item.certificationNumber}
+                className="bg-[#303030] flex flex-col items-center box-border"
                 style={{
                   width: "308px",
                   height: "628px",
@@ -45,8 +79,6 @@ export default function ExploreCollection() {
                   gap: "12px",
                 }}
               >
-                {/* 2. INNER DIV (Content Wrapper) */}
-                {/* W: 290, H: 601, Gap: 10 */}
                 <div
                   className="flex flex-col items-center"
                   style={{
@@ -56,25 +88,19 @@ export default function ExploreCollection() {
                     paddingBottom: "10px",
                   }}
                 >
-                  {/* 3. LOGO (Top) */}
-                  {/* W: 128, H: 45 */}
                   <div
                     className="relative flex-shrink-0"
                     style={{ width: "128px", height: "45px" }}
                   >
-                    {/* Placeholder for logo - center aligned */}
-                    <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs">
-                      <Image
-                        src="/logo.png"
-                        alt="Logo"
-                        width={128}
-                        height={45}
-                      />
-                    </div>
+                    <Image
+                      src="/logo.png"
+                      alt="Logo"
+                      width={128}
+                      height={45}
+                      className="object-contain"
+                    />
                   </div>
 
-                  {/* 4. IMAGE + INFO CONTAINER (Below Logo) */}
-                  {/* W: 290, H: 542, Gap: 13 */}
                   <div
                     className="flex flex-col items-center"
                     style={{
@@ -83,14 +109,12 @@ export default function ExploreCollection() {
                       gap: "13px",
                     }}
                   >
-                    {/* 5. CARD IMAGE */}
-                    {/* W: 290, H: 490 */}
                     <div
-                      className="relative overflow-hidden rounded-[12px]"
+                      className="relative overflow-hidden rounded-[12px] bg-black/20"
                       style={{ width: "290px", height: "490px" }}
                     >
                       <Image
-                        src={item.image}
+                        src={item.imageUrl || "/placeholder.png"}
                         alt={item.name}
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-300"
@@ -98,8 +122,6 @@ export default function ExploreCollection() {
                       />
                     </div>
 
-                    {/* 6. FOOTER PARENT (Name + Button) */}
-                    {/* W: 270, H: 39, Justify: Space-Between */}
                     <div
                       className="flex items-center justify-between"
                       style={{
@@ -107,7 +129,6 @@ export default function ExploreCollection() {
                         height: "39px",
                       }}
                     >
-                      {/* Name Text */}
                       <span
                         className="text-white flex items-center"
                         style={{
@@ -119,19 +140,19 @@ export default function ExploreCollection() {
                           letterSpacing: "1.16px",
                         }}
                       >
-                        {item.name}
+                        {item.name.split(" ")[0]}{" "}
+                        {/* Display first word to keep layout clean */}
                       </span>
 
-                      {/* View Detail Button */}
-                      {/* ... inside collectionItems.map ... */}
-                      <Link
-                        href={`/grading-scale?img=${encodeURIComponent(item.image)}`}
-                        className="bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] shadow-[0px_13.71px_30.86px_0px_#008CFF40] text-black hover:bg-[#00D0FF]/90 hover:scale-101 transition-colors flex items-center justify-center"
+                      <button
+                        onClick={() =>
+                          handleViewDetails(item.certificationNumber)
+                        }
+                        className="bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] shadow-[0px_13.71px_30.86px_0px_#008CFF40] text-black hover:brightness-110 hover:scale-101 transition-all flex items-center justify-center cursor-pointer"
                         style={{
                           width: "113px",
                           height: "39px",
                           borderRadius: "10.29px",
-
                           padding: "9.43px 21.43px",
                           gap: "2.57px",
                         }}
@@ -148,7 +169,7 @@ export default function ExploreCollection() {
                         >
                           View Details
                         </span>
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

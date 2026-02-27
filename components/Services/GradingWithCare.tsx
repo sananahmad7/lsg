@@ -95,7 +95,7 @@ export default function GradingWithCare() {
 
               <motion.div variants={itemVariants} className="w-full lg:w-auto">
                 <Link
-                  href="/services"
+                  href="/grading-process"
                   className="inline-flex w-full sm:w-[237px] hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-all active:scale-95 rounded-[12px] border border-[#00EEFE]"
                   style={{
                     height: "60px",
