@@ -6,7 +6,7 @@ import HomeHeroBackground from "@/components/Home/Hero";
 import LSGInsider from "@/components/Home/LSGInsider";
 import VerifyYourSlab from "@/components/Home/VerifyYourSlab";
 import WhyLSG from "@/components/Home/WhyLSG";
-import Image from "next/image";
+import { Suspense } from "react"; // Import Suspense
 
 export default function Home() {
   return (
@@ -16,7 +16,12 @@ export default function Home() {
       <VerifyYourSlab />
       <OurGradingProcess />
       <ExploreCollection />
-      <FrequentQuestions />
+
+      {/* Wrap FrequentQuestions in Suspense to fix build error */}
+      <Suspense fallback={<div className="bg-black h-96" />}>
+        <FrequentQuestions />
+      </Suspense>
+
       <LSGInsider />
       <GetInTouchWithUs />
     </div>
