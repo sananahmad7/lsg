@@ -36,35 +36,31 @@ export default function GradingWithCare() {
   };
 
   return (
-    <section className="w-full bg-black py-10">
+    <section className="w-full bg-black py-6 lg:py-10">
       <div className="mx-auto w-full px-4 lg:px-0">
         <div
           className="w-full relative overflow-hidden flex items-center justify-center rounded-[12px] border border-white/10"
           style={{
             background:
               "linear-gradient(180deg, rgba(255, 255, 255, 0.084) 0%, rgba(217, 217, 217, 0.042) 100%)",
-            paddingTop: "75px",
-            paddingBottom: "75px",
           }}
         >
           <motion.div
-            className="w-full max-w-[1179.52px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[40px] px-6 lg:px-0"
+            className="w-full max-w-[1179.52px] flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 lg:gap-[40px] px-6 py-12 lg:px-0 lg:py-[75px]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
-            {/* Increased width from 715px to 850px to fit heading in one line */}
-            <div className="w-full lg:w-[850px]  flex flex-col my-auto gap-10">
+            <div className="w-full lg:w-[850px] flex flex-col my-auto gap-6 lg:gap-10">
               <motion.div variants={itemVariants}>
                 <h2
-                  className="font-semibold text-[#00EEFE] leading-[110%] -tracking-[0.01em]"
+                  className="font-semibold text-[#00EEFE] leading-[110%] -tracking-[0.01em] text-center lg:text-left"
                   style={{
                     fontFamily: "Poppins, sans-serif",
-                    fontSize: "44px",
                   }}
                 >
-                  <span className="block text-[28px] sm:text-[36px] lg:text-[44px] whitespace-pre-wrap">
+                  <span className="block text-[24px] xs:text-[28px] sm:text-[36px] lg:text-[44px] whitespace-pre-wrap">
                     Grading With Care & Protection
                   </span>
                 </h2>
@@ -75,13 +71,12 @@ export default function GradingWithCare() {
                 variants={itemVariants}
               >
                 <p
-                  className="text-[#A1C7D6] font-medium leading-[140%] -tracking-[0.01em]"
+                  className="text-[#A1C7D6] font-medium leading-[140%] -tracking-[0.01em] text-center lg:text-left"
                   style={{
                     fontFamily: "Poppins, sans-serif",
-                    fontSize: "22px",
                   }}
                 >
-                  <span className="block text-[16px] sm:text-[18px] lg:text-[22px]">
+                  <span className="block text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px]">
                     At LSG, we grade cards using our own scale, and we only work
                     with cards from our own collection. Every slab is sealed and
                     secured for long-term preservation, with attention to
@@ -93,16 +88,18 @@ export default function GradingWithCare() {
                 </p>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="w-full lg:w-auto">
+              <motion.div
+                variants={itemVariants}
+                className="w-full lg:w-auto flex justify-center lg:justify-start"
+              >
                 <Link
                   href="/grading-process"
-                  className="inline-flex w-full sm:w-[237px] hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-all active:scale-95 rounded-[12px] border border-[#00EEFE]"
+                  className="inline-flex w-full xs:w-[200px] sm:w-[237px] hover:scale-[1.01] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] items-center justify-center transition-all active:scale-95 rounded-[10px] lg:rounded-[12px] border border-[#00EEFE] h-[50px] lg:h-[60px]"
                   style={{
-                    height: "60px",
                     padding: "11px 25px",
                   }}
                 >
-                  <span className="font-sora font-bold text-[16px] leading-[151%] text-black text-center">
+                  <span className="font-sora font-bold text-[15px] lg:text-[16px] leading-[151%] text-black text-center">
                     Learn More
                   </span>
                 </Link>
@@ -110,7 +107,7 @@ export default function GradingWithCare() {
             </div>
 
             <motion.div className="relative shrink-0" variants={imageVariants}>
-              <div className="relative w-[280px] sm:w-[360px] lg:w-[433.7px] h-[300px] sm:h-[390px] lg:h-[468.8px]">
+              <div className="relative w-[240px] xs:w-[280px] sm:w-[360px] lg:w-[433.7px] h-[260px] xs:h-[300px] sm:h-[390px] lg:h-[468.8px]">
                 <Image
                   src="/pika.png"
                   alt="Pokemon Cards Collage"

@@ -66,20 +66,20 @@ export default function VerifyYourSlab() {
   };
 
   return (
-    <section className="w-full bg-black py-14 px-4 xl:px-0 overflow-hidden">
+    <section className="w-full bg-black py-10 lg:py-14 px-4 xl:px-0 overflow-hidden">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
-        className="mx-auto w-full max-w-[1240px] rounded-[12px] border border-white/10 px-4 py-[25px] lg:px-[70px] bg-[#171717]"
+        className="mx-auto w-full max-w-[1240px] rounded-[12px] border border-white/10 px-4 py-[20px] lg:px-[70px] lg:py-[25px] bg-[#171717]"
       >
-        <div className="w-full rounded-[12px] flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between px-4 py-6 lg:px-0 lg:py-0">
+        <div className="w-full rounded-[12px] flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between px-2 py-4 lg:px-0 lg:py-0">
           <motion.div
             variants={leftSlide}
             className="w-full lg:w-[578.6654663085938px]"
           >
-            <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[465.9911804199219px]">
+            <div className="relative w-full h-[180px] xs:h-[220px] sm:h-[340px] lg:h-[465.9911804199219px]">
               <Image
                 src="/cards.png"
                 alt="Graded cards"
@@ -96,23 +96,24 @@ export default function VerifyYourSlab() {
             className="w-full lg:w-[578.6654663085938px] flex flex-col justify-center px-0 lg:pr-6"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            <h2 className="text-center lg:text-left font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[140%] text-[#00EFFE]">
+            <h2 className="text-center lg:text-left font-semibold text-[24px] xs:text-[28px] sm:text-[36px] lg:text-[44px] leading-[130%] lg:leading-[140%] text-[#00EFFE]">
               Verify Your Slab
             </h2>
-            <p className="mt-4 text-center lg:text-left font-normal text-[16px] sm:text-[18px] lg:text-[22px] leading-[160%] text-[#A1C7D6]">
+            <p className="mt-3 lg:mt-4 text-center lg:text-left font-normal text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px] leading-[150%] lg:leading-[160%] text-[#A1C7D6]">
               Quickly confirm the authenticity of your graded card...
             </p>
 
-            <div className="mt-6 flex w-full flex-col sm:flex-row gap-3 sm:gap-0">
+            {/* JOINED INPUT AND BUTTON */}
+            <div className="mt-5 lg:mt-6 flex w-full flex-row">
               <input
                 value={serial}
                 onChange={(e) => setSerial(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && onVerify()}
                 placeholder="Enter Slab Serial Number"
-                className="h-[61px] w-full rounded-[13px] sm:rounded-r-none border border-[#00D0FF] bg-[#242424] px-4 text-white placeholder:text-white/40 outline-none focus:ring-1 focus:ring-[#00D0FF] transition-all"
+                className="h-[50px] lg:h-[61px] w-full rounded-l-[10px] lg:rounded-l-[13px] border border-[#00D0FF] bg-[#242424] px-4 text-white placeholder:text-white/40 outline-none focus:ring-1 focus:ring-[#00D0FF] transition-all"
                 style={{
                   fontFamily: "Poppins, sans-serif",
-                  fontSize: 16,
+                  fontSize: 15,
                   lineHeight: "151%",
                 }}
               />
@@ -120,13 +121,17 @@ export default function VerifyYourSlab() {
                 type="button"
                 onClick={onVerify}
                 disabled={loading}
-                className="h-[61px] w-full sm:w-[179px] rounded-[12px] cursor-pointer sm:rounded-l-none border px-[25px] py-[11px] font-bold font-poppins transition-all hover:brightness-110 active:scale-95 bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] disabled:opacity-50"
+                className="h-[50px] lg:h-[61px] w-[120px] sm:w-[179px] rounded-r-[10px] lg:rounded-r-[12px] cursor-pointer border-t border-b border-r px-[10px] lg:px-[25px] py-[10px] lg:py-[11px] font-bold font-poppins transition-all hover:brightness-110 active:scale-95 bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] disabled:opacity-50 flex-shrink-0"
                 style={{ borderColor: "#00D0FF", color: "#062126" }}
               >
-                {loading ? "Checking..." : "Verify Now"}
+                {loading ? "..." : "Verify Now"}
               </button>
             </div>
-            {error && <p className="mt-2 text-red-400 text-sm">{error}</p>}
+            {error && (
+              <p className="mt-2 text-red-400 text-sm text-center lg:text-left">
+                {error}
+              </p>
+            )}
           </motion.div>
         </div>
       </motion.div>

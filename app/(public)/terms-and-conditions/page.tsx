@@ -92,7 +92,7 @@ export default function TermsAndConditions() {
   const router = useRouter();
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-hidden flex justify-center py-20 px-4">
+    <div className="relative w-full min-h-screen bg-black overflow-hidden flex justify-center py-12 md:py-16 lg:py-20 px-4">
       <div className="absolute top-0 left-0 right-0 h-[1000px] z-0 pointer-events-none">
         <Image
           src="/home1.webp"
@@ -104,38 +104,41 @@ export default function TermsAndConditions() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1300px] flex flex-col gap-[30px]">
+      <div className="relative z-10 w-full max-w-[1300px] flex flex-col gap-6 md:gap-8 lg:gap-[30px]">
+        {/* Responsive Heading: 24px (mobile) -> 34px (tablet) -> 44px (desktop) */}
         <h1
-          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[150%] text-[#00EFFE]"
+          className="text-center font-bold text-[24px] xs:text-[28px] md:text-[34px] lg:text-[44px] leading-tight lg:leading-[150%] text-[#00EFFE]"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           Terms and Conditions
         </h1>
 
-        <div className="flex flex-col gap-[30px]">
+        <div className="flex flex-col gap-6 md:gap-8 lg:gap-[30px]">
           {termsContent.map((item, index) => (
             <div
               key={index}
               id={item.id}
-              className="flex flex-col gap-[20px] w-full max-w-[1300px] mx-auto scroll-mt-24"
+              className="flex flex-col gap-3 md:gap-4 lg:gap-[20px] w-full max-w-[1300px] mx-auto scroll-mt-24"
             >
+              {/* Section Header: 17px (mobile) -> 18.5px (tablet) -> 20px (desktop) */}
               <h2
-                className="font-semibold text-[18px] lg:text-[20px] leading-[32px] tracking-[-0.02em] capitalize text-[#00EFFE]"
+                className="font-semibold text-[17px] md:text-[18.5px] lg:text-[20px] leading-snug lg:leading-[32px] tracking-[-0.02em] capitalize text-[#00EFFE]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {item.title}
               </h2>
 
+              {/* Body Content: 14px (mobile) -> 16px (tablet) -> 18px (desktop) */}
               <div
-                className="font-medium text-[16px] lg:text-[18px] leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
+                className="font-medium text-[14px] md:text-[16px] lg:text-[18px] leading-relaxed md:leading-normal lg:leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 <p>{item.content}</p>
 
                 {item.bullets && (
-                  <ul className="list-disc pl-5 mt-2 flex flex-col gap-1">
+                  <ul className="list-disc pl-5 mt-2 flex flex-col gap-1.5 md:gap-2">
                     {item.bullets.map((bullet, bIndex) => (
-                      <li key={bIndex} className="pl-2">
+                      <li key={bIndex} className="pl-1 lg:pl-2">
                         {bullet}
                       </li>
                     ))}
@@ -148,9 +151,9 @@ export default function TermsAndConditions() {
           ))}
         </div>
 
-        <div className="w-full max-w-[1300px] mx-auto mt-10 flex flex-col items-start gap-8">
+        <div className="w-full max-w-[1300px] mx-auto mt-6 md:mt-8 lg:mt-10 flex flex-col items-start gap-6 md:gap-7 lg:gap-8">
           <p
-            className="text-white font-medium text-[18px] leading-[140%]"
+            className="text-white font-medium text-[15px] md:text-[16.5px] lg:text-[18px] leading-[140%]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Last updated: April 2025
@@ -160,14 +163,14 @@ export default function TermsAndConditions() {
             type="button"
             onClick={() => router.back()}
             className="
-          inline-flex items-center justify-center
-          w-[190px] h-[50px]
-          rounded-[8px]
-          bg-[#00EFFE] text-black
-          font-bold text-[16px]
-          transition-transform hover:scale-[1.02] active:scale-[0.98]
-          cursor-pointer
-        "
+              inline-flex items-center justify-center
+              w-[160px] md:w-[175px] lg:w-[190px] h-[45px] md:h-[48px] lg:h-[50px]
+              rounded-[8px]
+              bg-[#00EFFE] text-black
+              font-bold text-[15px] lg:text-[16px]
+              transition-transform hover:scale-[1.02] active:scale-[0.98]
+              cursor-pointer
+            "
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Back

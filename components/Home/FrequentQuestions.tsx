@@ -17,7 +17,9 @@ function CustomTriangle({ isOpen }: { isOpen: boolean }) {
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       className={`transition-transform cursor-pointer duration-300 ease-in-out ${
-        isOpen ? "rotate-180 w-5 h-5" : "rotate-0 w-5 h-5"
+        isOpen
+          ? "rotate-180 w-4 h-4 sm:w-5 sm:h-5"
+          : "rotate-0 w-4 h-4 sm:w-5 sm:h-5"
       }`}
     >
       <path d="M13.5 18L0.5 0L26.5 0L13.5 18Z" />
@@ -46,12 +48,15 @@ function FAQItem({
         ].join(" ")}
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
-        <div className="w-full px-[24px] py-[24px] sm:px-[37px] sm:py-[33px]">
-          <div className="flex w-full flex-col gap-3">
-            <div className="flex items-center justify-between gap-6">
-              <h3 className="font-semibold text-[16px] sm:text-[18px] leading-[1.5] text-white capitalize">
+        {/* Adjusted padding: smaller on mobile (px-5 py-5), original on desktop (sm:px-[37px] sm:py-[33px]) */}
+        <div className="w-full px-5 py-5 sm:px-[37px] sm:py-[33px]">
+          <div className="flex w-full flex-col gap-2 sm:gap-3">
+            <div className="flex items-center justify-between gap-4 sm:gap-6">
+              {/* Scaled text: 15px on mobile, 18px on desktop */}
+              <h3 className="font-semibold text-[15px] sm:text-[18px] leading-[1.4] sm:leading-[1.5] text-white capitalize">
                 {item.q}
               </h3>
+
               <span
                 className="shrink-0 flex items-center justify-center"
                 style={{ color: isOpen ? "#00D0FF" : "#FFFFFF" }}
@@ -59,8 +64,9 @@ function FAQItem({
                 <CustomTriangle isOpen={isOpen} />
               </span>
             </div>
+
             {isOpen && (
-              <p className="font-normal text-[14px] sm:text-[16px] leading-[1.6] text-[#A1C7D6] capitalize pt-2">
+              <p className="font-normal text-[13px] sm:text-[16px] leading-[1.5] sm:leading-[1.6] text-[#A1C7D6] capitalize pt-1 sm:pt-2">
                 {item.a}
               </p>
             )}
@@ -143,23 +149,25 @@ export default function FrequentQuestions() {
     checkHash();
     window.addEventListener("hashchange", checkHash);
     return () => window.removeEventListener("hashchange", checkHash);
-  }, [pathname, searchParams, faqsLeft, faqsRight]); // Re-run when navigation occurs
+  }, [pathname, searchParams, faqsLeft, faqsRight]);
 
   return (
     <section id="faqs" className="w-full bg-black scroll-mt-20">
-      <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-8 py-16">
-        <div className="flex flex-col items-center gap-[50px]">
+      {/* Reduced py on mobile (py-10) to decrease scrolling effort */}
+      <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-8 py-10 sm:py-16">
+        <div className="flex flex-col items-center gap-[30px] sm:gap-[50px]">
           <div className="w-full flex items-center justify-center">
             <h2
-              className="text-center font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[140%] text-[#00EFFE]"
+              className="text-center font-semibold text-[24px] sm:text-[36px] lg:text-[44px] leading-[1.2] sm:leading-[140%] text-[#00EFFE]"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div className="w-full max-w-[1300px] flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-10">
-            <div className="w-full lg:flex-1 flex flex-col gap-[24px]">
+          <div className="w-full max-w-[1300px] flex flex-col lg:flex-row lg:justify-between gap-4 lg:gap-10">
+            {/* Reduced vertical gap between items on mobile (gap-4) */}
+            <div className="w-full lg:flex-1 flex flex-col gap-4 sm:gap-[24px]">
               {faqsLeft.map((item) => (
                 <FAQItem
                   key={item.id}
@@ -172,7 +180,7 @@ export default function FrequentQuestions() {
               ))}
             </div>
 
-            <div className="w-full lg:flex-1 flex flex-col gap-[24px]">
+            <div className="w-full lg:flex-1 flex flex-col gap-4 sm:gap-[24px]">
               {faqsRight.map((item) => (
                 <FAQItem
                   key={item.id}

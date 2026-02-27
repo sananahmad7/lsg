@@ -40,19 +40,19 @@ function FeatureCard({
       viewport={{ once: true, margin: "-50px" }}
       variants={cardVariants}
       className={[
-        "rounded-[12px] bg-[#3A3A3A] px-[15px] py-[35px]",
-        "flex flex-col gap-[10px]",
+        "rounded-[12px] bg-[#3A3A3A] px-[15px] py-[25px] lg:py-[35px]", // Reduced vertical padding on mobile
+        "flex flex-col gap-[8px] lg:gap-[10px]",
         className ?? "",
       ].join(" ")}
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      <div className="relative w-[40px] h-[40px]">
+      <div className="relative w-[32px] h-[32px] lg:w-[40px] lg:h-[40px]">
         <Image src={imageSrc} alt={title} fill className="object-contain" />
       </div>
-      <h3 className="font-semibold text-[24px] leading-[140%] tracking-[-0.18px] text-[#FFFFFF]">
+      <h3 className="font-semibold text-[18px] lg:text-[24px] leading-[140%] tracking-[-0.18px] text-[#FFFFFF]">
         {title}
       </h3>
-      <p className="font-normal text-[22px] leading-[140%] tracking-[-0.18px] text-[#A1C7D6]">
+      <p className="font-normal text-[15px] lg:text-[22px] leading-[140%] tracking-[-0.18px] text-[#A1C7D6]">
         {description}
       </p>
     </motion.div>
@@ -61,21 +61,21 @@ function FeatureCard({
 
 export default function WhyLSG() {
   return (
-    <section className="w-full bg-black py-16 lg:py-20 overflow-hidden">
+    <section className="w-full bg-black py-12 lg:py-20 overflow-hidden">
       <div className="mx-auto w-full max-w-[1114px] px-4 lg:px-0">
-        <div className="flex flex-col items-center gap-[26px] lg:h-[655px]">
+        <div className="flex flex-col items-center gap-[20px] lg:gap-[26px] lg:h-[655px]">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center font-semibold text-[28px] text-[#00EFFE] sm:text-[36px] lg:text-[44px] leading-[140%]"
+            className="text-center font-semibold text-[24px] text-[#00EFFE] sm:text-[36px] lg:text-[44px] leading-[140%]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Why LSG Grading?
           </motion.h2>
 
-          <div className="w-full flex flex-col gap-[26px]">
+          <div className="w-full flex flex-col gap-[16px] lg:gap-[26px]">
             <div className="w-full lg:h-[290px]">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
                 <FeatureCard

@@ -15,18 +15,9 @@ export default function WhatMakesLSGDifferent() {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
   return (
-    <section className="w-full bg-black py-16 px-4 lg:px-8 overflow-hidden">
-      <div className="mx-auto w-full max-w-[1300px] flex flex-col gap-10 lg:gap-[50px]">
+    <section className="w-full bg-black py-10 lg:py-16 px-4 lg:px-8 overflow-hidden">
+      <div className="mx-auto w-full max-w-[1300px] flex flex-col gap-6 lg:gap-[50px]">
         {/* --- TOP HEADER --- */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -36,7 +27,7 @@ export default function WhatMakesLSGDifferent() {
           className="w-full flex justify-center"
         >
           <h2
-            className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] lg:leading-[60px] tracking-[-0.02em] text-center capitalize"
+            className="text-[#00EFFE] font-semibold text-[26px] xs:text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[60px] tracking-[-0.02em] text-center capitalize"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             What Makes LSG Different?
@@ -49,7 +40,7 @@ export default function WhatMakesLSGDifferent() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-y-[50px] lg:gap-x-[100px]"
+          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-y-[50px] lg:gap-x-[100px]"
         >
           <InfoBox
             title="No Submissions – Only Premium Picks"
@@ -57,7 +48,7 @@ export default function WhatMakesLSGDifferent() {
           />
           <InfoBox
             title="Custom LSG Grading Scale"
-            description="Our Cards Are Graded On Four Criteria — Centering, Surface, Edges, And Corners — Each Scored From 1 To 10, Then Averaged For A Final Grade. These Scores Are Fully Viewable Via Our Online Verification Tool."
+            description="Our Cards Are Graded On Four Criteria — Centering, Surface, Edges, And Corners — Each Scored From 1 To 10, Then Averaged For A Final Grade. Scored fully viewable via our online verification tool."
           />
           <InfoBox
             title="Silver-Textured Slabs"
@@ -75,25 +66,25 @@ export default function WhatMakesLSGDifferent() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="w-full bg-[#0B0B0B] rounded-[16px] border-l-[4px] shadow-[0px_14px_50px_0px_#00697033] border-[#00EFFE] p-6 lg:py-[20px] lg:px-[39px]"
+          className="w-full bg-[#0B0B0B] rounded-[16px] border-l-[4px] shadow-[0px_14px_50px_0px_#00697033] border-[#00EFFE] p-5 lg:py-[20px] lg:px-[39px]"
         >
-          <div className="flex flex-col gap-6 lg:gap-4">
-            <div className="flex flex-col gap-[10px]">
+          <div className="flex flex-col gap-4 lg:gap-4">
+            <div className="flex flex-col gap-[6px] lg:gap-[10px]">
               <h3
-                className="text-[#FFFFFF] font-semibold text-[24px] leading-[1.2] capitalize"
+                className="text-[#FFFFFF] font-semibold text-[20px] lg:text-[24px] leading-[1.2] capitalize"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Verification Made Easy
               </h3>
               <p
-                className="text-[#AAAAAA] font-normal text-[16px] leading-[1.5] capitalize"
+                className="text-[#AAAAAA] font-normal text-[14px] lg:text-[16px] leading-[1.5] capitalize"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Every Slab Includes:
               </p>
             </div>
 
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-8 w-full mt-2">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 w-full">
               <CheckItem text="Serial Number Next To Our Logo" delay={0.4} />
               <CheckItem text="Scannable QR Code On The Back" delay={0.5} />
               <CheckItem
@@ -128,18 +119,18 @@ function InfoBox({
         bg-[#0B0B0B]
         border-l-[4px] border-[#00EFFE]
         rounded-[16px]
-        p-6 lg:py-[20px] lg:px-[39px]
+        p-5 lg:py-[20px] lg:px-[39px]
         flex flex-col justify-center gap-[10px] shadow-[0px_14px_50px_0px_#00697033]
       "
     >
       <h3
-        className="text-[#FFFFFF] font-semibold text-[20px] lg:text-[24px] leading-[1.3] capitalize"
+        className="text-[#FFFFFF] font-semibold text-[18px] lg:text-[24px] leading-[1.3] capitalize"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
         {title}
       </h3>
       <p
-        className="text-[#AAAAAA] font-normal text-[14px] lg:text-[16px] leading-[1.6] capitalize"
+        className="text-[#AAAAAA] font-normal text-[13px] lg:text-[16px] leading-[1.5] lg:leading-[1.6] capitalize"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
         {description}
@@ -155,13 +146,13 @@ function CheckItem({ text, delay }: { text: string; delay: number }) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.5 }}
-      className="flex items-center gap-[8px]"
+      className="flex items-center gap-[10px] lg:gap-[8px]"
     >
-      <div className="flex-shrink-0 flex items-center justify-center w-[24px] h-[24px] rounded-full bg-[#00EFFE]">
-        <FaCheck size={12} color="#000" />
+      <div className="flex-shrink-0 flex items-center justify-center w-[20px] h-[20px] lg:w-[24px] lg:h-[24px] rounded-full bg-[#00EFFE]">
+        <FaCheck size={10} color="#000" className="lg:scale-110" />
       </div>
       <span
-        className="text-white font-normal text-[16px] leading-[1.5] capitalize"
+        className="text-white font-normal text-[14px] lg:text-[16px] leading-[1.4] lg:leading-[1.5] capitalize"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
         {text}

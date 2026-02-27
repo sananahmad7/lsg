@@ -5,22 +5,17 @@ import Link from "next/link";
 
 export default function OurMission() {
   return (
-    <section className="w-full bg-black py-16 px-4 lg:px-8">
-      {/* Main Container:
-        - Max Width: 1180px (Matches Figma)
-        - Centered (mx-auto)
-        - Flex Row on Desktop (lg:flex-row) with 100px gap
-      */}
-      <div className="mx-auto w-full max-w-[1180px] flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-[100px]">
+    <section className="w-full bg-black py-10 lg:py-16 px-4 lg:px-8">
+      {/* Main Container */}
+      <div className="mx-auto w-full max-w-[1180px] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-[100px]">
         {/* =========================================
             LEFT COMPONENT (Text Content)
-            Desktop: 630px width
-           ========================================= */}
-        <div className="w-full lg:w-[630px] flex flex-col items-center lg:items-start gap-[30px] text-center lg:text-left">
+            ========================================= */}
+        <div className="w-full lg:w-[630px] flex flex-col items-center lg:items-start gap-6 lg:gap-[30px] text-center lg:text-left">
           {/* Header */}
           <div className="flex flex-col gap-[12px]">
             <h2
-              className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[60px] tracking-[-0.02em] capitalize"
+              className="text-[#00EFFE] font-semibold text-[24px] xs:text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] lg:leading-[60px] tracking-[-0.02em] capitalize"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Our Mission
@@ -30,7 +25,7 @@ export default function OurMission() {
           {/* Description */}
           <div className="w-full">
             <p
-              className="font-medium text-[16px] sm:text-[18px] lg:text-[22px] leading-[28px] lg:leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
+              className="font-medium text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px] leading-[22px] xs:leading-[28px] lg:leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               At Legacy Slabs Grading, we believe every collectible card
@@ -47,9 +42,9 @@ export default function OurMission() {
             href="/contact"
             className="
               inline-flex items-center justify-center
-              w-full sm:w-[311px] h-[60px]
-              rounded-[12px]
-              text-[#062126] font-bold text-[16px] leading-[151%]
+              w-full xs:w-[260px] sm:w-[311px] h-[50px] lg:h-[60px]
+              rounded-[10px] lg:rounded-[12px]
+              text-[#062126] font-bold text-[14px] lg:text-[16px] leading-[151%]
               transition-transform hover:scale-[1.02] active:scale-[0.98]
               shadow-[0px_16px_36px_0px_#008CFF40]
             "
@@ -65,11 +60,10 @@ export default function OurMission() {
 
         {/* =========================================
             RIGHT ELEMENT (Image)
-            Desktop: 450px width, 766px height
-           ========================================= */}
-        <div className="relative w-full max-w-[450px] aspect-[450/766] lg:h-[766px] flex-shrink-0">
+            ========================================= */}
+        <div className="relative w-full max-w-[280px] xs:max-w-[350px] lg:max-w-[450px] aspect-[450/766] lg:h-[766px] flex-shrink-0">
           <Image
-            src="/Rocket.png" // Ensure this image is in your public folder
+            src="/Rocket.png"
             alt="Rocket's Mission Card Slab"
             fill
             className="object-contain"

@@ -93,7 +93,7 @@ const privacyContent = [
 export default function PrivacyPolicy() {
   const router = useRouter();
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-hidden flex justify-center py-20 px-4">
+    <div className="relative w-full min-h-screen bg-black overflow-hidden flex justify-center py-10 lg:py-20 px-4">
       <div className="absolute top-0 left-0 right-0 h-[1000px] z-0 pointer-events-none">
         <Image
           src="/home1.webp"
@@ -105,30 +105,31 @@ export default function PrivacyPolicy() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1300px] flex flex-col gap-[30px]">
+      <div className="relative z-10 w-full max-w-[1300px] flex flex-col gap-6 lg:gap-[30px]">
+        {/* Responsive Heading: 24px -> 32px -> 44px */}
         <h1
-          className="text-center font-bold text-[32px] sm:text-[40px] lg:text-[44px] leading-[28px] text-[#00EFFE]"
+          className="text-center font-bold text-[24px] xs:text-[32px] sm:text-[40px] lg:text-[44px] leading-tight lg:leading-[28px] text-[#00EFFE]"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           Privacy Policy | Legacy Slabs Grading (LSG)
         </h1>
 
-        <div className="flex flex-col gap-[30px]">
+        <div className="flex flex-col gap-6 lg:gap-[30px]">
           {privacyContent.map((item, index) => (
             <div
               key={index}
-              id={item.id} // Added ID for anchor scrolling
-              className="flex flex-col gap-[20px] w-full max-w-[1300px] mx-auto scroll-mt-24"
+              id={item.id}
+              className="flex flex-col gap-3 lg:gap-[20px] w-full max-w-[1300px] mx-auto scroll-mt-24"
             >
               <h2
-                className="font-semibold text-[18px] lg:text-[20px] leading-[32px] tracking-[-0.02em] capitalize text-[#00EFFE]"
+                className="font-semibold text-[17px] lg:text-[20px] leading-snug lg:leading-[32px] tracking-[-0.02em] capitalize text-[#00EFFE]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {item.title}
               </h2>
 
               <div
-                className="font-medium text-[16px] lg:text-[18px] leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
+                className="font-medium text-[14px] lg:text-[18px] leading-relaxed lg:leading-[32px] tracking-[-0.01em] text-[#A1C7D6]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 <p>{item.content}</p>
@@ -136,7 +137,7 @@ export default function PrivacyPolicy() {
                 {item.bullets && (
                   <ul className="list-disc pl-5 mt-2 flex flex-col gap-1">
                     {item.bullets.map((bullet, bIndex) => (
-                      <li key={bIndex} className="pl-2">
+                      <li key={bIndex} className="pl-1 lg:pl-2">
                         {bullet}
                       </li>
                     ))}
@@ -149,9 +150,9 @@ export default function PrivacyPolicy() {
           ))}
         </div>
 
-        <div className="w-full max-w-[1300px] mx-auto mt-10 flex flex-col items-start gap-8">
+        <div className="w-full max-w-[1300px] mx-auto mt-6 lg:mt-10 flex flex-col items-start gap-6 lg:gap-8">
           <p
-            className="text-white font-medium text-[18px] leading-[140%]"
+            className="text-white font-medium text-[15px] lg:text-[18px] leading-[140%]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Last updated: April 2025
@@ -161,14 +162,14 @@ export default function PrivacyPolicy() {
             type="button"
             onClick={() => router.back()}
             className="
-          inline-flex items-center justify-center
-          w-[190px] h-[50px]
-          rounded-[8px]
-          bg-[#00EFFE] text-black
-          font-bold text-[16px]
-          transition-transform hover:scale-[1.02] active:scale-[0.98]
-          cursor-pointer
-        "
+              inline-flex items-center justify-center
+              w-[160px] h-[45px] lg:w-[190px] lg:h-[50px]
+              rounded-[8px]
+              bg-[#00EFFE] text-black
+              font-bold text-[15px] lg:text-[16px]
+              transition-transform hover:scale-[1.02] active:scale-[0.98]
+              cursor-pointer
+            "
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Back

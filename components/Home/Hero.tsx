@@ -25,7 +25,6 @@ export default function HomeHero() {
     setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // --- TOUCH HANDLERS ---
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -45,7 +44,6 @@ export default function HomeHero() {
     if (isRightSwipe) handlePrev();
   };
 
-  // --- CARD PROPS CALCULATOR ---
   const getCardProps = (index: number) => {
     const length = images.length;
     let offset = (index - activeIndex + length) % length;
@@ -54,27 +52,25 @@ export default function HomeHero() {
     const baseClasses =
       "absolute transition-all duration-500 ease-in-out top-1/2 -translate-y-1/2 -translate-x-1/2";
 
-    // --- CENTER CARD ---
     if (offset === 0) {
       return {
         className: `${baseClasses} z-30 opacity-100 left-1/2 
-          w-[160px] h-[274px] 
+          w-[140px] h-[240px] 
           sm:w-[220px] sm:h-[376px] 
           lg:w-[266px] lg:h-[446px]`,
         isCenter: true,
       };
     }
 
-    // --- INNER NEIGHBORS (Offset ±1) ---
     if (Math.abs(offset) === 1) {
       const isLeft = offset === -1;
       const leftClass = isLeft
-        ? "left-[calc(50%-90px)] sm:left-[calc(50%-140px)] lg:left-[calc(50%-240px)]"
-        : "left-[calc(50%+90px)] sm:left-[calc(50%+140px)] lg:left-[calc(50%+240px)]";
+        ? "left-[calc(50%-75px)] sm:left-[calc(50%-140px)] lg:left-[calc(50%-240px)]"
+        : "left-[calc(50%+75px)] sm:left-[calc(50%+140px)] lg:left-[calc(50%+240px)]";
 
       return {
         className: `${baseClasses} z-20 opacity-60 
-          w-[130px] h-[222px] 
+          w-[110px] h-[190px] 
           sm:w-[190px] sm:h-[320px] 
           lg:w-[229px] lg:h-[390px] 
           ${leftClass}`,
@@ -82,7 +78,6 @@ export default function HomeHero() {
       };
     }
 
-    // --- OUTER NEIGHBORS (Offset ±2) ---
     if (Math.abs(offset) === 2) {
       const isLeft = offset === -2;
       const leftClass = isLeft
@@ -103,8 +98,7 @@ export default function HomeHero() {
   };
 
   return (
-    <section className="relative isolate w-full bg-black box-border min-h-[650px] lg:h-[806px] py-10 lg:py-0 overflow-visible z-20">
-      {/* Background Layer */}
+    <section className="relative isolate w-full bg-black box-border min-h-[550px] lg:h-[806px] py-10 lg:py-0 overflow-visible z-20">
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <Image
           src="/home1.webp"
@@ -117,16 +111,15 @@ export default function HomeHero() {
       </div>
 
       <div className="relative z-10 h-full w-full flex flex-col items-center justify-center lg:justify-between pt-4 sm:pt-10 lg:pt-0">
-        {/* --- TOP CONTENT --- */}
-        <div className="mx-auto w-full max-w-[1235px] px-4 lg:pt-[87px] flex flex-col items-center gap-[20px] sm:gap-[24px]">
+        <div className="mx-auto w-full max-w-[1235px] px-4 lg:pt-[87px] flex flex-col items-center gap-[16px] sm:gap-[24px]">
           <h1
-            className="text-center font-semibold text-[28px] text-[#00EFFE] xs:text-[32px] sm:text-[36px] lg:text-[44px] leading-[110%] sm:leading-[100%]"
+            className="text-center font-semibold text-[24px] text-[#00EFFE] xs:text-[28px] sm:text-[36px] lg:text-[44px] leading-[110%] sm:leading-[100%]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Card Grading You Can Count On
           </h1>
           <p
-            className="max-w-[980px] text-center font-normal text-[14px] xs:text-[16px] sm:text-[18px] lg:text-[22px] leading-[26px] sm:leading-[32px] text-[#A1C7D6]"
+            className="max-w-[980px] text-center font-normal text-[13px] xs:text-[15px] sm:text-[18px] lg:text-[22px] leading-[22px] sm:leading-[32px] text-[#A1C7D6]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             At LSG, we focus on quality, consistency, and presentation, sealing
@@ -134,46 +127,48 @@ export default function HomeHero() {
             for the long run.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-2 sm:mt-4 w-full px-4 sm:px-0">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-2 sm:mt-4 w-full px-4 sm:px-0">
             <Link
               href="/services"
-              className="inline-flex items-center transition-transform hover:scale-[1.02] active:scale-[0.98] justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] text-[16px]"
+              className="inline-flex items-center transition-transform hover:scale-[1.02] active:scale-[0.98] justify-center font-sora font-bold h-[45px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] text-[#062126] text-[15px] sm:text-[16px]"
             >
               View Services
             </Link>
             <Link
               href="/verify-slab"
-              className="inline-flex items-center justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
+              className="inline-flex items-center justify-center font-sora font-bold h-[45px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] text-[15px] sm:text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
             >
               Verify Your Slab
             </Link>
           </div>
         </div>
 
-        {/* --- BOTTOM CAROUSEL SECTION --- */}
         <div
-          className="flex items-center justify-center w-full mt-10 lg:mt-0 px-2 sm:px-4 lg:translate-y-[30px]"
+          className="flex items-center justify-center w-full mt-6 lg:mt-0 px-2 sm:px-4 lg:translate-y-[30px]"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          {/* Left Arrow */}
           <button
             onClick={handlePrev}
             className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
             aria-label="Previous card"
           >
-            <Image src="/left.png" alt="Previous" width={30} height={30} />
+            <Image
+              src="/left.png"
+              alt="Previous"
+              width={25}
+              height={25}
+              className="sm:w-[30px] sm:h-[30px]"
+            />
           </button>
 
-          {/* Cards Container */}
-          <div className="relative w-full max-w-[340px] sm:max-w-[550px] lg:max-w-[1080px] h-[300px] sm:h-[380px] lg:h-[455px] flex items-center justify-center touch-pan-y mx-[-10px]">
+          <div className="relative w-full max-w-[300px] sm:max-w-[550px] lg:max-w-[1080px] h-[260px] sm:h-[380px] lg:h-[455px] flex items-center justify-center touch-pan-y mx-[-10px]">
             {images.map((src, index) => {
               const { className, isCenter } = getCardProps(index);
               return (
                 <div key={index} className={className}>
                   <div className="relative w-full h-full flex items-center justify-center">
-                    {/* Shadow Layer - Only rendered behind center card */}
                     {isCenter && (
                       <div
                         className="absolute inset-[3%] mx-auto rounded-[10px] sm:rounded-[14px] lg:rounded-[18px] w-full max-w-[72%] sm:max-w-[85%] lg:max-w-[93%]"
@@ -189,7 +184,7 @@ export default function HomeHero() {
                       alt={`Hero card ${index + 1}`}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 640px) 160px, (max-width: 1024px) 220px, 300px"
+                      sizes="(max-width: 640px) 140px, (max-width: 1024px) 220px, 300px"
                       priority={index === activeIndex}
                     />
                   </div>
@@ -198,13 +193,18 @@ export default function HomeHero() {
             })}
           </div>
 
-          {/* Right Arrow */}
           <button
             onClick={handleNext}
             className="z-50 p-1 sm:p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer flex-shrink-0"
             aria-label="Next card"
           >
-            <Image src="/right.png" alt="Next" width={30} height={30} />
+            <Image
+              src="/right.png"
+              alt="Next"
+              width={25}
+              height={25}
+              className="sm:w-[30px] sm:h-[30px]"
+            />
           </button>
         </div>
       </div>

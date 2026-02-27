@@ -9,60 +9,60 @@ const steps = [
     title: "Authentication",
     description: "Visual checks to verify originality and release",
     color: "#8A00E6", // Purple
-    position: "top", // Row 1 Top
+    position: "top",
   },
   {
     id: "02",
     title: "Cleaning",
     description: "Light surface dust removal (no tampering)",
     color: "#CB00E6", // Magenta
-    position: "bottom", // Row 1 Bottom (Offset)
+    position: "bottom",
   },
   {
     id: "03",
     title: "Surface Evaluation",
     description: "Scans for damage, print flaws, and dirt",
     color: "#E600D6", // Pink
-    position: "top", // Row 1 Top
+    position: "top",
   },
   {
     id: "04",
     title: "Corners, Edges, Centering",
     description: "Scored individually with subgrades",
     color: "#E60004", // Red
-    position: "bottom", // Row 2 Bottom (Visual flow: 3 -> 4)
+    position: "bottom",
   },
   {
     id: "05",
     title: "Final Grade",
     description: "An averaged result based on all four areas",
     color: "#00E645", // Green
-    position: "top", // Row 2 Top (Visual flow: 4 -> 5)
+    position: "top",
   },
   {
     id: "06",
     title: "Encapsulation",
     description: "Ultrasonically sealed, UV-protected, and tamper-proof slabs",
     color: "#0060E6", // Blue
-    position: "bottom", // Row 2 Bottom (Visual flow: 5 -> 6)
+    position: "bottom",
   },
 ];
 
 export default function LSGProcess() {
   return (
-    <section className="w-full bg-black py-20 px-4 lg:px-8 overflow-hidden">
-      <div className="mx-auto w-full max-w-[1240px] flex flex-col gap-16 lg:gap-[60px]">
+    <section className="w-full bg-black py-10 md:py-16 lg:py-20 px-4 lg:px-8 overflow-hidden">
+      <div className="mx-auto w-full max-w-[1240px] flex flex-col gap-10 md:gap-14 lg:gap-[60px]">
         {/* --- HEADER --- */}
-        <div className="w-full flex flex-col items-center gap-4 text-center">
+        <div className="w-full flex flex-col items-center gap-2 md:gap-3 lg:gap-4 text-center">
           <h2
-            className="text-[#00EFFE] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.3] tracking-[-0.01em]"
+            className="text-[#00EFFE] font-semibold text-[24px] xs:text-[32px] md:text-[38px] lg:text-[44px] leading-[1.3] tracking-[-0.01em]"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             The LSG Process
           </h2>
-          <div className="w-full max-w-[763px]  pb-4">
+          <div className="w-full max-w-[763px] pb-2 lg:pb-4">
             <p
-              className="font-medium text-[18px] lg:text-[22px] leading-[32px] text-[#A1C7D6]"
+              className="font-medium text-[15px] md:text-[18px] lg:text-[22px] leading-[22px] md:leading-[28px] lg:leading-[32px] text-[#A1C7D6]"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               We’ve built a full in-house system for careful, consistent
@@ -91,7 +91,6 @@ export default function LSGProcess() {
                   <polygon points="0 0, 10 3.5, 0 7" fill="#A1C7D6" />
                 </marker>
               </defs>
-              {/* Arrow 1 -> 2 */}
               <path
                 d="M 250 120 Q 380 180 450 180"
                 fill="none"
@@ -101,7 +100,6 @@ export default function LSGProcess() {
                 markerEnd="url(#arrowhead)"
                 opacity="0.6"
               />
-              {/* Arrow 2 -> 3 */}
               <path
                 d="M 750 180 Q 820 180 950 120"
                 fill="none"
@@ -111,7 +109,6 @@ export default function LSGProcess() {
                 markerEnd="url(#arrowhead)"
                 opacity="0.6"
               />
-              {/* Arrow 3 -> 4 */}
               <path
                 d="M 1050 200 Q 1080 300 1050 400"
                 fill="none"
@@ -121,7 +118,6 @@ export default function LSGProcess() {
                 markerEnd="url(#arrowhead)"
                 opacity="0.6"
               />
-              {/* Arrow 4 -> 5 */}
               <path
                 d="M 950 480 Q 820 420 750 420"
                 fill="none"
@@ -131,7 +127,6 @@ export default function LSGProcess() {
                 markerEnd="url(#arrowhead)"
                 opacity="0.6"
               />
-              {/* Arrow 5 -> 6 */}
               <path
                 d="M 450 420 Q 380 420 250 480"
                 fill="none"
@@ -145,33 +140,33 @@ export default function LSGProcess() {
           </div>
 
           {/* Steps Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-12 lg:gap-y-[40px] lg:gap-x-10 relative z-10">
-            {/* 1. Authentication (Col 1, Top) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-8 md:gap-y-12 lg:gap-y-[40px] lg:gap-x-10 relative z-10">
+            {/* 1. Authentication */}
             <div className="flex justify-center lg:justify-start lg:items-start">
               <StepItem step={steps[0]} />
             </div>
 
-            {/* 2. Cleaning (Col 2, Middle) - Pushed down */}
+            {/* 2. Cleaning */}
             <div className="flex justify-center lg:items-center lg:pt-[120px]">
               <StepItem step={steps[1]} />
             </div>
 
-            {/* 3. Surface (Col 3, Top) */}
+            {/* 3. Surface */}
             <div className="flex justify-center lg:justify-end lg:items-start">
               <StepItem step={steps[2]} />
             </div>
 
-            {/* 6. Encapsulation (Col 1, Bottom) - Order swapped in code for visual grid placement */}
+            {/* 6. Encapsulation */}
             <div className="flex justify-center lg:justify-start lg:items-end lg:pt-[120px] order-6 lg:order-4">
               <StepItem step={steps[5]} />
             </div>
 
-            {/* 5. Final Grade (Col 2, Bottom) - Pushed up slightly relative to bottom row? No, centered. */}
+            {/* 5. Final Grade */}
             <div className="flex justify-center lg:items-center order-5 lg:order-5">
               <StepItem step={steps[4]} />
             </div>
 
-            {/* 4. Corners (Col 3, Bottom) - Pushed down */}
+            {/* 4. Corners */}
             <div className="flex justify-center lg:justify-end lg:items-end lg:pt-[120px] order-4 lg:order-6">
               <StepItem step={steps[3]} />
             </div>
@@ -186,31 +181,31 @@ export default function LSGProcess() {
 
 function StepItem({ step }: { step: (typeof steps)[0] }) {
   return (
-    <div className="flex flex-col items-center gap-[12px] w-full max-w-[290px] text-center">
-      {/* Icon Circle */}
+    <div className="flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px] w-full max-w-[290px] text-center">
+      {/* Icon Circle: Gradual scale 45 -> 52 -> 60 */}
       <div
-        className="w-[60px] h-[60px] rounded-full flex items-center justify-center shadow-lg"
+        className="w-[45px] h-[45px] md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px] rounded-full flex items-center justify-center shadow-lg"
         style={{ backgroundColor: step.color }}
       >
         <span
-          className="text-white font-bold text-[20px] leading-none"
+          className="text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] leading-none"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           {step.id}
         </span>
       </div>
 
-      {/* Title */}
+      {/* Title: Gradual scale 17 -> 19 -> 21.57 */}
       <h3
-        className="text-white font-semibold text-[21.57px] leading-[100%]"
+        className="text-white font-semibold text-[17px] md:text-[19px] lg:text-[21.57px] leading-[1.2] lg:leading-[100%]"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
         {step.title}
       </h3>
 
-      {/* Description */}
+      {/* Description: Gradual scale 14 -> 17 -> 20 */}
       <p
-        className="text-[#A1C7D6] font-normal text-[20px] leading-[32px]"
+        className="text-[#A1C7D6] font-normal text-[14px] md:text-[17px] lg:text-[20px] leading-[20px] md:leading-[26px] lg:leading-[32px]"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
         {step.description}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaCheck, FaCheckCircle } from "react-icons/fa";
-import { motion } from "framer-motion"; // Added for animations
+import { motion } from "framer-motion";
 
 type FeatureCard = {
   title: string;
@@ -71,12 +71,12 @@ function ServiceFeatureCard({
       viewport={{ once: true }}
       className={[
         "w-full mx-auto",
-        "rounded-[12px] border",
-        "flex flex-col gap-[18px]",
+        "rounded-xl border",
+        "flex flex-col gap-3.5 lg:gap-4.5",
+        "min-h-[380px] lg:min-h-[516px]", // Moved mobile height logic here
       ].join(" ")}
       style={{
         maxWidth: 362,
-        minHeight: 516,
         padding: 20,
         borderWidth: 1.52,
         borderColor: "#CBD4E1",
@@ -87,15 +87,15 @@ function ServiceFeatureCard({
     >
       {/* Card header */}
       <div className="w-full flex items-center justify-between">
-        <h3 className="text-[#FFFFFF] font-semibold text-[20px] sm:text-[22px] lg:text-[24px] leading-[32px]">
+        <h3 className="text-[#FFFFFF] font-semibold text-[18px] xs:text-[20px] lg:text-[24px] leading-[1.2] lg:leading-8">
           {card.title}
         </h3>
 
         <span
-          className="inline-flex items-center justify-center rounded-full"
-          style={{ width: 32, height: 32, backgroundColor: "#00EEFE" }}
+          className="inline-flex items-center justify-center rounded-full shrink-0"
+          style={{ width: 28, height: 28, backgroundColor: "#00EEFE" }}
         >
-          <FaCheck size={12} color="#062126" />
+          <FaCheck size={10} color="#062126" />
         </span>
       </div>
 
@@ -110,15 +110,15 @@ function ServiceFeatureCard({
       />
 
       {/* Bullets */}
-      <ul className="flex flex-col gap-[19px]">
+      <ul className="flex flex-col gap-3 lg:gap-4.75">
         {card.items.map((t) => (
           <li key={t} className="flex items-start gap-2">
             <FaCheckCircle
-              size={20}
-              className="mt-[3px] shrink-0"
+              size={16}
+              className="mt-0.5 lg:mt-0.75 shrink-0"
               color="#FFFFFF"
             />
-            <span className="text-[#FFFFFF] text-[14px] sm:text-[15px] leading-[130%]">
+            <span className="text-[#FFFFFF] text-[13px] xs:text-[14px] lg:text-[15px] leading-[130%]">
               {t}
             </span>
           </li>
@@ -130,14 +130,12 @@ function ServiceFeatureCard({
 
       <Link
         href={"/contact"}
-        type="button"
-        className="w-full rounded-[8px] text-[#000000] hover:scale-[1.01] font-bold bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] border inline-flex items-center justify-center transition-transform active:scale-[0.98]"
+        className="w-full rounded-lg text-[#000000] hover:scale-[1.01] font-bold bg-linear-to-r from-[#00F2FE] to-[#00D0FF] border inline-flex items-center justify-center transition-transform active:scale-[0.98]"
         style={{
-          height: 44,
+          height: 40,
           borderColor: "#00EEFE",
-
           fontWeight: 700,
-          fontSize: 16,
+          fontSize: 14,
           letterSpacing: "0.2px",
           fontFamily: "Sora, sans-serif",
         }}
@@ -151,7 +149,7 @@ function ServiceFeatureCard({
 export default function ServiceHero() {
   return (
     <section className="relative isolate w-full bg-black overflow-hidden">
-      <div className="relative w-full min-h-[720px] sm:min-h-[820px] lg:h-[920px]">
+      <div className="relative w-full min-h-150 sm:min-h-205 lg:h-230">
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
@@ -175,14 +173,14 @@ export default function ServiceHero() {
 
         {/* Content */}
         <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
-          <div className="w-full max-w-[1132px] flex flex-col items-center gap-[50px] py-10 lg:py-0">
+          <div className="w-full max-w-283 flex flex-col items-center gap-7.5 lg:gap-12.5 py-10 lg:py-0">
             {/* Header Section */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={staggerContainer}
-              className="w-full max-w-[923px] flex flex-col items-center gap-[22px] sm:gap-[31px]"
+              className="w-full max-w-230.75 flex flex-col items-center gap-4.5 sm:gap-7.75"
             >
               <motion.h1
                 variants={fadeInUp}
@@ -191,7 +189,7 @@ export default function ServiceHero() {
                   fontFamily: "Poppins, sans-serif",
                 }}
               >
-                <span className="block text-[26px] sm:text-[34px] lg:text-[44px] leading-[120%] lg:leading-[88.32px]">
+                <span className="block text-[22px] xs:text-[26px] sm:text-[34px] lg:text-[44px] leading-[110%] lg:leading-[88.32px]">
                   Everything That Comes with an LSG Slab
                 </span>
               </motion.h1>
@@ -201,7 +199,7 @@ export default function ServiceHero() {
                 className="text-center text-[#A1C7D6] font-medium px-2"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
-                <span className="block text-[15px] sm:text-[18px] lg:text-[22px] leading-[140%] lg:leading-[30.8px]">
+                <span className="block text-[14px] xs:text-[15px] sm:text-[18px] lg:text-[22px] leading-[140%] lg:leading-[30.8px]">
                   Each slab includes the full LSG experience — cleaning,
                   authentication, grading, and sealing— all built into the
                   product you receive. No subscriptions, no extra fees
@@ -211,16 +209,15 @@ export default function ServiceHero() {
               {/* Buttons */}
               <motion.div
                 variants={fadeInUp}
-                className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-[25px]"
+                className="w-full flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6.25"
               >
                 <Link
                   href="/contact"
-                  className="inline-flex hover:scale-[1.01] active:scale-[0.98] items-center justify-center bg-[linear-gradient(93.95deg,#00F2FE_4.94%,#00D0FF_97.42%)] rounded-[12px] w-full sm:w-[237px] h-[60px] transition-transform"
+                  className="inline-flex hover:scale-[1.01] max-w-[362px] active:scale-[0.98] items-center justify-center bg-linear-to-r from-[#00F2FE] to-[#00D0FF] rounded-xl w-full sm:w-59.25 h-12 sm:h-15 transition-transform"
                   style={{
                     fontFamily: "Sora, sans-serif",
                     fontWeight: 700,
-                    fontSize: 16,
-                    lineHeight: "151%",
+                    fontSize: 15,
                   }}
                 >
                   Request Slab
@@ -228,7 +225,7 @@ export default function ServiceHero() {
 
                 <Link
                   href="/verify-slab"
-                  className="inline-flex items-center justify-center font-sora font-bold h-[50px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] font-semibold text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
+                  className="inline-flex items-center max-w-[362px] justify-center font-sora font-bold h-12 sm:h-15 w-full sm:w-59.25 lg:rounded-xl border border-[#00D0FF] bg-transparent text-[#00D0FF] text-[15px] lg:text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
                 >
                   Verify Your Slab
                 </Link>
@@ -243,7 +240,7 @@ export default function ServiceHero() {
               variants={staggerContainer}
               className="w-full flex justify-center"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4.5">
                 {featureCards.map((card, index) => (
                   <ServiceFeatureCard
                     key={card.title}
