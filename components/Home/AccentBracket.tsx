@@ -427,8 +427,10 @@ export default function OurGradingProcess() {
             </div>
 
             {/* MOBILE / TABLET TIMELINE */}
+            {/* MOBILE / TABLET TIMELINE */}
             <div className="xl:hidden w-full max-w-[700px] mx-auto">
               <div className="relative pl-6 sm:pl-12">
+                {/* The Vertical Line */}
                 <div className="absolute left-[10px] sm:left-[14px] top-[10px] bottom-[10px] w-[2px] sm:w-[4px] bg-[#00EFFE]/20 rounded-full">
                   <motion.div
                     initial={{ height: 0 }}
@@ -448,9 +450,13 @@ export default function OurGradingProcess() {
                       viewport={{ once: true, margin: "-50px" }}
                       className="relative"
                     >
+                      {/* THE DOT - Adjusted positioning for centering */}
                       <motion.div
                         variants={dotVariants}
-                        className="absolute -left-[24px] sm:-left-[47px] top-[22px] h-[16px] w-[16px] sm:h-[30px] sm:w-[30px] rounded-full bg-[#00EFFE] shadow-[0_0_18px_rgba(0,208,255,0.65)] z-10"
+                        className="absolute left-[-21px] sm:left-[-47px] top-[22px] h-[16px] w-[16px] sm:h-[30px] sm:w-[30px] rounded-full bg-[#00EFFE] shadow-[0_0_18px_rgba(0,208,255,0.65)] z-10"
+                        style={{
+                          transform: "translateX(50%)", // Ensures the dot's center sits on the line
+                        }}
                       />
 
                       <motion.div

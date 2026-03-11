@@ -75,7 +75,7 @@ export default function GetInTouchWithUs() {
   };
 
   const inputStyles = `
-    w-full h-[45px] lg:h-[50px] rounded-[6px] 
+    w-full h-[45px] lg:h-[50px] rounded-[9px] 
     bg-gradient-to-b from-[#121212] to-[#080808]
     border border-white/[0.05] border-t-white/10
     text-white placeholder:text-[#FFFFFF99]
