@@ -57,7 +57,7 @@ export default function OurCases() {
 
         {/* --- Content Container --- */}
         <div className="w-full flex flex-col items-center border-white/10 max-w-[1200px] gap-[25px] lg:gap-[30px] rounded-[12px] border lg:pr-[70px] lg:pb-[45px] lg:pl-[70px] bg-gradient-to-b from-white/[0.084] to-zinc-400/[0.042]">
-          <div className="flex flex-col items-center justify-start max-w-[1124px] w-full gap-[40px] lg:gap-[50px]">
+          <div className="flex flex-col items-center justify-start max-w-[1124px] w-full gap-[25px] ">
             {/* =========================================
                 1. FRONT SLAB
                 ========================================= */}
