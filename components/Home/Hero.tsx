@@ -136,7 +136,7 @@ export default function HomeHero() {
             </Link>
             <Link
               href="/verify-slab"
-              className="inline-flex items-center justify-center font-sora font-bold h-[45px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border border-[#00D0FF] bg-transparent text-[#00D0FF] text-[15px] sm:text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
+              className="inline-flex items-center justify-center font-sora font-bold h-[45px] sm:h-[60px] w-full sm:w-[237px] rounded-[12px] border-[2px] border-[#00D0FF] bg-transparent text-[#00D0FF] text-[15px] sm:text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
             >
               Verify Your Slab
             </Link>

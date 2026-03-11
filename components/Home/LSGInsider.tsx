@@ -111,7 +111,7 @@ export default function LSGInsider() {
               <div
                 className="
                   w-full max-w-[400px] h-[50px] lg:h-[62px]
-                  rounded-[10px] border border-[#00EFFE]
+                  rounded-[10px] border-[2px] border-[#00EFFE]
                   flex items-stretch overflow-hidden
                   bg-[#383838]
                   grid grid-cols-3 sm:flex

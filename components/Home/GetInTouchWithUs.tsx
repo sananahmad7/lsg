@@ -83,7 +83,7 @@ export default function GetInTouchWithUs() {
     shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]
     focus:border-[#00EFFE]/40 focus:from-[#151515]
     transition-all duration-300
-    text-[14px] lg:text-[16px]
+    text-[14px] lg:text-[16px] font-poppins
   `;
 
   return (

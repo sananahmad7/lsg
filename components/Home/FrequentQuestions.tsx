@@ -44,7 +44,9 @@ function FAQItem({
         className={[
           "w-full text-left rounded-[8px] bg-[#383838]",
           "transition-all duration-200",
-          isOpen ? "border border-[#00D0FF]" : "border border-transparent",
+          isOpen
+            ? "border-[2px] border-[#00D0FF]"
+            : "border border-transparent",
         ].join(" ")}
         style={{ fontFamily: "Poppins, sans-serif" }}
       >

@@ -78,7 +78,7 @@ function ServiceFeatureCard({
       style={{
         maxWidth: 362,
         padding: 20,
-        borderWidth: 1.52,
+        borderWidth: 1.6,
         borderColor: "#CBD4E1",
         backgroundColor: card.highlighted ? "#383838" : "rgba(0,0,0,0.45)",
         fontFamily: "Poppins, sans-serif",
@@ -225,7 +225,7 @@ export default function ServiceHero() {
 
                 <Link
                   href="/verify-slab"
-                  className="inline-flex items-center max-w-[362px] justify-center font-sora font-bold h-12 sm:h-15 w-full sm:w-59.25 lg:rounded-xl border border-[#00D0FF] bg-transparent text-[#00D0FF] text-[15px] lg:text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
+                  className="inline-flex items-center max-w-[362px] justify-center font-sora font-bold h-12 sm:h-15 w-full sm:w-59.25 lg:rounded-xl border-[2px] border-[#00D0FF] bg-transparent text-[#00D0FF] text-[15px] lg:text-[16px] hover:bg-[#00D0FF]/10 transition-colors"
                 >
                   Verify Your Slab
                 </Link>

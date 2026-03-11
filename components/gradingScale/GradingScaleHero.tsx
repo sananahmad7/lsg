@@ -148,7 +148,7 @@ export default function GradingScaleHero() {
       ],
     },
     {
-      title: "EDC Category – Optional Tag",
+      title: "EDC Category",
       isTable: true,
       description:
         "This is a separate category, not a score reducer. It flags factory or print-related defects that are rare and may even increase collector interest.",
@@ -228,7 +228,7 @@ export default function GradingScaleHero() {
             </button>
 
             {/* Info Box */}
-            <div className="flex flex-col bg-[#141414] border border-[#00EFFE] rounded-[12px] justify-between p-5 md:p-8 z-0 relative w-full xl:w-[675px] h-auto xl:min-h-[557.38px] gap-5 xl:gap-0 transition-all">
+            <div className="flex flex-col bg-[#141414] border-[2px] border-[#00EFFE] rounded-[12px] justify-between p-5 md:p-8 z-0 relative w-full xl:w-[675px] h-auto xl:min-h-[557.38px] gap-5 xl:gap-0 transition-all">
               <h2 className="font-semibold text-[#00EFFE] text-[24px] md:text-[34px] lg:text-[44px] leading-snug">
                 {currentLevel.title}
               </h2>
