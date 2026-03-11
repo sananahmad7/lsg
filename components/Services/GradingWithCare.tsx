@@ -60,7 +60,7 @@ export default function GradingWithCare() {
                     fontFamily: "Poppins, sans-serif",
                   }}
                 >
-                  <span className="block text-[24px] xs:text-[28px] sm:text-[36px] lg:text-[44px] whitespace-pre-wrap">
+                  <span className="block text-[24px] leading-[101%] xs:text-[28px] sm:text-[36px] lg:text-[44px] whitespace-pre-wrap">
                     Grading With Care & Protection
                   </span>
                 </h2>
