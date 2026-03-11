@@ -101,14 +101,16 @@ export default function VerifySlabFlow() {
 
   return (
     <section className="relative isolate w-full min-h-screen bg-black overflow-x-hidden py-6 lg:py-10">
-      <div className="absolute inset-0 z-0">
+      <div
+        className={`absolute ${step === "result" ? "top-0  left-0 right-0 bottom-60" : "inset-0"}  z-0`}
+      >
         <Image
           src={step === "result" ? "/result.png" : "/home1.webp"}
           alt="Verify slab background"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.70]"
+          className="object-cover opacity-[0.90]"
         />
       </div>
 
@@ -263,16 +265,6 @@ export default function VerifySlabFlow() {
             className="w-full max-w-[904px] flex flex-col items-center gap-[30px] lg:gap-[60px] relative py-10"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none opacity-40 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] 3xl:w-[300px] 3xl:h-[300px] transition-all">
-              <Image
-                src="/VerificationResultBg.png"
-                alt="Background Glow"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-
             <div className="relative w-[140px] h-[50px] lg:w-[187px] lg:h-[65.74px]">
               <Image
                 src="/logo.png"

@@ -23,13 +23,13 @@ export default function VerificationResultPage() {
 
   return (
     <section className="relative isolate w-full min-h-screen bg-black overflow-x-hidden py-10 lg:py-20 flex flex-col items-center justify-center px-4">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute top-0  left-0 right-0 bottom-60 z-0">
         <Image
           src="/result.png"
           alt="bg"
           fill
           priority
-          className="object-cover opacity-[0.70]"
+          className="object-cover opacity-[0.90]"
         />
       </div>
 
