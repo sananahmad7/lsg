@@ -282,10 +282,7 @@ export default function VerifySlabFlow() {
             <div
               className="w-full rounded-[10px] lg:rounded-[12px] overflow-hidden"
               style={{
-                borderWidth:
-                  typeof window !== "undefined" && window.innerWidth < 1024
-                    ? "1.2px"
-                    : "1.6px",
+                borderWidth: "2px",
                 borderStyle: "solid",
                 borderColor: "#00EFFE",
               }}

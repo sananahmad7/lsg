@@ -110,7 +110,7 @@ export default function VerifyYourSlab() {
                 onChange={(e) => setSerial(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && onVerify()}
                 placeholder="Enter Slab Serial Number"
-                className="h-[50px] lg:h-[61px] w-full rounded-l-[10px] lg:rounded-l-[13px] border border-[#00D0FF] bg-[#242424] px-4 text-white placeholder:text-white/40 outline-none focus:ring-1 focus:ring-[#00D0FF] transition-all"
+                className="h-[50px] lg:h-[61px] w-full rounded-l-[10px] lg:rounded-l-[13px] border-[2px] border-[#00D0FF] bg-[#242424] px-4 text-white placeholder:text-white/40 outline-none focus:ring-1 focus:ring-[#00D0FF] transition-all"
                 style={{
                   fontFamily: "Poppins, sans-serif",
                   fontSize: 15,
